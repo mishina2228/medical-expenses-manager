@@ -1,0 +1,14 @@
+AllCops:
+  TargetRubyVersion: 2.4
+Rails:
+  Enabled: true
+Layout/EndOfLine:
+  EnforcedStyle: lf
+Style/Documentation:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/PercentLiteralDelimiters:
+  Enabled: false
+Style/EmptyMethod:
+  EnforcedStyle: expanded
