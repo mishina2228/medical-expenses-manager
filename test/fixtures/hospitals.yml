@@ -1,9 +1,4 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  name: MyString
-  expense: 1
-
-two:
-  name: MyString
-  expense: 1
+病院1:
+  id: 1
+  name: hospital1
+  expense: 100

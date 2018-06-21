@@ -1,7 +1,6 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  cost: 1
-
-two:
+記録1:
+  id: 1
+  hospital_id: 1
+  patient_id: 1
+  date: <%= Time.zone.today %>
   cost: 1

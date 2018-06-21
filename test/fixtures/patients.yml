@@ -1,9 +1,4 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  name: MyString
-  relationship: MyString
-
-two:
-  name: MyString
-  relationship: MyString
+患者1:
+  id: 1
+  name: patient1
+  relationship: myself

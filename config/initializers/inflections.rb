@@ -16,5 +16,5 @@
 # end
 
 ActiveSupport::Inflector.inflections(:en) do |inflect|
-  inflect.uncountable %w( transportation )
+  inflect.uncountable %w( transportation hospital_transportation )
 end

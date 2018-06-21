@@ -31,15 +31,14 @@ ActiveRecord::Schema.define(version: 2018_06_17_124934) do
 
   create_table "hospitals", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "expense", default: 0
-    t.integer "transportation", default: 0
+    t.integer "expense", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "patients", force: :cascade do |t|
     t.string "name", null: false
-    t.string "relationship"
+    t.string "relationship", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
