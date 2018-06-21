@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class HospitalsTest < ApplicationSystemTestCase
   setup do
-    @hospital = hospitals(:one)
+    @hospital = hospitals(:病院1)
   end
 
   test "visiting the index" do
@@ -16,7 +16,7 @@ class HospitalsTest < ApplicationSystemTestCase
 
     fill_in "Expense", with: @hospital.expense
     fill_in "Name", with: @hospital.name
-    fill_in "Transportation", with: @hospital.transportation
+    fill_in "Transport", with: @hospital.transport
     click_on "Create Hospital"
 
     assert_text "Hospital was successfully created"
@@ -29,7 +29,7 @@ class HospitalsTest < ApplicationSystemTestCase
 
     fill_in "Expense", with: @hospital.expense
     fill_in "Name", with: @hospital.name
-    fill_in "Transportation", with: @hospital.transportation
+    fill_in "Transport", with: @hospital.transport
     click_on "Update Hospital"
 
     assert_text "Hospital was successfully updated"

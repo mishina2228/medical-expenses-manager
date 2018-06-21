@@ -1,24 +1,28 @@
-<p id="notice"><%= notice %></p>
+<p id="notice"><%= notice.try(:html_safe) %></p>
 
-<h1>Records</h1>
+<h1><%= Record.model_name.human %>一覧</h1>
 
 <table class='table table-bordered table-hover'>
   <thead>
     <tr>
       <th><%= Record.human_attribute_name :date %></th>
+      <th><%= Person.human_attribute_name :name %></th>
+      <th><%= Division.model_name.human %></th>
+      <th><%= Division.human_attribute_name :name %></th>
       <th><%= Record.human_attribute_name :cost %></th>
-      <th colspan="3"></th>
+      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @records.each do |record| %>
       <tr>
-        <td><%= record.date %></td>
-        <td><%= record.cost %></td>
-        <td><%= link_to 'Show', record %></td>
-        <td><%= link_to 'Edit', edit_record_path(record) %></td>
-        <td><%= link_to 'Destroy', record, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= l(record.date) %></td>
+        <td><%= record.person.name %></td>
+        <td><%= record.division.model_name.human %></td>
+        <td><%= record.division.name %></td>
+        <td><%= record.cost.to_s(:currency) %></td>
+        <td><%= link_to t('helpers.link.edit'), edit_record_path(record) %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Record', new_record_path %>
+<%= link_to t('helpers.link.new'), new_record_path %>

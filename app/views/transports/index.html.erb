@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= Transport.model_name.human %>一覧</h1>
+
+<table class='table table-bordered table-hover'>
+  <thead>
+    <tr>
+      <th><%= Transport.human_attribute_name :name %></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @transport.each do |transport| %>
+      <tr>
+        <td><%= transport.name %></td>
+        <td><%= link_to t('helpers.link.edit'), edit_transport_path(transport) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to t('helpers.link.new'), new_transport_path %>

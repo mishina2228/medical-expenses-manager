@@ -1,6 +1,5 @@
 記録1:
-  id: 1
-  hospital_id: 1
-  patient_id: 1
+  division: 病院1
+  person_id: ユーザー1
   date: <%= Time.zone.today %>
-  cost: 1
+  cost: 100

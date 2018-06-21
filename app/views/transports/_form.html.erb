@@ -1,0 +1,20 @@
+<%= form_with(model: transport, local: true) do |form| %>
+  <% if transport.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% transport.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: 'btn btn-outline-secondary' %>
+  </div>
+<% end %>

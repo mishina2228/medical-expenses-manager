@@ -3,7 +3,6 @@ require 'test_helper'
 class RecordTest < ActiveSupport::TestCase
   def test_validation
     record = Record.new(valid_params)
-    p record
     assert record.valid?
 
     record = Record.new(valid_params.merge(date: nil))
@@ -19,8 +18,8 @@ class RecordTest < ActiveSupport::TestCase
 
   def valid_params
     hospital1 = hospitals(:病院1)
-    patient1 = patients(:患者1)
+    person1 = people(:ユーザー1)
     {date: Time.zone.today, cost: 100,
-     hospital_id: hospital1.id, patient_id: patient1.id}
+     division_id: hospital1.id, person_id: person1.id}
   end
 end

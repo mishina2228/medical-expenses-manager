@@ -1,0 +1,4 @@
+病院交通費1:
+  hospital: 病院1
+  transport: 交通機関1
+  transport_cost: 100

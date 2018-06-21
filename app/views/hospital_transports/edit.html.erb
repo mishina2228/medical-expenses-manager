@@ -1,0 +1,8 @@
+<h1><%= HospitalTransport.model_name.human %>編集</h1>
+
+<%= render 'form', hospital_transport: @hospital_transport %>
+<%= button_to t('helpers.link.delete'), @hospital_transport, method: :delete,
+              data: {confirm: t('helpers.notice.delete_confirm')},
+              class: 'btn btn-outline-secondary' %>
+
+<%= link_to t('helpers.link.back'), hospital_transports_path %>

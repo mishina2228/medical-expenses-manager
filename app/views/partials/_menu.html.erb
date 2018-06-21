@@ -1,7 +1,22 @@
-<ul>
-  <li><%= link_to 'TOPページ', root_path %></li>
-  <li><%= link_to Patient.model_name.human, patients_path %></li>
-  <li><%= link_to Hospital.model_name.human, hospitals_path %></li>
-  <li><%= link_to Drugstore.model_name.human, drugstores_path %></li>
-  <li><%= link_to Transportation.model_name.human, transportation_index_path %></li>
-</ul>
+<div class="container">
+  <div class="row text-center">
+    <div class="col-sm-2">
+      <%= link_to 'TOPページ', root_path %>
+    </div>
+    <div class="col-sm-2">
+     <%= link_to Person.model_name.human, people_path %>
+    </div>
+    <div class="col-sm-2">
+      <%= link_to Hospital.model_name.human, hospitals_path %>
+    </div>
+    <div class="col-sm-2">
+      <%= link_to Drugstore.model_name.human, drugstores_path %>
+    </div>
+    <div class="col-sm-2">
+      <%= link_to Transport.model_name.human, transports_path %>
+    </div>
+    <div class="col-sm-2">
+      <%= link_to HospitalTransport.model_name.human, hospital_transports_path %>
+    </div>
+  </div>
+</div>

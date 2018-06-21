@@ -1,28 +1,32 @@
 ---
 ja:
-  hello: "こんにちは世界"
   activerecord:
     models:
+      division: 医療費の区分
       drugstore: 薬局
       hospital: 病院
-      patient: ユーザー
+      hospital_transport: 病院への交通費
+      person: ユーザー
       record: 医療費記録
-      transportation: 交通手段
+      transport: 交通機関
     attributes:
+      division:
+        name: 支払先の名称
       drugstore:
         name: 薬局名
       hospital:
         name: 病院名
-        expense: 交通費
-        transportation: 交通手段
-      patient:
+      hospital_transport:
+        transport_cost: 交通費
+      person:
         name: 名前
         relationship: 続柄
       record:
         date: 日付
+        division: 医療費の区分
         cost: 医療費
-      transportation:
-        name: 手段名
+      transport:
+        name: 交通機関名
     errors:
       messages:
         record_invalid: "バリデーションに失敗しました: %{errors}"
@@ -161,6 +165,18 @@ ja:
         one: "%{model}にエラーが発生しました"
         other: "%{model}に%{count}個のエラーが発生しました"
   helpers:
+    link:
+      back: 戻る
+      delete: 削除
+      edit: 編集
+      new: 新規作成
+    notice:
+      create: 正常に作成されました
+      delete: 正常に削除されました
+      delete_confirm: 削除してよろしいですか?
+      loading: 読み込み中...
+      require_data: まず次のデータを登録してください
+      update: 正常に更新されました
     select:
       prompt: 選択してください
     submit:

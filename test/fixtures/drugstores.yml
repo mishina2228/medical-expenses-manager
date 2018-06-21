@@ -1,4 +1,3 @@
 薬局1:
-  id: 1
-  hospital_id: 1
   name: drugstore1
+  type: Drugstore

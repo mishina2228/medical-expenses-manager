@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class RecordsTest < ApplicationSystemTestCase
   setup do
-    @record = records(:one)
+    @record = records(:記録1)
   end
 
   test "visiting the index" do

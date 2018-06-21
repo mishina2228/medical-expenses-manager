@@ -1,6 +1,8 @@
-<h1>Editing Drugstore</h1>
+<h1><%= Drugstore.model_name.human %>編集</h1>
 
 <%= render 'form', drugstore: @drugstore %>
+<%= button_to t('helpers.link.delete'), @drugstore, method: :delete,
+              data: {confirm: t('helpers.notice.delete_confirm')},
+              class: 'btn btn-outline-secondary' %>
 
-<%= link_to 'Show', @drugstore %> |
-<%= link_to 'Back', drugstores_path %>
+<%= link_to t('helpers.link.back'), drugstores_path %>

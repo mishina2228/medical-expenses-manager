@@ -2,7 +2,7 @@ require 'test_helper'
 
 class HospitalsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @hospital = hospitals(:one)
+    @hospital = hospitals(:病院1)
   end
 
   test "should get index" do
@@ -17,7 +17,7 @@ class HospitalsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create hospital" do
     assert_difference('Hospital.count') do
-      post hospitals_url, params: { hospital: { expense: @hospital.expense, name: @hospital.name, transportation: @hospital.transportation } }
+      post hospitals_url, params: { hospital: {expense: @hospital.expense, name: @hospital.name, transports: @hospital.transport } }
     end
 
     assert_redirected_to hospital_url(Hospital.last)
@@ -34,7 +34,7 @@ class HospitalsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update hospital" do
-    patch hospital_url(@hospital), params: { hospital: { expense: @hospital.expense, name: @hospital.name, transportation: @hospital.transportation } }
+    patch hospital_url(@hospital), params: { hospital: {expense: @hospital.expense, name: @hospital.name, transports: @hospital.transport } }
     assert_redirected_to hospital_url(@hospital)
   end
 

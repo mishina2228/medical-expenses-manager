@@ -1,6 +1,6 @@
 class Record < ApplicationRecord
-  belongs_to :hospital
-  belongs_to :patient
+  belongs_to :division
+  belongs_to :person
 
   validates :date, presence: true
   validates :cost, presence: true, numericality:

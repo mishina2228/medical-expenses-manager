@@ -2,7 +2,7 @@ require 'test_helper'
 
 class DrugstoresControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @drugstore = drugstores(:one)
+    @drugstore = drugstores(:薬局1)
   end
 
   test "should get index" do

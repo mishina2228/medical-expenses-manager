@@ -10,54 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_17_124934) do
+ActiveRecord::Schema.define(version: 2018_06_24_035639) do
 
-  create_table "drugstores", force: :cascade do |t|
-    t.integer "hospital_id"
+  create_table "divisions", force: :cascade do |t|
     t.string "name", null: false
+    t.string "type", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["hospital_id"], name: "index_drugstores_on_hospital_id"
+    t.index ["name", "type"], name: "index_divisions_on_name_and_type", unique: true
+    t.index ["type"], name: "index_divisions_on_type"
   end
 
-  create_table "hospital_transportation", force: :cascade do |t|
+  create_table "hospital_transports", force: :cascade do |t|
     t.integer "hospital_id"
-    t.integer "transportation_id"
+    t.integer "transport_id"
+    t.integer "transport_cost", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["hospital_id"], name: "index_hospital_transportation_on_hospital_id"
-    t.index ["transportation_id"], name: "index_hospital_transportation_on_transportation_id"
+    t.index ["hospital_id"], name: "index_hospital_transports_on_hospital_id"
+    t.index ["transport_id"], name: "index_hospital_transports_on_transport_id"
   end
 
-  create_table "hospitals", force: :cascade do |t|
-    t.string "name", null: false
-    t.integer "expense", default: 0, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "patients", force: :cascade do |t|
+  create_table "people", force: :cascade do |t|
     t.string "name", null: false
     t.string "relationship", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_people_on_name", unique: true
   end
 
   create_table "records", force: :cascade do |t|
-    t.integer "hospital_id"
-    t.integer "patient_id"
+    t.integer "division_id"
+    t.integer "person_id"
     t.date "date", null: false
     t.integer "cost", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["hospital_id"], name: "index_records_on_hospital_id"
-    t.index ["patient_id"], name: "index_records_on_patient_id"
-  end
-
-  create_table "transportation", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["division_id"], name: "index_records_on_division_id"
+    t.index ["person_id"], name: "index_records_on_person_id"
   end
 
 end

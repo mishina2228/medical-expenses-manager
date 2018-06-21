@@ -1,0 +1,30 @@
+<%= form_with(model: hospital_transport, local: true) do |form| %>
+  <% if hospital_transport.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% hospital_transport.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label Hospital.human_attribute_name(:name) %>
+    <%= form.select :hospital_id, Hospital.objects_for_select, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label Transport.human_attribute_name(:name) %>
+    <%= form.select :transport_id, Transport.objects_for_select, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :transport_cost %>
+    <%= form.number_field :transport_cost, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: 'btn btn-outline-secondary' %>
+  </div>
+<% end %>

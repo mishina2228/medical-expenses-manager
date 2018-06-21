@@ -9,11 +9,32 @@
     </div>
   <% end %>
 
-  <div class="field input-group input-group-sm">
-    <div class="input-group-prepend">
-      <%= form.label :cost, class: 'input-group-text' %>
-      <%= form.number_field :cost, class: 'form-control' %>
-    </div>
+  <div class="form-group">
+    <%= form.label :date %>
+    <%= form.date_select :date, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :person_id, Person.human_attribute_name(:name) %>
+    <%= form.select :person_id, Person.objects_for_select, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :division_type, Division.model_name.human %>
+    <%= form.select :division_type, Division.division_names.invert,
+                    selected: record.division.try(:model_name),
+                    class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :division_id, Division.human_attribute_name(:name) %>
+    <%= hidden_field_tag 'division[default_id]', record.division.id %>
+    <div id="division_id_selector"><%= t('helpers.notice.loading') %></div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :cost %>
+    <%= form.number_field :cost, class: 'form-control' %>
   </div>
 
   <div class="actions">

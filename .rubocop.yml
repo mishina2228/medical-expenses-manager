@@ -6,8 +6,11 @@ Layout/EndOfLine:
   EnforcedStyle: lf
 Metrics/LineLength:
   Max: 100
+Style/SpaceInsideBlockBraces:
+  EnforcedStyle: no_space
 Style/SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space
+  SpaceBeforeBlockParameters: false
 Style/Documentation:
   Enabled: false
 Style/FrozenStringLiteralComment:

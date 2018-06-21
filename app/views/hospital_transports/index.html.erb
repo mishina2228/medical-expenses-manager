@@ -1,0 +1,29 @@
+<p id="notice"><%= notice.try(:html_safe) %></p>
+
+<h1><%= HospitalTransport.model_name.human %>一覧</h1>
+
+<table class='table table-bordered table-hover'>
+  <thead>
+  <tr>
+    <th><%= Hospital.human_attribute_name :name %></th>
+    <th><%= Transport.human_attribute_name :name %></th>
+    <th><%= HospitalTransport.human_attribute_name :transport_cost %></th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @hospital_transports.each do |hospital_transport| %>
+    <tr>
+      <td><%= hospital_transport.hospital.name %></td>
+      <td><%= hospital_transport.transport.name %></td>
+      <td><%= hospital_transport.transport_cost.to_s(:currency) %></td>
+      <td><%= link_to t('helpers.link.edit'), edit_hospital_transport_path(hospital_transport) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to t('helpers.link.new'), new_hospital_transport_path %>
