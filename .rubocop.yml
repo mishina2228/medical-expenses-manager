@@ -4,6 +4,10 @@ Rails:
   Enabled: true
 Layout/EndOfLine:
   EnforcedStyle: lf
+Metrics/LineLength:
+  Max: 100
+Style/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space
 Style/Documentation:
   Enabled: false
 Style/FrozenStringLiteralComment:

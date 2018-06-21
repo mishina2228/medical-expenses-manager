@@ -1,32 +1,31 @@
 <%= form_with(model: hospital, local: true) do |form| %>
   <% if hospital.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(hospital.errors.count, "error") %> prohibited this hospital from being saved:</h2>
-
       <ul>
-      <% hospital.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% hospital.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+  <div class="field input-group input-group-sm">
+    <div class="input-group-prepend">
+      <%= form.label :name, class: 'input-group-text' %>
+      <%= form.text_field :name, class: 'form-control' %>
+    </div>
+    <div class="input-group-prepend">
+      <%= form.label :expense, class: 'input-group-text' %>
+      <%= form.number_field :expense, class: 'form-control' %>
+    </div>
 
-  <div class="field">
-    <%= form.label :expense %>
-    <%= form.number_field :expense %>
-  </div>
-
-  <div class="field">
-    <%= form.label :transportation %>
-    <%= form.number_field :transportation %>
+    <div class="input-group-prepend">
+      <%= form.label :transportation, class: 'input-group-text' %>
+      <%= form.number_field :transportation, class: 'form-control' %>
+    </div>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: 'btn btn-outline-secondary' %>
   </div>
 <% end %>

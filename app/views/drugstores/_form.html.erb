@@ -1,22 +1,22 @@
 <%= form_with(model: drugstore, local: true) do |form| %>
   <% if drugstore.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(drugstore.errors.count, "error") %> prohibited this drugstore from being saved:</h2>
-
       <ul>
-      <% drugstore.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% drugstore.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="field input-group input-group-sm">
+    <div class="input-group-prepend">
+      <%= form.label :name, class: 'input-group-text' %>
+      <%= form.text_field :name, class: 'form-control' %>
+    </div>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: 'btn btn-outline-secondary' %>
   </div>
 <% end %>

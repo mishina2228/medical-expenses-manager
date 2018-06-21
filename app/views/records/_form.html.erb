@@ -1,22 +1,22 @@
 <%= form_with(model: record, local: true) do |form| %>
   <% if record.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(record.errors.count, "error") %> prohibited this record from being saved:</h2>
-
       <ul>
-      <% record.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% record.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :cost %>
-    <%= form.number_field :cost %>
+  <div class="field input-group input-group-sm">
+    <div class="input-group-prepend">
+      <%= form.label :cost, class: 'input-group-text' %>
+      <%= form.number_field :cost, class: 'form-control' %>
+    </div>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: 'btn btn-outline-secondary' %>
   </div>
 <% end %>
