@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_24_035639) do
+ActiveRecord::Schema.define(version: 2018_06_25_133720) do
 
   create_table "divisions", force: :cascade do |t|
     t.string "name", null: false
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2018_06_24_035639) do
     t.string "relationship", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_people_on_name", unique: true
+    t.index ["name", "relationship"], name: "index_people_on_name_and_relationship", unique: true
   end
 
   create_table "records", force: :cascade do |t|

@@ -12,7 +12,10 @@ class PersonTest < ActiveSupport::TestCase
     person = Person.new(valid_params.merge(relationship: nil))
     assert person.invalid?
 
-    person_duplicate = Person.new(valid_params.merge(relationship: :unique_relationship))
+    person_same_name = Person.new(valid_params.merge(relationship: :unique_relationship))
+    assert person_same_name.valid?
+
+    person_duplicate = Person.new(valid_params)
     assert person_duplicate.invalid?
   end
 
