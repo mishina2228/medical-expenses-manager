@@ -21,7 +21,7 @@ class RecordsController < ApplicationController
     @record = Record.new(record_params)
 
     respond_to do |format|
-      if @record.save
+      if @record.create_self_and_transports
         format.html {redirect_to records_url, notice: t('helpers.notice.create')}
         format.json {render :show, status: :created, location: @record}
       else
