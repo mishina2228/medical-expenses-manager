@@ -22,14 +22,15 @@ class Record < ApplicationRecord
     transaction do
       save!
       hospital_transports = hospital&.hospital_transports
-      return true unless hospital_transports
+      return self unless hospital_transports
 
       params = {person: person, date: date}
+      ret = [self]
       hospital_transports.each do |ht|
-        Record.create!(params.merge(cost: ht.transport_cost,
-                                    division: ht.transport))
+        ret << Record.create!(params.merge(cost: ht.transport_cost,
+                                           division: ht.transport))
       end
-      true
+      ret
     end
   end
 

@@ -3,3 +3,9 @@
   person_id: ユーザー1
   date: <%= Time.zone.today %>
   cost: 100
+
+記録2:
+  division: 病院2
+  person_id: ユーザー1
+  date: <%= Time.zone.today %>
+  cost: 100

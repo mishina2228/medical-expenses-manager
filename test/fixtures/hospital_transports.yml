@@ -2,3 +2,8 @@
   hospital: 病院1
   transport: 交通機関1
   transport_cost: 100
+
+病院交通費2:
+  hospital: 病院1
+  transport: 交通機関2
+  transport_cost: 200
