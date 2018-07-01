@@ -5,40 +5,40 @@ class DrugstoresControllerTest < ActionDispatch::IntegrationTest
     @drugstore = drugstores(:薬局1)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get drugstores_url
     assert_response :success
   end
 
-  test "should get new" do
+  test 'should get new' do
     get new_drugstore_url
     assert_response :success
   end
 
-  test "should create drugstore" do
+  test 'should create drugstore' do
     assert_difference('Drugstore.count') do
-      post drugstores_url, params: { drugstore: { name: @drugstore.name } }
+      post drugstores_url, params: {drugstore: {name: @drugstore.name}}
     end
 
     assert_redirected_to drugstore_url(Drugstore.last)
   end
 
-  test "should show drugstore" do
+  test 'should show drugstore' do
     get drugstore_url(@drugstore)
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get edit_drugstore_url(@drugstore)
     assert_response :success
   end
 
-  test "should update drugstore" do
-    patch drugstore_url(@drugstore), params: { drugstore: { name: @drugstore.name } }
+  test 'should update drugstore' do
+    patch drugstore_url(@drugstore), params: {drugstore: {name: @drugstore.name}}
     assert_redirected_to drugstore_url(@drugstore)
   end
 
-  test "should destroy drugstore" do
+  test 'should destroy drugstore' do
     assert_difference('Drugstore.count', -1) do
       delete drugstore_url(@drugstore)
     end

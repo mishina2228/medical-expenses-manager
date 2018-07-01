@@ -40,7 +40,7 @@ class RecordTest < ActiveSupport::TestCase
     record = Record.new(valid_params.merge(date: nil))
     assert record.invalid?
 
-    assert_no_difference'Record.count' do
+    assert_no_difference 'Record.count' do
       assert_not record.create_self_and_transports
     end
   end

@@ -2,22 +2,27 @@ AllCops:
   TargetRubyVersion: 2.4
 Rails:
   Enabled: true
+
 Layout/EndOfLine:
   EnforcedStyle: lf
-Metrics/LineLength:
-  Max: 100
-Style/AsciiComments:
-  Enabled: false
-Style/SpaceInsideBlockBraces:
-  EnforcedStyle: no_space
-Style/SpaceInsideHashLiteralBraces:
+Layout/SpaceInsideBlockBraces:
   EnforcedStyle: no_space
   SpaceBeforeBlockParameters: false
+Layout/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space
+
+Metrics/LineLength:
+  Max: 100
+
+Style/AsciiComments:
+  Enabled: false
 Style/Documentation:
   Enabled: false
+Style/EmptyMethod:
+  EnforcedStyle: expanded
 Style/FrozenStringLiteralComment:
   Enabled: false
 Style/PercentLiteralDelimiters:
   Enabled: false
-Style/EmptyMethod:
-  EnforcedStyle: expanded
+Style/SymbolArray:
+  EnforcedStyle: brackets
