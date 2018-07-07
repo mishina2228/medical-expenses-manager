@@ -4,7 +4,9 @@ class HospitalTransportsController < ApplicationController
                 only: [:new, :create, :edit, :update]
 
   def index
-    @hospital_transports = HospitalTransport.all
+    @hospital_transports = HospitalTransport.includes(:hospital)
+                                            .includes(:transport)
+                                            .order(:hospital_id)
   end
 
   def show
