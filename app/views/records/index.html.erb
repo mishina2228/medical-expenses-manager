@@ -2,6 +2,12 @@
 
 <h1><%= Record.model_name.human %>一覧</h1>
 
+<%= render partial: 'search' %>
+
+<br>
+
+<%= link_to t('helpers.link.new'), new_record_path %>
+
 <table class='table table-bordered table-hover'>
   <thead>
   <tr>
@@ -25,6 +31,11 @@
       <td><%= link_to t('helpers.link.edit'), edit_record_path(record) %></td>
     </tr>
   <% end %>
+  <tr>
+    <th colspan="4">合計</th>
+    <th><%= @records.pluck(:cost).sum.to_s(:currency) %></th>
+    <th></th>
+  </tr>
   </tbody>
 </table>
 

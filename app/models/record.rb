@@ -39,4 +39,13 @@ class Record < ApplicationRecord
   rescue ActiveRecord::RecordInvalid
     false
   end
+
+  def self.search(opt)
+    opt ||= {}
+    ret = includes(:person).includes(:division).joins(:division)
+    ret = ret.where(person_id: opt[:name]) if opt[:name].present?
+    ret = ret.where('divisions.type = ?', opt[:division_type]) if opt[:division_type].present?
+    ret = ret.where(division_id: opt[:division_id]) if opt[:division_id].present?
+    ret.order(:date)
+  end
 end

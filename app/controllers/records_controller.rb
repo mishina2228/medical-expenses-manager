@@ -4,7 +4,8 @@ class RecordsController < ApplicationController
                 only: [:new, :create, :edit, :update]
 
   def index
-    @records = Record.all
+    opt = params[:search] ? search_params.merge(record_params) : params[:search]
+    @records = Record.search(opt)
   end
 
   def show
@@ -59,5 +60,9 @@ class RecordsController < ApplicationController
 
   def record_params
     params.require(:record).permit(:cost, :date, :transport_cost, :person_id, :division_id)
+  end
+
+  def search_params
+    params.require(:search).permit(:name, :division_type)
   end
 end

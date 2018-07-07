@@ -1,5 +1,5 @@
 $(document).on('turbolinks:load', (function () {
-  const $record_division_type = $('#record_division_type');
+  const $record_division_type = $('.division_type');
   load_division_ids($record_division_type.val());
 
   $record_division_type.change(function () {
