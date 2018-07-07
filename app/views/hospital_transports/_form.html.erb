@@ -11,12 +11,14 @@
 
   <div class="form-group">
     <%= form.label Hospital.human_attribute_name(:name) %>
-    <%= form.select :hospital_id, Hospital.objects_for_select, class: 'form-control' %>
+    <%= form.select :hospital_id, Hospital.objects_for_select, {},
+                    class: 'form-control' %>
   </div>
 
   <div class="form-group">
     <%= form.label Transport.human_attribute_name(:name) %>
-    <%= form.select :transport_id, Transport.objects_for_select, class: 'form-control' %>
+    <%= form.select :transport_id, Transport.objects_for_select, {},
+                    class: 'form-control' %>
   </div>
 
   <div class="form-group">

@@ -16,14 +16,15 @@
 
   <div class="form-group">
     <%= form.label :person_id, Person.human_attribute_name(:name) %>
-    <%= form.select :person_id, Person.objects_for_select, class: 'form-control' %>
+    <%= form.select :person_id, Person.objects_for_select, {},
+                    class: 'form-control' %>
   </div>
 
   <div class="form-group">
     <%= form.label :division_type, Division.model_name.human %>
-    <%= form.select :division_type, Division.division_names.invert,
+    <%= form.select :division_type, Division.division_names.invert, {},
                     selected: record.division&.model_name,
-                    class: 'form-control' %>
+                    class: 'form-control division_type' %>
   </div>
 
   <div class="form-group">
