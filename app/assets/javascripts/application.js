@@ -15,6 +15,8 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require popper
 //= require bootstrap-sprockets
+//= require moment
+//= require moment/ja.js
+//= require bootstrap-datetimepicker
 //= require_tree .
