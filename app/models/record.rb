@@ -46,6 +46,8 @@ class Record < ApplicationRecord
     ret = ret.where(person_id: opt[:name]) if opt[:name].present?
     ret = ret.where('divisions.type = ?', opt[:division_type]) if opt[:division_type].present?
     ret = ret.where(division_id: opt[:division_id]) if opt[:division_id].present?
+    ret = ret.where('date >= ?', opt[:from_date]) if opt[:from_date].present?
+    ret = ret.where('date <= ?', opt[:to_date]) if opt[:to_date].present?
     ret.order(:date)
   end
 end

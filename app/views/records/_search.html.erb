@@ -1,16 +1,43 @@
-<div class="tekitou">
-  <%= form_tag('/records', method: :get) do %>
-    <%= label_tag 'search[name]', Person.human_attribute_name(:name), class: 'form-control' %>
-    <%= select_tag 'search[name]', options_for_select(Person.objects_for_select),
-                   include_blank: true, class: 'form-control' %>
-
-    <%= label_tag 'search[division_type]', Record.human_attribute_name(:division), class: 'form-control' %>
-    <%= select_tag 'search[division_type]', options_for_select(Division.division_names.invert),
-                   include_blank: true, class: 'form-control division_type' %>
-
-    <%= label_tag 'search[division_name]', Division.human_attribute_name(:name), class: 'form-control' %>
-    <div id="division_id_selector"><%= t('helpers.notice.loading') %></div>
-
+<%= form_tag('/records', method: :get) do %>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <%= label_tag 'search[from_to_date]', Record.human_attribute_name(:date), class: 'form-control' %>
+          <div class="row">
+            <div class="col-sm-6">
+              <%= text_field_tag 'search[from_date]', {}, class: 'form-control date-picker' %>
+            </div>
+            <div class="col-sm-6">
+              <%= text_field_tag 'search[to_date]', {}, class: 'form-control date-picker' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <%= label_tag 'search[name]', Person.human_attribute_name(:name), class: 'form-control' %>
+        <%= select_tag 'search[name]', options_for_select(Person.objects_for_select),
+                       include_blank: true, class: 'form-control' %>
+      </div>
+      <div class="col-sm-4">
+        <%= label_tag 'search[division_type]', Record.human_attribute_name(:division), class: 'form-control' %>
+        <%= select_tag 'search[division_type]', options_for_select(Division.division_names.invert),
+                       include_blank: true, class: 'form-control division_type' %>
+      </div>
+      <div class="col-sm-4">
+        <%= label_tag 'search[division_name]', Division.human_attribute_name(:name), class: 'form-control' %>
+        <div id="division_id_selector"><%= t('helpers.notice.loading') %></div>
+      </div>
+    </div>
     <%= submit_tag :検索, class: 'btn btn-outline-secondary', name: nil %>
-  <% end %>
-</div>
+  </div>
+<% end %>
+
+<script>
+  $('.date-picker').datetimepicker({
+    format: 'YYYY-MM-DD',
+    locale: 'ja'
+  });
+</script>
