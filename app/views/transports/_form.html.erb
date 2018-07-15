@@ -9,12 +9,20 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= form.label :name %>
-    <%= form.text_field :name, class: 'form-control' %>
-  </div>
+  <div class="container">
+    <div class="row">
+      <div class="form-group">
+        <div class="col-xs-4 col-sm-2">
+          <%= form.label :name %>
+        </div>
+        <div class="col-xs-8 col-sm-10">
+          <%= form.text_field :name, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
 
-  <div class="actions">
-    <%= form.submit class: 'btn btn-outline-secondary' %>
+    <div class="actions">
+      <%= form.submit class: 'btn btn-primary' %>
+    </div>
   </div>
 <% end %>

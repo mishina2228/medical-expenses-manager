@@ -9,36 +9,76 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= form.label :date %>
-    <%= form.date_select :date, class: 'form-control' %>
-  </div>
+  <div class="container">
+    <div class="row">
+      <div class="form-group">
+        <div class="col-xs-5 col-sm-2">
+          <%= form.label :date %>
+        </div>
+        <div class="col-xs-7 col-sm-10">
+          <%= form.text_field :date, class: 'form-control date-picker' %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group">
+        <div class="col-xs-5 col-sm-2">
+          <%= form.label :person_id, Person.human_attribute_name(:name) %>
+        </div>
+        <div class="col-xs-7 col-sm-10">
+          <%= form.select :person_id, Person.objects_for_select,
+                          {include_blank: true},
+                          class: 'form-control' %>
+        </div>
+      </div>
+    </div>
 
-  <div class="form-group">
-    <%= form.label :person_id, Person.human_attribute_name(:name) %>
-    <%= form.select :person_id, Person.objects_for_select, {},
-                    class: 'form-control' %>
-  </div>
+    <div class="row">
+      <div class="form-group">
+        <div class="col-xs-5 col-sm-2">
+          <%= form.label :division_type, Division.model_name.human %>
+        </div>
+        <div class="col-xs-7 col-sm-10">
+          <%= form.select :division_type, Division.division_names.invert,
+                          {include_blank: true},
+                          selected: record.division&.model_name,
+                          class: 'form-control division_type' %>
+        </div>
+      </div>
+    </div>
 
-  <div class="form-group">
-    <%= form.label :division_type, Division.model_name.human %>
-    <%= form.select :division_type, Division.division_names.invert, {},
-                    selected: record.division&.model_name,
-                    class: 'form-control division_type' %>
-  </div>
+    <div class="row">
+      <div class="form-group">
+        <div class="col-xs-5 col-sm-2">
+          <%= form.label :division_id, Division.human_attribute_name(:name) %>
+          <%= hidden_field_tag 'division[default_id]', record.division&.id %>
+        </div>
+        <div class="col-xs-7 col-sm-10">
+          <div id="division_id_selector"><%= t('helpers.notice.loading') %></div>
+        </div>
+      </div>
+    </div>
 
-  <div class="form-group">
-    <%= form.label :division_id, Division.human_attribute_name(:name) %>
-    <%= hidden_field_tag 'division[default_id]', record.division&.id %>
-    <div id="division_id_selector"><%= t('helpers.notice.loading') %></div>
-  </div>
+    <div class="row">
+      <div class="form-group">
+        <div class="col-xs-5 col-sm-2">
+          <%= form.label :cost %>
+        </div>
+        <div class="col-xs-7 col-sm-10">
+          <%= form.number_field :cost, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
 
-  <div class="form-group">
-    <%= form.label :cost %>
-    <%= form.number_field :cost, class: 'form-control' %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit class: 'btn btn-outline-secondary' %>
+    <div class="actions">
+      <%= form.submit class: 'btn btn-primary' %>
+    </div>
   </div>
 <% end %>
+
+<script>
+  $('.date-picker').datetimepicker({
+    format: 'YYYY-MM-DD',
+    locale: 'ja'
+  });
+</script>

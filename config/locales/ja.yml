@@ -22,9 +22,10 @@ ja:
         name: 名前
         relationship: 続柄
       record:
-        date: 日付
-        division: 医療費の区分
         cost: 医療費
+        date: 日付
+        division: 支払先の名称
+        person: 名前
       transport:
         name: 交通機関名
     errors:
