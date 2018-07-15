@@ -52,6 +52,14 @@ class RecordsController < ApplicationController
     end
   end
 
+  def export
+    encoding = params[:export][:encode]
+    filename = "record_#{Time.zone.now.strftime('%Y%m%d%H%M%S')}.csv"
+    records = Record.search(params[:export])
+    csv_data = RecordCSV.export(records, encoding)
+    send_data csv_data, filename: filename, type: 'text/csv'
+  end
+
   private
 
   def set_record

@@ -1,11 +1,29 @@
 記録1:
   division: 病院1
-  person_id: ユーザー1
+  person: ユーザー1
   date: <%= Time.zone.today %>
   cost: 100
 
 記録2:
   division: 病院2
-  person_id: ユーザー1
+  person: ユーザー1
   date: <%= Time.zone.today %>
-  cost: 100
+  cost: 200
+
+記録3:
+  division: 薬局1
+  person: ユーザー2
+  date: <%= Time.zone.today %>
+  cost: 300
+
+記録4:
+  division: 交通機関1
+  person: ユーザー2
+  date: <%= Time.zone.today %>
+  cost: 400
+
+記録5:
+  division: 交通機関2
+  person: ユーザー3
+  date: <%= Time.zone.today %>
+  cost: 500
