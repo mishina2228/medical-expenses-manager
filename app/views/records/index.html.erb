@@ -9,36 +9,7 @@
 
 <%= link_to t('helpers.link.new'), new_record_path %>
 
-<table class='table table-bordered table-hover'>
-  <thead>
-  <tr>
-    <th><%= Record.human_attribute_name :date %></th>
-    <th><%= Person.human_attribute_name :name %></th>
-    <th><%= Division.model_name.human %></th>
-    <th><%= Division.human_attribute_name :name %></th>
-    <th><%= Record.human_attribute_name :cost %></th>
-    <th></th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <% @records.each do |record| %>
-    <tr>
-      <td><%= l(record.date) %></td>
-      <td><%= record.person.name %></td>
-      <td><%= record.division.model_name.human %></td>
-      <td><%= record.division.name %></td>
-      <td><%= record.cost.to_s(:currency) %></td>
-      <td><%= link_to t('helpers.link.edit'), edit_record_path(record) %></td>
-    </tr>
-  <% end %>
-  <tr>
-    <th colspan="4">合計</th>
-    <th><%= @records.pluck(:cost).sum.to_s(:currency) %></th>
-    <th></th>
-  </tr>
-  </tbody>
-</table>
+<%= render partial: 'search_result', locals: {records: @records} %>
 
 <br>
 
