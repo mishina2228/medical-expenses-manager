@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   namespace :records do
     get '/export', action: :export
     get '/search', action: :search
+    put '/load_csv', action: :load_csv
   end
 
   namespace :divisions do

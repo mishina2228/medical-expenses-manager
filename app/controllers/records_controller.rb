@@ -57,11 +57,18 @@ class RecordsController < ApplicationController
   end
 
   def export
-    encoding = params[:export][:encode]
+    encoding = params[:export][:encoding]
     filename = "record_#{Time.current.strftime('%Y%m%d%H%M%S')}.csv"
     records = Record.search(params[:export])
     csv_data = RecordCSV.export(records, encoding)
     send_data csv_data, filename: filename, type: 'text/csv'
+  end
+
+  def load_csv
+    @load_records = RecordCSV.load_csv(params[:load_csv][:file].path,
+                                       params[:load_csv][:encoding])
+    Rails.logger.debug(@load_records)
+    render :import
   end
 
   private

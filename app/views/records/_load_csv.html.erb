@@ -1,0 +1,29 @@
+<%= form_tag(records_load_csv_path, method: :put, multipart: true) do %>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-5">
+        <%= file_field_tag 'load_csv[file]', class: 'form-control-file', id: 'csv_loader', accept: 'text/csv' %>
+      </div>
+      <div class="col-xs-8 col-md-2">
+        <%= select_tag 'load_csv[encoding]',
+                       options_for_select('UTF-8' => 'utf-8', 'Shift-JIS' => 'sjis'),
+                       class: 'form-control' %>
+      </div>
+      <div class="col-xs-4 col-md-2">
+        <%= submit_tag :CSV読込, class: 'btn btn-success', name: nil,
+                       disabled: true, id: :csv_load_button %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<script>
+  $csv_loader = $('#csv_loader');
+  $csv_loader.change(function () {
+    if ($csv_loader[0].files[0]) {
+      $('#csv_load_button').prop('disabled', false);
+    } else {
+      $('#csv_load_button').prop('disabled', true);
+    }
+  });
+</script>

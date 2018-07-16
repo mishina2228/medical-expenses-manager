@@ -1,0 +1,23 @@
+<table class='table table-bordered table-hover table-striped'>
+  <thead>
+  <tr>
+    <th><%= Record.human_attribute_name :date %></th>
+    <th><%= Person.human_attribute_name :name %></th>
+    <th><%= Division.model_name.human %></th>
+    <th><%= Division.human_attribute_name :name %></th>
+    <th><%= Record.human_attribute_name :cost %></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% records.each do |record| %>
+    <tr>
+      <td><%= record[:date] %></td>
+      <td><%= record[:person_name] %></td>
+      <td><%= record[:division] %></td>
+      <td><%= record[:division] %></td>
+      <td><%= record[:cost] %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
