@@ -14,7 +14,6 @@ class RecordCSV
   end
 
   def self.load_csv(csv_path, encoding)
-    Rails.logger.debug(csv_path)
     CSV.table(csv_path, encoding: encoding)
   end
 

@@ -2,7 +2,8 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-md-5">
-        <%= file_field_tag 'load_csv[file]', class: 'form-control-file', id: 'csv_loader', accept: 'text/csv' %>
+        <%= file_field_tag 'load_csv[file]', class: 'form-control-file',
+                           id: 'csv_loader', accept: '.csv' %>
       </div>
       <div class="col-xs-8 col-md-2">
         <%= select_tag 'load_csv[encoding]',
@@ -18,12 +19,26 @@
 <% end %>
 
 <script>
-  $csv_loader = $('#csv_loader');
-  $csv_loader.change(function () {
-    if ($csv_loader[0].files[0]) {
-      $('#csv_load_button').prop('disabled', false);
-    } else {
-      $('#csv_load_button').prop('disabled', true);
+  $(document).on('turbolinks:load', (function () {
+    const $csv_loader = $('#csv_loader');
+    const $csv_load_button = $('#csv_load_button');
+    prop_load_button();
+
+    $csv_loader.change(function () {
+      prop_load_button();
+    });
+
+    function prop_load_button(){
+      if ($csv_loader[0].files[0] && extname($csv_loader[0].files[0].name) === 'csv') {
+        $csv_load_button.prop('disabled', false);
+      } else {
+        $csv_load_button.prop('disabled', true);
+      }
     }
-  });
+    
+    function extname(path) {
+      const array = path.split('.');
+      return array[array.length - 1].toLowerCase();
+    }
+  }));
 </script>
