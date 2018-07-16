@@ -15,8 +15,11 @@
         <div class="col-xs-5 col-sm-2">
           <%= form.label :date %>
         </div>
-        <div class="col-xs-7 col-sm-10">
-          <%= form.text_field :date, class: 'form-control date-picker' %>
+        <div class="col-xs-7 col-sm-10 input-group date date-picker">
+          <%= form.text_field :date, class: 'form-control' %>
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+          </span>
         </div>
       </div>
     </div>
