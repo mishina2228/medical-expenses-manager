@@ -2,11 +2,6 @@
 
 <h1><%= Record.model_name.human %>一覧</h1>
 
-<%= render partial: 'search' %>
-<%= render partial: 'export', locals: {records: @records} %>
-
-<br>
-
 <%= link_to t('helpers.link.new'), new_record_path %>
 
 <%= render partial: 'search_result', locals: {records: @records} %>

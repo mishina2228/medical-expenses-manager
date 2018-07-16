@@ -4,6 +4,10 @@ class RecordsController < ApplicationController
                 only: [:new, :create, :edit, :update]
 
   def index
+    @records = Record.search(dummy: :dummy)
+  end
+
+  def search
     opt = params[:record]&.permit(:division_id)
     @records = Record.search(search_params&.merge(opt))
   end
@@ -54,7 +58,7 @@ class RecordsController < ApplicationController
 
   def export
     encoding = params[:export][:encode]
-    filename = "record_#{Time.zone.now.strftime('%Y%m%d%H%M%S')}.csv"
+    filename = "record_#{Time.current.strftime('%Y%m%d%H%M%S')}.csv"
     records = Record.search(params[:export])
     csv_data = RecordCSV.export(records, encoding)
     send_data csv_data, filename: filename, type: 'text/csv'

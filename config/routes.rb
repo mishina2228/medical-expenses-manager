@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   namespace :records do
     get '/export', action: :export
+    get '/search', action: :search
   end
 
   namespace :divisions do
@@ -14,5 +15,5 @@ Rails.application.routes.draw do
   resources :people
   resources :records
 
-  root 'records#index'
+  root 'records#search'
 end

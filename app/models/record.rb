@@ -40,15 +40,18 @@ class Record < ApplicationRecord
     false
   end
 
-  def self.search(opt)
-    opt ||= {}
+  def self.search(opt = {})
     ret = includes(:person).includes(:division).joins(:division)
-    ret = ret.where(id: opt[:ids]) if opt[:ids].present?
-    ret = ret.where(person_id: opt[:name]) if opt[:name].present?
-    ret = ret.where('divisions.type = ?', opt[:division_type]) if opt[:division_type].present?
-    ret = ret.where(division_id: opt[:division_id]) if opt[:division_id].present?
-    ret = ret.where('date >= ?', opt[:from_date]) if opt[:from_date].present?
-    ret = ret.where('date <= ?', opt[:to_date]) if opt[:to_date].present?
+    if opt.present?
+      ret = ret.where(id: opt[:ids]) if opt[:ids].present?
+      ret = ret.where(person_id: opt[:name]) if opt[:name].present?
+      ret = ret.where('divisions.type = ?', opt[:division_type]) if opt[:division_type].present?
+      ret = ret.where(division_id: opt[:division_id]) if opt[:division_id].present?
+      ret = ret.where('date >= ?', opt[:from_date]) if opt[:from_date].present?
+      ret = ret.where('date <= ?', opt[:to_date]) if opt[:to_date].present?
+    else
+      ret = ret.where(date: [Time.current.beginning_of_year..Time.current.end_of_year])
+    end
     ret.order(:date)
   end
 end

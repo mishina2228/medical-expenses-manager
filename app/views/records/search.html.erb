@@ -1,0 +1,12 @@
+<p id="notice"><%= notice&.html_safe %></p>
+
+<h1><%= Record.model_name.human %>検索結果</h1>
+
+<%= render partial: 'search' %>
+<%= render partial: 'export', locals: {records: @records} %>
+
+<br>
+
+<%= render partial: 'search_result', locals: {records: @records} %>
+
+<br>
