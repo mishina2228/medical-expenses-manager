@@ -27,6 +27,9 @@ class RecordsController < ApplicationController
 
     respond_to do |format|
       if @record.create_self_and_transports
+        if params[:continuous].present?
+          format.html {redirect_to new_record_url, notice: t('helpers.notice.continuous_create')}
+        end
         format.html {redirect_to records_url, notice: t('helpers.notice.create')}
         format.json {render :show, status: :created, location: @record}
       else

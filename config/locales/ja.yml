@@ -172,8 +172,9 @@ ja:
       edit: 編集
       new: 新規作成
     notice:
-      create: 正常に作成されました
-      delete: 正常に削除されました
+      continuous_create: 正常に作成されました。続けて作成します。
+      create: 正常に作成されました。
+      delete: 正常に削除されました。
       delete_confirm: 削除してよろしいですか?
       load_csv:
         encoding_error:
