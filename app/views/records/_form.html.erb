@@ -43,8 +43,8 @@
         </div>
         <div class="col-xs-7 col-sm-10">
           <%= form.select :division_type, Division.division_names.invert,
-                          {include_blank: true},
-                          selected: record.division&.model_name,
+                          {include_blank: true,
+                           selected: record.division&.model_name},
                           class: 'form-control division_type' %>
         </div>
       </div>
