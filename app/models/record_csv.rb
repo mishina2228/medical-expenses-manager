@@ -13,7 +13,7 @@ class RecordCSV
     csv_string.encode(encoding)
   end
 
-  def self.load_csv(csv_path, encoding)
+  def self.load(csv_path, encoding)
     CSV.table(csv_path, encoding: encoding)
   end
 
@@ -25,5 +25,9 @@ class RecordCSV
       record.division.name,
       record.cost
     ]
+  end
+
+  def self.headers?(table)
+    table.headers == HEADERS
   end
 end

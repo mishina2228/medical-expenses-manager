@@ -40,8 +40,7 @@ class RecordTest < ActiveSupport::TestCase
   end
 
   def test_load_csv_utf8
-    path = Rails.root.join('test', 'data', 'test_utf8.csv')
-    records = RecordCSV.load_csv(path, 'utf-8')
+    records = RecordCSV.load(csv_path('test_utf8.csv'), 'utf-8')
     records.each_with_index do |record, i|
       assert_equal csv_actual_data[i][:date], record[:date]
       assert_equal csv_actual_data[i][:person_name], record[:person_name]
@@ -52,8 +51,7 @@ class RecordTest < ActiveSupport::TestCase
   end
 
   def test_load_csv_sjis
-    path = Rails.root.join('test', 'data', 'test_sjis.csv')
-    records = RecordCSV.load_csv(path, 'sjis')
+    records = RecordCSV.load(csv_path('test_sjis.csv'), 'sjis')
     records.each_with_index do |record, i|
       assert_equal csv_actual_data[i][:date], record[:date]
       assert_equal csv_actual_data[i][:person_name], record[:person_name]
@@ -61,6 +59,19 @@ class RecordTest < ActiveSupport::TestCase
       assert_equal csv_actual_data[i][:division_name], record[:division_name]
       assert_equal csv_actual_data[i][:cost], record[:cost]
     end
+  end
+
+  def test_valid
+    records = RecordCSV.load(csv_path('test_utf8.csv'), 'utf-8')
+    assert RecordCSV.headers?(records)
+  end
+
+  def test_invalid
+    records = RecordCSV.load(csv_path('test_utf8_missing_headers.csv'), 'utf-8')
+    assert_not RecordCSV.headers?(records)
+
+    records = RecordCSV.load(csv_path('test_utf8_invalid_values.csv'), 'utf-8')
+    assert_not RecordCSV.headers?(records)
   end
 
   def csv_actual_data
@@ -80,5 +91,9 @@ class RecordTest < ActiveSupport::TestCase
         cost: 200
       }
     ]
+  end
+
+  def csv_path(file)
+    Rails.root.join('test', 'data', file)
   end
 end

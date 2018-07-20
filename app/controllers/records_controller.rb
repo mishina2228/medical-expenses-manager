@@ -71,7 +71,11 @@ class RecordsController < ApplicationController
       return
     end
 
-    @load_records = RecordCSV.load_csv(csv_path, params[:load_csv][:encoding])
+    @load_records = RecordCSV.load(csv_path, params[:load_csv][:encoding])
+    unless RecordCSV.headers?(@load_records)
+      redirect_to records_search_url, notice: t('helpers.notice.load_csv.invalid_headers')
+      return
+    end
     render :import
   rescue Encoding::UndefinedConversionError => e
     Rails.logger.info("ERROR: #{e}")
