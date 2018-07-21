@@ -6,6 +6,12 @@ class DivisionsController < ApplicationController
                 klass = params[:klass].constantize
                 klass.all.map {|o| [o.name, o.id]}
               end
-    render partial: 'records/division_name', locals: {objects: objects}
+    name = case params[:name]
+           when 'search'
+             :search
+           when 'new', 'edit'
+             :record
+           end
+    render partial: 'records/division_name', locals: {objects: objects, name: name}
   end
 end

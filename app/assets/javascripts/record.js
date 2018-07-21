@@ -1,16 +1,17 @@
 $(document).on('turbolinks:load', (function () {
   const $record_division_type = $('.division_type');
-  load_division_ids($record_division_type.val());
+  const action_name = $('#division_action_name').val();
+  load_division_ids($record_division_type.val(), action_name);
 
   $record_division_type.change(function () {
-    load_division_ids($record_division_type.val());
+    load_division_ids($record_division_type.val(), action_name);
   });
 
-  function load_division_ids(klass_name) {
+  function load_division_ids(klass_name, action_name) {
     $.ajax({
       url: '/divisions',
       type: 'GET',
-      data: {klass: klass_name}
+      data: {klass: klass_name, name: action_name}
     }).done(function (data) {
       const $division_id_selector = $('#division_id_selector');
       $division_id_selector.html(data);

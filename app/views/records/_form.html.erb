@@ -57,6 +57,7 @@
           <%= hidden_field_tag 'division[default_id]', record.division&.id %>
         </div>
         <div class="col-xs-7 col-sm-10">
+          <%= hidden_field_tag 'division[action_name]', controller.action_name %>
           <div id="division_id_selector"><%= t('helpers.notice.loading') %></div>
         </div>
       </div>

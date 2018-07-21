@@ -8,8 +8,7 @@ class RecordsController < ApplicationController
   end
 
   def search
-    opt = params[:record]&.permit(:division_id)
-    @records = Record.search(search_params&.merge(opt))
+    @records = Record.search(search_params)
   end
 
   def show
@@ -99,6 +98,6 @@ class RecordsController < ApplicationController
   end
 
   def search_params
-    params[:search]&.permit(:name, :division_type, :from_date, :to_date)
+    params[:search]&.permit(:name, :division_id, :division_type, :from_date, :to_date)
   end
 end

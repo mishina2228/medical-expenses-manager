@@ -36,7 +36,7 @@
       </div>
       <div class="form-group">
         <div class="col-sm-2 col-xs-4">
-          <%= label_tag 'search[division_type]', Record.human_attribute_name(:division) %>
+          <%= label_tag 'search[division_type]', Division.model_name.human %>
         </div>
         <div class="col-sm-2 col-xs-8">
           <%= select_tag 'search[division_type]', options_for_select(Division.division_names.invert),
@@ -48,6 +48,7 @@
           <%= label_tag 'search[division_name]', Division.human_attribute_name(:name) %>
         </div>
         <div class="col-sm-2 col-xs-10">
+          <%= hidden_field_tag 'division[action_name]', controller.action_name %>
           <div id="division_id_selector"><%= t('helpers.notice.loading') %></div>
         </div>
       </div>

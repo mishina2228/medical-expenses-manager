@@ -1,2 +1,2 @@
-<%= select_tag 'record[division_id]', options_for_select(objects),
+<%= select_tag "#{name}[division_id]", options_for_select(objects),
                include_blank: true, class: 'form-control', disabled: objects.blank? %>
