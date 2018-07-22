@@ -16,6 +16,8 @@ Metrics/LineLength:
 
 Style/AsciiComments:
   Enabled: false
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
 Style/Documentation:
   Enabled: false
 Style/EmptyMethod:
@@ -25,4 +27,4 @@ Style/FrozenStringLiteralComment:
 Style/PercentLiteralDelimiters:
   Enabled: false
 Style/SymbolArray:
-  EnforcedStyle: brackets
+  Enabled: false

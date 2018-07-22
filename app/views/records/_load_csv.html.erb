@@ -17,28 +17,3 @@
     </div>
   </div>
 <% end %>
-
-<script>
-  $(document).on('turbolinks:load', (function () {
-    const $csv_loader = $('#csv_loader');
-    const $csv_load_button = $('#csv_load_button');
-    prop_load_button();
-
-    $csv_loader.change(function () {
-      prop_load_button();
-    });
-
-    function prop_load_button(){
-      if ($csv_loader[0].files[0] && extname($csv_loader[0].files[0].name) === 'csv') {
-        $csv_load_button.prop('disabled', false);
-      } else {
-        $csv_load_button.prop('disabled', true);
-      }
-    }
-    
-    function extname(path) {
-      const array = path.split('.');
-      return array[array.length - 1].toLowerCase();
-    }
-  }));
-</script>

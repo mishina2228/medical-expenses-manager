@@ -4,11 +4,13 @@ class RecordsController < ApplicationController
                 only: [:new, :create, :edit, :update]
 
   def index
-    @records = Record.search(dummy: :dummy)
+    @record = Search::Record.new
+    @records = @record.search
   end
 
   def search
-    @records = Record.search(search_params)
+    @record = Search::Record.new(search_params)
+    @records = @record.search
   end
 
   def show
@@ -61,7 +63,8 @@ class RecordsController < ApplicationController
   def export
     encoding = params[:export][:encoding]
     filename = "record_#{Time.current.strftime('%Y%m%d%H%M%S')}.csv"
-    records = Record.search(params[:export])
+    record = Search::Record.new(export_params)
+    records = record.search
     csv_data = RecordCSV.export(records, encoding)
     send_data csv_data, filename: filename, type: 'text/csv'
   end
@@ -98,6 +101,10 @@ class RecordsController < ApplicationController
   end
 
   def search_params
-    params[:search]&.permit(:name, :division_id, :division_type, :from_date, :to_date)
+    params[:search_record]&.permit(:name, :division_id, :division_type, :from_date, :to_date)
+  end
+
+  def export_params
+    params.require(:export).permit(ids: [])
   end
 end

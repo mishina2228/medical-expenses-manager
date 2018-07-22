@@ -8,7 +8,7 @@ class DivisionsController < ApplicationController
               end
     name = case params[:name]
            when 'search'
-             :search
+             :search_record
            when 'new', 'edit'
              :record
            end

@@ -1,4 +1,5 @@
-<%= form_tag(records_search_path, method: :get) do %>
+<%= form_with(model: @record, url: records_search_path, method: :get,
+              local: true, id: :search_record_form) do |form| %>
   <button class="btn btn-primary" type="button" data-toggle="collapse"
           data-target="#collapseSearch" aria-expanded="true" aria-controls="collapseSearch">
     検索フォーム
@@ -7,17 +8,17 @@
     <div class="row">
       <div class="form-group">
         <div class="col-xs-2">
-          <%= label_tag 'search[from_to_date]', Record.human_attribute_name(:date) %>
+          <%= form.label :from_date, Record.human_attribute_name(:date) %>
         </div>
         <div class="input-group date col-xs-3 date-picker">
-          <%= text_field_tag 'search[from_date]', {}, class: 'form-control' %>
+          <%= form.text_field :from_date, class: 'form-control' %>
           <span class="input-group-addon">
             <span class="glyphicon glyphicon-calendar"></span>
           </span>
         </div>
         <div class="col-xs-1 text-center">～</div>
         <div class="input-group date col-xs-3 date-picker">
-          <%= text_field_tag 'search[to_date]', {}, class: 'form-control' %>
+          <%= form.text_field :to_date, class: 'form-control' %>
           <span class="input-group-addon">
             <span class="glyphicon glyphicon-calendar"></span>
           </span>
@@ -27,25 +28,26 @@
     <div class="row">
       <div class="form-group">
         <div class="col-sm-2 col-xs-2">
-          <%= label_tag 'search[name]', Person.human_attribute_name(:name) %>
+          <%= form.label :name, Person.human_attribute_name(:name) %>
         </div>
         <div class="col-sm-2 col-xs-10">
-          <%= select_tag 'search[name]', options_for_select(Person.objects_for_select),
-                         include_blank: true, class: 'form-control' %>
+          <%= form.select :name, Person.objects_for_select,
+                         {include_blank: true}, class: 'form-control' %>
         </div>
       </div>
       <div class="form-group">
         <div class="col-sm-2 col-xs-4">
-          <%= label_tag 'search[division_type]', Division.model_name.human %>
+          <%= form.label :division_type, Division.model_name.human %>
         </div>
         <div class="col-sm-2 col-xs-8">
-          <%= select_tag 'search[division_type]', options_for_select(Division.division_names.invert),
-                         include_blank: true, class: 'form-control division_type' %>
+          <%= form.select :division_type, Division.division_names.invert,
+                         {include_blank: true}, class: 'form-control division_type' %>
         </div>
       </div>
       <div class="form-group">
         <div class="col-sm-2 col-xs-2">
-          <%= label_tag 'search[division_name]', Division.human_attribute_name(:name) %>
+          <%= form.label :division_name, Division.human_attribute_name(:name) %>
+          <%= hidden_field_tag 'division[default_id]', @record.division_id %>
         </div>
         <div class="col-sm-2 col-xs-10">
           <%= hidden_field_tag 'division[action_name]', controller.action_name %>
@@ -53,7 +55,9 @@
         </div>
       </div>
     </div>
-    <%= submit_tag :検索, class: 'btn btn-success', name: nil %>
+    <%= button_tag 'リセット', type: :button, id: 'reset_search',
+                   class: 'btn btn-secondary' %>
+    <%= form.submit :検索, class: 'btn btn-success', name: nil %>
   </div>
 <% end %>
 
@@ -62,4 +66,8 @@
     format: 'YYYY-MM-DD',
     locale: 'ja'
   });
+</script>
+
+<script>
+
 </script>
