@@ -72,22 +72,22 @@ class RecordsController < ApplicationController
   def load_csv
     csv_path = params[:load_csv][:file].path
     unless File.extname(csv_path) == '.csv'
-      redirect_to records_search_url, notice: t('helpers.notice.load_csv.invalid_format')
+      redirect_to search_records_url, notice: t('helpers.notice.load_csv.invalid_format')
       return
     end
 
     @load_records = RecordCSV.load(csv_path, params[:load_csv][:encoding])
     unless RecordCSV.headers?(@load_records)
-      redirect_to records_search_url, notice: t('helpers.notice.load_csv.invalid_headers')
+      redirect_to search_records_url, notice: t('helpers.notice.load_csv.invalid_headers')
       return
     end
     render :import
   rescue Encoding::UndefinedConversionError => e
     Rails.logger.info("ERROR: #{e}")
-    redirect_to records_search_url, notice: t('helpers.notice.load_csv.encoding_error.utf8_to_sjis')
+    redirect_to search_records_url, notice: t('helpers.notice.load_csv.encoding_error.utf8_to_sjis')
   rescue ArgumentError => e
     Rails.logger.info("ERROR: #{e}")
-    redirect_to records_search_url, notice: t('helpers.notice.load_csv.encoding_error.sjis_to_utf8')
+    redirect_to search_records_url, notice: t('helpers.notice.load_csv.encoding_error.sjis_to_utf8')
   end
 
   private
