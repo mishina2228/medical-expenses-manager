@@ -1,22 +1,26 @@
 <table class='table table-bordered table-hover table-striped'>
   <thead>
   <tr>
+    <th>正常</th>
     <th><%= Record.human_attribute_name :date %></th>
     <th><%= Person.human_attribute_name :name %></th>
     <th><%= Division.model_name.human %></th>
     <th><%= Division.human_attribute_name :name %></th>
     <th><%= Record.human_attribute_name :cost %></th>
+    <th></th>
   </tr>
   </thead>
 
   <tbody>
   <% records.each do |record| %>
     <tr>
-      <td><%= record[:date] %></td>
-      <td><%= record[:person_name] %></td>
-      <td><%= record[:division] %></td>
-      <td><%= record[:division] %></td>
-      <td><%= record[:cost] %></td>
+      <td><%= record.valid? ? '○' : '×' %></td>
+      <td><%= record.date %></td>
+      <td><%= record.person_name %></td>
+      <td><%= record.division %></td>
+      <td><%= record.division_name %></td>
+      <td><%= record.cost %></td>
+      <td>削除</td>
     </tr>
   <% end %>
   </tbody>

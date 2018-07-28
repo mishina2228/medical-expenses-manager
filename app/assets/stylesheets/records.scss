@@ -1,0 +1,35 @@
+.header a {
+  color: #fff;
+
+  &:visited {
+    color: #fff;
+  }
+
+  &:hover {
+    color: #337ab7;
+    background-color: #fff;
+  }
+}
+
+td a {
+  color: #337ab7;
+
+  &:visited {
+    color: #337ab7;
+  }
+
+  &:hover {
+    color: #fff;
+    background-color: #337ab7;
+  }
+}
+
+
+.box_radius {
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  color: #6091d3;
+  background: #FFF;
+  border: solid 3px #6091d3;
+  border-radius: 10px;
+}
