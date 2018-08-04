@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_25_133720) do
+ActiveRecord::Schema.define(version: 2018_08_04_152952) do
 
   create_table "divisions", force: :cascade do |t|
     t.string "name", null: false
@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(version: 2018_06_25_133720) do
   end
 
   create_table "hospital_transports", force: :cascade do |t|
-    t.integer "hospital_id"
-    t.integer "transport_id"
+    t.integer "hospital_id", null: false
+    t.integer "transport_id", null: false
     t.integer "transport_cost", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(version: 2018_06_25_133720) do
   end
 
   create_table "records", force: :cascade do |t|
-    t.integer "division_id"
-    t.integer "person_id"
+    t.integer "division_id", null: false
+    t.integer "person_id", null: false
     t.date "date", null: false
     t.integer "cost", default: 0, null: false
     t.datetime "created_at", null: false
