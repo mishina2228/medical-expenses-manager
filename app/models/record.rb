@@ -3,22 +3,13 @@ class Record < ApplicationRecord
 
   belongs_to :division
   belongs_to :person
+  belongs_to :hospital, foreign_key: :division_id, inverse_of: :records, optional: true
+  belongs_to :drugstore, foreign_key: :division_id, inverse_of: :records, optional: true
+  belongs_to :transport, foreign_key: :division_id, inverse_of: :records, optional: true
 
   validates :date, presence: true
   validates :cost, presence: true, numericality:
-      {only_integer: true, greater_than_or_equal_to: 0}
-
-  def hospital
-    division if division && division.type == Hospital.model_name
-  end
-
-  def drugstore
-    division if division && division.type == Drugstore.model_name
-  end
-
-  def transport
-    division if division && division.type == Transport.model_name
-  end
+    {only_integer: true, greater_than_or_equal_to: 0}
 
   def create_self_and_transports!
     transaction do
