@@ -1,4 +1,6 @@
 class Division < ApplicationRecord
+  acts_as_paranoid
+
   validates :name, presence: true, uniqueness: {scope: :type}
 
   def self.division_names

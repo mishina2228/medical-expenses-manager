@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_04_152952) do
+ActiveRecord::Schema.define(version: 2018_08_05_025735) do
 
   create_table "divisions", force: :cascade do |t|
     t.string "name", null: false
     t.string "type", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_divisions_on_deleted_at"
     t.index ["name", "type"], name: "index_divisions_on_name_and_type", unique: true
     t.index ["type"], name: "index_divisions_on_type"
   end
@@ -27,6 +29,8 @@ ActiveRecord::Schema.define(version: 2018_08_04_152952) do
     t.integer "transport_cost", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_hospital_transports_on_deleted_at"
     t.index ["hospital_id"], name: "index_hospital_transports_on_hospital_id"
     t.index ["transport_id"], name: "index_hospital_transports_on_transport_id"
   end
@@ -36,6 +40,8 @@ ActiveRecord::Schema.define(version: 2018_08_04_152952) do
     t.string "relationship", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_people_on_deleted_at"
     t.index ["name", "relationship"], name: "index_people_on_name_and_relationship", unique: true
   end
 
@@ -46,6 +52,8 @@ ActiveRecord::Schema.define(version: 2018_08_04_152952) do
     t.integer "cost", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_records_on_deleted_at"
     t.index ["division_id"], name: "index_records_on_division_id"
     t.index ["person_id"], name: "index_records_on_person_id"
   end

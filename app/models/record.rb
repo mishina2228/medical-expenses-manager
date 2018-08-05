@@ -1,4 +1,6 @@
 class Record < ApplicationRecord
+  acts_as_paranoid
+
   belongs_to :division
   belongs_to :person
 
