@@ -17,11 +17,11 @@ class Record < ApplicationRecord
       hospital_transports = hospital&.hospital_transports
       return self unless hospital_transports
 
-      params = {person: person, date: date}
       ret = [self]
       hospital_transports.each do |ht|
-        ret << Record.create!(params.merge(cost: ht.transport_cost,
-                                           division: ht.transport))
+        ret << Record.create!(
+          person: person, date: date, cost: ht.transport_cost, division: ht.transport
+        )
       end
       ret
     end
