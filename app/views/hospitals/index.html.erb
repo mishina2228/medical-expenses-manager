@@ -6,15 +6,13 @@
   <thead>
     <tr>
       <th><%= Hospital.human_attribute_name :name %></th>
-      <th></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @hospitals.each do |hospital| %>
+    <% @hospitals.each do |h| %>
       <tr>
-        <td><%= hospital.name %></td>
-        <td><%= link_to t('helpers.link.edit'), edit_hospital_path(hospital) %></td>
+        <td><%= link_to h.name, hospital_path(h) %></td>
       </tr>
     <% end %>
   </tbody>

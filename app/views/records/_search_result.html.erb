@@ -6,23 +6,17 @@
     <th><%= Division.model_name.human %></th>
     <th><%= Division.human_attribute_name :name %></th>
     <th><%= Record.human_attribute_name :cost %></th>
-    <% if controller.action_name == 'index' %>
-      <th></th>
-    <% end %>
   </tr>
   </thead>
 
   <tbody>
-  <% records.each do |record| %>
+  <% records.each do |r| %>
     <tr>
-      <td><%= l(record.date) %></td>
-      <td><%= record.person.name %></td>
-      <td><%= record.division.model_name.human %></td>
-      <td><%= record.division.name %></td>
-      <td><%= record.cost.to_s(:currency) %></td>
-      <% if controller.action_name == 'index' %>
-        <td><%= link_to t('helpers.link.edit'), edit_record_path(record) %></td>
-      <% end %>
+      <td><%= link_to l(r.date), record_path(r) %></td>
+      <td><%= r.person.name %></td>
+      <td><%= r.division.model_name.human %></td>
+      <td><%= r.division.name %></td>
+      <td><%= r.cost.to_s(:currency) %></td>
     </tr>
   <% end %>
   <% if controller.action_name == 'search' %>

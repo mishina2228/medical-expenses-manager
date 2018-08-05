@@ -1,9 +1,14 @@
-<p id="notice"><%= notice %></p>
+<h1><%= Hospital.model_name.human %>閲覧</h1>
 
-<p>
-  <strong>Name:</strong>
-  <%= @hospital.name %>
-</p>
+<%= render partial: 'action' %>
 
-<%= link_to 'Edit', edit_hospital_path(@hospital) %> |
-<%= link_to 'Back', hospitals_path %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4 col-sm-2">
+      <%= Hospital.human_attribute_name :name %>
+    </div>
+    <div class="col-xs-8 col-sm-10">
+      <%= @hospital.name %>
+    </div>
+  </div>
+</div>

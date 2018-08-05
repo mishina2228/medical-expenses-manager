@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :records, except: :show do
+  resources :records do
     collection do
       get :export
       get :search

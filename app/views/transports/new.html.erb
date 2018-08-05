@@ -1,5 +1,5 @@
 <h1><%= Transport.model_name.human %>新規作成</h1>
 
-<%= render 'form', transport: @transport %>
+<%= render partial: 'action' %>
 
-<%= link_to t('helpers.link.back'), transports_path %>
+<%= render 'form', transport: @transport %>

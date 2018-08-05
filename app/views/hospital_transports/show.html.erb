@@ -1,4 +1,30 @@
-<p id="notice"><%= notice %></p>
+<h1><%= HospitalTransport.model_name.human %>閲覧</h1>
 
-<%= link_to 'Edit', edit_hospital_transport_path(@hospital_transport) %> |
-<%= link_to 'Back', hospital_transports_path %>
+<%= render partial: 'action' %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4 col-sm-2">
+      <%= Hospital.human_attribute_name :name %>
+    </div>
+    <div class="col-xs-8 col-sm-10">
+      <%= @hospital_transport.hospital.name %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-4 col-sm-2">
+      <%= Transport.human_attribute_name :name %>
+    </div>
+    <div class="col-xs-8 col-sm-10">
+      <%= @hospital_transport.transport.name %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-4 col-sm-2">
+      <%= HospitalTransport.human_attribute_name :cost %>
+    </div>
+    <div class="col-xs-8 col-sm-10">
+      <%= @hospital_transport.transport_cost.to_s(:currency) %>
+    </div>
+  </div>
+</div>

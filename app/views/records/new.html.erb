@@ -2,6 +2,6 @@
 
 <h1><%= Record.model_name.human %>新規作成</h1>
 
-<%= render 'form', record: @record %>
+<%= render partial: 'action' %>
 
-<%= link_to t('helpers.link.back'), records_path %>
+<%= render 'form', record: @record %>

@@ -7,16 +7,14 @@
   <tr>
     <th><%= Person.human_attribute_name :name %></th>
     <th><%= Person.human_attribute_name :relationship %></th>
-    <th></th>
   </tr>
   </thead>
 
   <tbody>
-  <% @people.each do |person| %>
+  <% @people.each do |p| %>
     <tr>
-      <td><%= person.name %></td>
-      <td><%= person.relationship %></td>
-      <td><%= link_to t('helpers.link.edit'), edit_person_path(person) %></td>
+      <td><%= link_to p.name, person_path(p) %></td>
+      <td><%= p.relationship %></td>
     </tr>
   <% end %>
   </tbody>

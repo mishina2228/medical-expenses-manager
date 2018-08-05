@@ -8,17 +8,15 @@
     <th><%= Hospital.human_attribute_name :name %></th>
     <th><%= Transport.human_attribute_name :name %></th>
     <th><%= HospitalTransport.human_attribute_name :transport_cost %></th>
-    <th></th>
   </tr>
   </thead>
 
   <tbody>
-  <% @hospital_transports.each do |hospital_transport| %>
+  <% @hospital_transports.each do |ht| %>
     <tr>
-      <td><%= hospital_transport.hospital.name %></td>
-      <td><%= hospital_transport.transport.name %></td>
-      <td><%= hospital_transport.transport_cost.to_s(:currency) %></td>
-      <td><%= link_to t('helpers.link.edit'), edit_hospital_transport_path(hospital_transport) %></td>
+      <td><%= link_to ht.hospital.name, hospital_transport_path(ht) %></td>
+      <td><%= ht.transport.name %></td>
+      <td><%= ht.transport_cost.to_s(:currency) %></td>
     </tr>
   <% end %>
   </tbody>

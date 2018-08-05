@@ -1,9 +1,14 @@
-<p id="notice"><%= notice %></p>
+<h1><%= Transport.model_name.human %>閲覧</h1>
 
-<p>
-  <strong>Cost:</strong>
-  <%= @transport.cost %>
-</p>
+<%= render partial: 'action' %>
 
-<%= link_to 'Edit', edit_transport_path(@transport) %> |
-<%= link_to 'Back', transports_path %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4 col-sm-2">
+      <%= Transport.human_attribute_name :name %>
+    </div>
+    <div class="col-xs-8 col-sm-10">
+      <%= @transport.name %>
+    </div>
+  </div>
+</div>

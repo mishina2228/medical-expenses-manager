@@ -6,15 +6,13 @@
   <thead>
     <tr>
       <th><%= Drugstore.human_attribute_name :name %></th>
-      <th></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @drugstores.each do |drugstore| %>
+    <% @drugstores.each do |d| %>
       <tr>
-        <td><%= drugstore.name %></td>
-        <td><%= link_to t('helpers.link.edit'), edit_drugstore_path(drugstore) %></td>
+        <td><%= link_to d.name, drugstore_path(d) %></td>
       </tr>
     <% end %>
   </tbody>

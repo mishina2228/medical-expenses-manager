@@ -1,8 +1,5 @@
 <h1><%= Transport.model_name.human %>編集</h1>
 
-<%= render 'form', transport: @transport %>
-<%= button_to t('helpers.link.delete'), @transport, method: :delete,
-              data: {confirm: t('helpers.notice.delete_confirm')},
-              class: 'btn btn-outline-secondary' %>
+<%= render partial: 'action' %>
 
-<%= link_to t('helpers.link.back'), transports_path %>
+<%= render 'form', transport: @transport %>

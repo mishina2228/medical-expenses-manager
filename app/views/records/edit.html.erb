@@ -1,8 +1,5 @@
 <h1><%= Record.model_name.human %>編集</h1>
 
-<%= render 'form', record: @record %>
-<%= button_to t('helpers.link.delete'), @record, method: :delete,
-              data: {confirm: t('helpers.notice.delete_confirm')},
-              class: 'btn btn-outline-secondary' %>
+<%= render partial: 'action' %>
 
-<%= link_to t('helpers.link.back'), records_path %>
+<%= render 'form', record: @record %>

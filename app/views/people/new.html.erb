@@ -1,5 +1,6 @@
 <h1><%= Person.model_name.human %>新規作成</h1>
 
+<%= render partial: 'action' %>
+
 <%= render 'form', person: @person %>
 
-<%= link_to t('helpers.link.back'), people_path %>

@@ -1,5 +1,5 @@
 class RecordsController < ApplicationController
-  before_action :set_record, only: [:edit, :update, :destroy]
+  before_action :set_record, only: [:show, :edit, :update, :destroy]
   before_action -> {require_data(records_url, Person)},
                 only: [:new, :create, :edit, :update]
   before_action :check_csv, only: :load_csv
@@ -12,6 +12,9 @@ class RecordsController < ApplicationController
   def search
     @record = Search::Record.new(search_params)
     @records = @record.search
+  end
+
+  def show
   end
 
   def new
