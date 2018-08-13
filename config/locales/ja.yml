@@ -30,6 +30,8 @@ ja:
         name: 交通機関名
     errors:
       messages:
+        date_invalid: は有効な日付ではありません
+        division_invalid: は有効な医療費の区分ではありません
         record_invalid: "バリデーションに失敗しました: %{errors}"
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"

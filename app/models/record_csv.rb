@@ -5,9 +5,9 @@ class RecordCSV
 
   attr_accessor :date, :person_name, :division, :division_name, :cost
 
-  validates :date, presence: true
+  validates :date, presence: true, date: true
   validates :person_name, presence: true
-  validates :division, presence: true
+  validates :division, presence: true, division: true
   validates :division_name, presence: true
   validates :cost, presence: true, numericality:
     {only_integer: true, greater_than_or_equal_to: 0}

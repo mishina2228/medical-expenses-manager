@@ -5,6 +5,63 @@ class RecordTest < ActiveSupport::TestCase
     @records = [records(:記録1), records(:記録2)]
   end
 
+  def test_validation
+    record = RecordCSV.new(record_csv_params)
+    assert record.valid?
+  end
+
+  def test_validation_date
+    record = RecordCSV.new(record_csv_params.merge(date: nil))
+    assert record.invalid?
+
+    record = RecordCSV.new(record_csv_params.merge(date: 'aabbccdd'))
+    assert record.invalid?
+
+    record = RecordCSV.new(record_csv_params.merge(date: '2018-08-32'))
+    assert record.invalid?
+  end
+
+  def test_validation_person_name
+    record = RecordCSV.new(record_csv_params.merge(person_name: nil))
+    assert record.invalid?
+  end
+
+  def test_validation_division
+    record = RecordCSV.new(record_csv_params.merge(division: nil))
+    assert record.invalid?
+
+    record = RecordCSV.new(record_csv_params.merge(division: 'NotExist'))
+    assert record.invalid?
+
+    record = RecordCSV.new(record_csv_params.merge(division: 'Hospital'))
+    assert record.valid?
+
+    record = RecordCSV.new(record_csv_params.merge(division: 'Drugstore'))
+    assert record.valid?
+
+    record = RecordCSV.new(record_csv_params.merge(division: 'Transport'))
+    assert record.valid?
+  end
+
+  def test_validation_division_name
+    record = RecordCSV.new(record_csv_params.merge(division: nil))
+    assert record.invalid?
+  end
+
+  def test_validation_cost
+    record = RecordCSV.new(record_csv_params.merge(cost: nil))
+    assert record.invalid?
+
+    record = RecordCSV.new(record_csv_params.merge(cost: 1.5))
+    assert record.invalid?
+
+    record = RecordCSV.new(record_csv_params.merge(cost: -1))
+    assert record.invalid?
+
+    record = RecordCSV.new(record_csv_params.merge(cost: 0))
+    assert record.valid?
+  end
+
   def test_export_utf8
     csv_string = RecordCSV.export(@records, 'utf-8')
     assert_equal 'UTF-8', csv_string.encoding.to_s
@@ -85,7 +142,6 @@ class RecordTest < ActiveSupport::TestCase
       RecordCSV.load(csv_path('test_utf8.csv'), 'sjis')
     end
     assert_equal I18n.t('helpers.notice.load_csv.encoding_error.utf8_to_sjis'), e.message
-
   end
 
   def csv_expect_data
@@ -109,5 +165,15 @@ class RecordTest < ActiveSupport::TestCase
 
   def csv_path(file)
     Rails.root.join('test', 'data', file)
+  end
+
+  def record_csv_params
+    {
+      date: '2018-08-13',
+      person_name: 'Mike',
+      division: 'Hospital',
+      division_name: 'hospital1',
+      cost: 100
+    }
   end
 end
