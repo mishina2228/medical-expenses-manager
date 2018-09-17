@@ -83,7 +83,7 @@ class RecordsController < ApplicationController
   end
 
   def record_params
-    params.require(:record).permit(:cost, :date, :transport_cost, :person_id, :division_id)
+    params.require(:record).permit(:cost, :date, :person_id, :division_id)
   end
 
   def search_params

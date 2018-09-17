@@ -1,11 +1,6 @@
 class DivisionsController < ApplicationController
   def load_division_names
-    objects = if params[:klass].blank?
-                {}
-              else
-                klass = params[:klass].constantize
-                klass.all.map {|o| [o.name, o.id]}
-              end
+    objects = params[:klass].present? ? params[:klass].constantize.all.map {|o| [o.name, o.id]} : {}
     name = case params[:name]
            when 'search'
              :search_record

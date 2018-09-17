@@ -36,6 +36,7 @@ class RecordCSV
     end
 
     raise ArgumentError, I18n.t('helpers.notice.load_csv.invalid_headers') unless headers?(records)
+
     records.map {|r| new_from_cvs(r)}
   end
 
