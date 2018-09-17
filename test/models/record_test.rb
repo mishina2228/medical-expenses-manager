@@ -45,6 +45,33 @@ class RecordTest < ActiveSupport::TestCase
     end
   end
 
+  def test_annual_statistics_年ごとの合計
+    Record.delete_all
+    Record.create(valid_params.merge(date: Date.new(2017, 1, 1), cost: 100))
+    Record.create(valid_params.merge(date: Date.new(2017, 12, 31), cost: 100))
+
+    Record.create(valid_params.merge(date: Date.new(2018, 1, 1), cost: 200))
+    Record.create(valid_params.merge(date: Date.new(2018, 12, 31), cost: 200))
+
+    Record.create(valid_params.merge(date: Date.new(2019, 1, 1), cost: 300))
+    Record.create(valid_params.merge(date: Date.new(2019, 12, 31), cost: 300))
+
+    ret = Record.annual_statistics(2017)
+    ret.each do |r|
+      assert_equal 200, r.sum_cost
+    end
+
+    ret = Record.annual_statistics(2018)
+    ret.each do |r|
+      assert_equal 400, r.sum_cost
+    end
+
+    ret = Record.annual_statistics(2019)
+    ret.each do |r|
+      assert_equal 600, r.sum_cost
+    end
+  end
+
   def valid_params
     hospital1 = hospitals(:病院1)
     person1 = people(:ユーザー1)
