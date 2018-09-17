@@ -175,18 +175,19 @@ ja:
       new: 新規作成
       show: 閲覧
     notice:
-      continuous_create: 正常に作成されました。続けて作成します。
-      create: 正常に作成されました。
-      delete: 正常に削除されました。
+      continuous_create: 続けて作成します
+      create: 正常に作成されました
+      delete: 正常に削除されました
       delete_confirm: 削除してよろしいですか?
       load_csv:
         encoding_error:
           sjis_to_utf8: 読込に失敗しました。エンコーディグがSJISのファイルをUTF-8で開こうとしていませんか?
           utf8_to_sjis: 読込に失敗しました。エンコーディグがUTF-8のファイルをSJISで開こうとしていませんか?
-        invalid_format: CSVファイルを指定してください。
-        invalid_headers: CSVファイルのヘッダーの形式が異なります。
+        invalid_format: CSVファイルを指定してください
+        invalid_headers: CSVファイルのヘッダーの形式が異なります
       loading: 読み込み中...
-      require_data: まず次のデータを登録してください
+      require_data: "%{model}のデータを登録してください"
+      transport_created: 交通費を同時作成しました
       update: 正常に更新されました
     select:
       prompt: 選択してください

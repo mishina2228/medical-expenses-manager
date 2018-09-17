@@ -28,11 +28,15 @@ class RecordsController < ApplicationController
     @record = Record.new(record_params)
 
     respond_to do |format|
-      if @record.create_self_and_transports
+      notices = []
+      if (ret = @record.create_self_and_transports)
+        notices << t('helpers.notice.create')
+        notices << t('helpers.notice.transport_created') if ret.size > 1
         if params[:continuous].present?
-          format.html {redirect_to new_record_url, notice: t('helpers.notice.continuous_create')}
+          notices << t('helpers.notice.continuous_create')
+          format.html {redirect_to new_record_url, notice: notices}
         end
-        format.html {redirect_to records_url, notice: t('helpers.notice.create')}
+        format.html {redirect_to records_url, notice: notices}
       else
         format.html {render :new}
         format.json {render json: @record.errors, status: :unprocessable_entity}

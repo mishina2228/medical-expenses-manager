@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<%= render partial: 'partials/notices', locals: {notices: notice} %>
 
 <h1><%= "#{@year}年の#{Record.model_name.human}統計" %></h1>
 

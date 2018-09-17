@@ -12,19 +12,20 @@ class Record < ApplicationRecord
     {only_integer: true, greater_than_or_equal_to: 0}
 
   def create_self_and_transports!
+    ret = []
     transaction do
       save!
+      ret << self
       hospital_transports = hospital&.hospital_transports
-      return self unless hospital_transports
+      next unless hospital_transports
 
-      ret = [self]
       hospital_transports.each do |ht|
         ret << Record.create!(
           person: person, date: date, cost: ht.transport_cost, division: ht.transport
         )
       end
-      ret
     end
+    ret
   end
 
   def create_self_and_transports

@@ -2,14 +2,12 @@ class ApplicationController < ActionController::Base
   protected
 
   def require_data(redirect_url, *klass)
-    notice = ''
+    notices = []
     klass.each do |k|
-      notice << "・#{k.model_name.human}<br>" unless k.exists?
+      notices << t('helpers.notice.require_data', model: k.model_name.human) unless k.exists?
     end
+    return if notices.blank?
 
-    return if notice.blank?
-
-    notice = "#{t('helpers.notice.require_data')}<br>" + notice
-    redirect_to redirect_url, notice: notice
+    redirect_to redirect_url, notice: notices
   end
 end
