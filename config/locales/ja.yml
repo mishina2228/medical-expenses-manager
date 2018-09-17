@@ -245,6 +245,12 @@ ja:
       last_word_connector: 、
       two_words_connector: 、
       words_connector: 、
+  text:
+    statistics:
+      person_name: 医療を受けた方の氏名
+      division_name: 病院・薬局などの支払先の名称
+      division_type: 医療費の区分
+      cost: 支払った医療費の額
   time:
     am: 午前
     formats:

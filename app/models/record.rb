@@ -32,4 +32,14 @@ class Record < ApplicationRecord
   rescue ActiveRecord::RecordInvalid
     false
   end
+
+  def self.annual_statistics(year = nil)
+    year_date = Date.new(year.to_i || Time.current.year)
+    Record.where(date: year_date.all_year)
+          .group(:person_id)
+          .group(:division_id)
+          .select('person_id, division_id, sum(cost) as sum_cost')
+          .includes(:person)
+          .includes(:division)
+  end
 end

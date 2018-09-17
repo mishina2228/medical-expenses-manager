@@ -1,24 +1,27 @@
 <div class="container">
   <div class="row text-center bg-primary header">
-    <div class="col-md-2 col-xs-4">
+    <div class="col-md-3 col-xs-4">
       <%= link_to 'TOPページ', root_path %>
     </div>
-    <div class="col-md-2 col-xs-4">
+    <div class="col-md-3 col-xs-4">
       <%= link_to Record.model_name.human, records_path %>
     </div>
-    <div class="col-md-2 col-xs-4">
+    <div class="col-md-3 col-xs-4">
+      <%= link_to '医療費記録統計', record_statistics_path %>
+    </div>
+    <div class="col-md-3 col-xs-4">
      <%= link_to Person.model_name.human, people_path %>
     </div>
-    <div class="col-md-1 col-xs-4">
+    <div class="col-md-3 col-xs-4">
       <%= link_to Hospital.model_name.human, hospitals_path %>
     </div>
-    <div class="col-md-1 col-xs-4">
+    <div class="col-md-3 col-xs-4">
       <%= link_to Drugstore.model_name.human, drugstores_path %>
     </div>
-    <div class="col-md-2 col-xs-4">
+    <div class="col-md-3 col-xs-4">
       <%= link_to Transport.model_name.human, transports_path %>
     </div>
-    <div class="col-md-2 col-xs-4">
+    <div class="col-md-3 col-xs-4">
       <%= link_to HospitalTransport.model_name.human, hospital_transports_path %>
     </div>
   </div>

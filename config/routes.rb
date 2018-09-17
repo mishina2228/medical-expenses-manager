@@ -11,6 +11,10 @@ Rails.application.routes.draw do
     get '/', action: :load_division_names
   end
 
+  namespace :record_statistics do
+    get '/', action: :index
+  end
+
   resources :drugstores
   resources :hospitals
   resources :hospital_transports

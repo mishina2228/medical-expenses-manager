@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= "#{@year}年の#{Record.model_name.human}統計" %></h1>
+
+<%= render partial: 'years' %>
+
+<table class='table table-bordered table-hover table-striped'>
+  <thead>
+  <tr>
+    <th><%= t('text.statistics.person_name') %></th>
+    <th><%= t('text.statistics.division_name') %></th>
+    <th><%= t('text.statistics.division_type') %></th>
+    <th><%= t('text.statistics.cost') %></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @record_statistics.each do |r| %>
+    <tr>
+      <td><%= r.person.name %></td>
+      <td><%= r.division.name %></td>
+      <td><%= r.division.model_name.human %></td>
+      <td><%= r.sum_cost.to_s(:currency) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
