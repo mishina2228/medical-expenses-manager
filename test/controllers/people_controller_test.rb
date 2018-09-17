@@ -16,11 +16,18 @@ class PeopleControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should create person' do
-    assert_difference('Patient.count') do
-      post people_url, params: {person: {name: @person.name, relationship: @person.relationship}}
+    Person.delete_all
+    assert_difference('Person.count') do
+      post people_url,
+           params: {
+             person: {
+               name: @person.name,
+               relationship: @person.relationship
+             }
+           }
     end
 
-    assert_redirected_to person_url(Patient.last)
+    assert_redirected_to people_url
   end
 
   test 'should show person' do
@@ -34,12 +41,18 @@ class PeopleControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should update person' do
-    patch person_url(@person), params: {person: {name: @person.name, relationship: @person.relationship}}
-    assert_redirected_to person_url(@person)
+    patch person_url(@person),
+          params: {
+            person: {
+              name: @person.name,
+              relationship: @person.relationship
+            }
+          }
+    assert_redirected_to people_url
   end
 
   test 'should destroy person' do
-    assert_difference('Patient.count', -1) do
+    assert_difference('Person.count', -1) do
       delete person_url(@person)
     end
 

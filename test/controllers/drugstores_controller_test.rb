@@ -16,11 +16,17 @@ class DrugstoresControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should create drugstore' do
+    Drugstore.delete_all
     assert_difference('Drugstore.count') do
-      post drugstores_url, params: {drugstore: {name: @drugstore.name}}
+      post drugstores_url,
+           params: {
+             drugstore: {
+               name: @drugstore.name
+             }
+           }
     end
 
-    assert_redirected_to drugstore_url(Drugstore.last)
+    assert_redirected_to drugstores_url
   end
 
   test 'should show drugstore' do
@@ -34,8 +40,13 @@ class DrugstoresControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should update drugstore' do
-    patch drugstore_url(@drugstore), params: {drugstore: {name: @drugstore.name}}
-    assert_redirected_to drugstore_url(@drugstore)
+    patch drugstore_url(@drugstore),
+          params: {
+            drugstore: {
+              name: @drugstore.name
+            }
+          }
+    assert_redirected_to drugstores_url
   end
 
   test 'should destroy drugstore' do

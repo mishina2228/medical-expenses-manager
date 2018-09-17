@@ -16,11 +16,22 @@ class RecordsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should create record' do
-    assert_difference('Record.count') do
-      post records_url, params: {record: {cost: @record.cost}}
+    Record.delete_all
+    assert_equal 2, @record.hospital.hospital_transports.size
+
+    assert_difference('Record.count', 3) do
+      post records_url,
+           params: {
+             record: {
+               cost: @record.cost,
+               date: @record.date,
+               person_id: @record.person_id,
+               division_id: @record.division_id
+             }
+           }
     end
 
-    assert_redirected_to record_url(Record.last)
+    assert_redirected_to records_url
   end
 
   test 'should show record' do
@@ -34,8 +45,13 @@ class RecordsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should update record' do
-    patch record_url(@record), params: {record: {cost: @record.cost}}
-    assert_redirected_to record_url(@record)
+    patch record_url(@record),
+          params: {
+            record: {
+              cost: @record.cost
+            }
+          }
+    assert_redirected_to records_url
   end
 
   test 'should destroy record' do

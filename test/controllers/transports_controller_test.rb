@@ -16,11 +16,17 @@ class TransportsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should create transports' do
+    Transport.delete_all
     assert_difference('Transport.count') do
-      post transports_url, params: {transports: {name: @transport.name}}
+      post transports_url,
+           params: {
+             transport: {
+               name: @transport.name
+             }
+           }
     end
 
-    assert_redirected_to transport_url(Transport.last)
+    assert_redirected_to transports_url
   end
 
   test 'should show transports' do
@@ -34,8 +40,13 @@ class TransportsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should update transports' do
-    patch transport_url(@transport), params: {transports: {name: @transport.name}}
-    assert_redirected_to transport_url(@transport)
+    patch transport_url(@transport),
+          params: {
+            transport: {
+              name: @transport.name
+            }
+          }
+    assert_redirected_to transports_url
   end
 
   test 'should destroy transports' do

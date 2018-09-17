@@ -16,11 +16,17 @@ class HospitalsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should create hospital' do
+    Hospital.delete_all
     assert_difference('Hospital.count') do
-      post hospitals_url, params: {hospital: {expense: @hospital.expense, name: @hospital.name, transports: @hospital.transport}}
+      post hospitals_url,
+           params: {
+             hospital: {
+               name: @hospital.name
+             }
+           }
     end
 
-    assert_redirected_to hospital_url(Hospital.last)
+    assert_redirected_to hospitals_url
   end
 
   test 'should show hospital' do
@@ -34,8 +40,13 @@ class HospitalsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should update hospital' do
-    patch hospital_url(@hospital), params: {hospital: {expense: @hospital.expense, name: @hospital.name, transports: @hospital.transport}}
-    assert_redirected_to hospital_url(@hospital)
+    patch hospital_url(@hospital),
+          params: {
+            hospital: {
+              name: @hospital.name
+            }
+          }
+    assert_redirected_to hospitals_url
   end
 
   test 'should destroy hospital' do
