@@ -1,11 +1,11 @@
 <div id="notice">
-  <% if notices.is_a?(Array) %>
+  <% if notice.is_a?(Array) %>
     <ul>
-      <% notices.each do |notice| %>
+      <% notice.each do |notice| %>
         <li><%= notice %></li>
       <% end %>
     </ul>
   <% else %>
-    <%= notices %>
+    <%= notice %>
   <% end %>
 </div>
