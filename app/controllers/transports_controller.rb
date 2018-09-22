@@ -2,7 +2,7 @@ class TransportsController < ApplicationController
   before_action :set_transport, only: [:show, :edit, :update, :destroy]
 
   def index
-    @transport = Transport.all
+    @transports = Transport.paginate(params)
   end
 
   def show

@@ -2,6 +2,7 @@
 
 <h1><%= Person.model_name.human %>一覧</h1>
 
+<%= paginate @people %>
 <table class='table table-bordered table-hover table-striped'>
   <thead>
   <tr>
@@ -19,6 +20,7 @@
   <% end %>
   </tbody>
 </table>
+<%= paginate @people %>
 
 <br>
 

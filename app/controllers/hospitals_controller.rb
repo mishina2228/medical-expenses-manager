@@ -2,7 +2,7 @@ class HospitalsController < ApplicationController
   before_action :set_hospital, only: [:show, :edit, :update, :destroy]
 
   def index
-    @hospitals = Hospital.all
+    @hospitals = Hospital.paginate(params)
   end
 
   def show

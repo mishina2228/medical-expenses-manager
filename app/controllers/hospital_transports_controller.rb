@@ -6,6 +6,7 @@ class HospitalTransportsController < ApplicationController
   def index
     @hospital_transports = HospitalTransport.includes(:hospital)
                                             .includes(:transport)
+                                            .paginate(params)
                                             .order(:hospital_id)
   end
 

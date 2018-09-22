@@ -7,11 +7,13 @@ class RecordsController < ApplicationController
   def index
     @record = Search::Record.new
     @records = @record.search
+    @records = @records.paginate(params)
   end
 
   def search
     @record = Search::Record.new(search_params)
     @records = @record.search
+    @records = @records.paginate(params)
   end
 
   def show

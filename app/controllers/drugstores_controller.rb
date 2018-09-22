@@ -2,7 +2,7 @@ class DrugstoresController < ApplicationController
   before_action :set_drugstore, only: [:show, :edit, :update, :destroy]
 
   def index
-    @drugstores = Drugstore.all
+    @drugstores = Drugstore.paginate(params)
   end
 
   def show

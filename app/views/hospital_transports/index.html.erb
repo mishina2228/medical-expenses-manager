@@ -2,6 +2,7 @@
 
 <h1><%= HospitalTransport.model_name.human %>一覧</h1>
 
+<%= paginate @hospital_transports %>
 <table class='table table-bordered table-hover table-striped'>
   <thead>
   <tr>
@@ -21,6 +22,7 @@
   <% end %>
   </tbody>
 </table>
+<%= paginate @hospital_transports %>
 
 <br>
 
