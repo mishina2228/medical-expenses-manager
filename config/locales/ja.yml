@@ -247,6 +247,13 @@ ja:
       two_words_connector: 、
       words_connector: 、
   text:
+    divisions:
+      care_therapy: 診療・治療
+      drug: 医薬品購入
+      nursing: 介護保険サービス
+      other: その他の医療費
+    records:
+      total: 合計
     statistics:
       person_name: 医療を受けた方の氏名
       division_name: 病院・薬局などの支払先の名称

@@ -22,7 +22,7 @@
   <% end %>
   <% if controller.action_name == 'search' %>
     <tr>
-      <th colspan="4">合計</th>
+      <th colspan="4"><%= t('text.records.total') %></th>
       <th><%= records.except(:limit, :offset).pluck(:cost).sum.to_s(:currency) %></th>
     </tr>
   <% end %>
