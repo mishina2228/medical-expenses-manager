@@ -79,7 +79,7 @@ class RecordsController < ApplicationController
     render :import
   rescue ArgumentError => e
     Rails.logger.info("ERROR: #{e}")
-    redirect_to search_records_url, notice: e.message
+    redirect_to search_records_url, alert: e.message
   end
 
   private

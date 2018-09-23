@@ -1,11 +1,13 @@
-<div id="notice">
-  <% if notice.is_a?(Array) %>
-    <ul>
-      <% notice.each do |notice| %>
-        <li><%= notice %></li>
-      <% end %>
-    </ul>
-  <% else %>
-    <%= notice %>
-  <% end %>
-</div>
+<% {notice: notice, alert: alert}.each do |key, val| %>
+  <div id="<%= key %>">
+    <% if val.is_a?(Array) %>
+      <ul>
+        <% val.each do |elem| %>
+          <li><%= elem %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <%= val %>
+    <% end %>
+  </div>
+<% end %>
