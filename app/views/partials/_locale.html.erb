@@ -1,0 +1,3 @@
+<% I18n.available_locales.reject{|l| l == I18n.locale}.each do |locale| %>
+  <%= link_to(locale, url_for(params.permit(:locale).merge(locale: locale))) %>
+<% end %>
