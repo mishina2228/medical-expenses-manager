@@ -1,14 +1,9 @@
 <%= form_tag(load_csv_records_path, method: :put, multipart: true) do %>
   <div class="container box_radius">
     <div class="row">
-      <div class="col-xs-12 col-md-5">
+      <div class="col-xs-8 col-md-5">
         <%= file_field_tag 'load_csv[file]', class: 'form-control-file',
                            id: 'csv_loader', accept: '.csv' %>
-      </div>
-      <div class="col-xs-8 col-md-2">
-        <%= select_tag 'load_csv[encoding]',
-                       options_for_select('UTF-8' => 'utf-8', 'Shift-JIS' => 'sjis'),
-                       class: 'form-control' %>
       </div>
       <div class="col-xs-4 col-md-2">
         <%= submit_tag :CSV読込, class: 'btn btn-success', name: nil,

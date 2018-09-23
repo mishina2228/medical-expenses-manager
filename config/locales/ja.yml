@@ -180,9 +180,6 @@ ja:
       delete: 正常に削除されました
       delete_confirm: 削除してよろしいですか?
       load_csv:
-        encoding_error:
-          sjis_to_utf8: 読込に失敗しました。エンコーディグがSJISのファイルをUTF-8で開こうとしていませんか?
-          utf8_to_sjis: 読込に失敗しました。エンコーディグがUTF-8のファイルをSJISで開こうとしていませんか?
         invalid_format: CSVファイルを指定してください
         invalid_headers: CSVファイルのヘッダーの形式が異なります
       loading: 読み込み中...
@@ -234,6 +231,8 @@ ja:
           kb: KB
           mb: MB
           tb: TB
+          pb: PB
+          eb: EB
     percentage:
       format:
         delimiter: ''

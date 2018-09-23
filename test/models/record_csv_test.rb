@@ -97,7 +97,7 @@ class RecordTest < ActiveSupport::TestCase
   end
 
   def test_load_csv_utf8
-    records = RecordCSV.load(csv_path('test_utf8.csv'), 'utf-8')
+    records = RecordCSV.load(csv_path('test_utf8.csv'))
     records.each_with_index do |record, i|
       assert_equal RecordCSV, record.class
       assert_equal csv_expect_data[i][:date], record.date
@@ -109,7 +109,19 @@ class RecordTest < ActiveSupport::TestCase
   end
 
   def test_load_csv_sjis
-    records = RecordCSV.load(csv_path('test_sjis.csv'), 'sjis')
+    records = RecordCSV.load(csv_path('test_sjis.csv'))
+    records.each_with_index do |record, i|
+      assert_equal RecordCSV, record.class
+      assert_equal csv_expect_data[i][:date], record.date
+      assert_equal csv_expect_data[i][:person_name], record.person_name
+      assert_equal csv_expect_data[i][:division], record.division
+      assert_equal csv_expect_data[i][:division_name], record.division_name
+      assert_equal csv_expect_data[i][:cost], record.cost
+    end
+  end
+
+  def test_load_csv_euc
+    records = RecordCSV.load(csv_path('test_euc.csv'))
     records.each_with_index do |record, i|
       assert_equal RecordCSV, record.class
       assert_equal csv_expect_data[i][:date], record.date
@@ -122,26 +134,14 @@ class RecordTest < ActiveSupport::TestCase
 
   def test_invalid_header
     e = assert_raise ArgumentError do
-      RecordCSV.load(csv_path('test_utf8_missing_headers.csv'), 'utf-8')
+      RecordCSV.load(csv_path('test_utf8_missing_headers.csv'))
     end
     assert_equal I18n.t('helpers.notice.load_csv.invalid_headers'), e.message
 
     e = assert_raise ArgumentError do
-      RecordCSV.load(csv_path('test_utf8_invalid_values.csv'), 'utf-8')
+      RecordCSV.load(csv_path('test_utf8_invalid_values.csv'))
     end
     assert_equal I18n.t('helpers.notice.load_csv.invalid_headers'), e.message
-  end
-
-  def test_encode_discordance
-    e = assert_raise ArgumentError do
-      RecordCSV.load(csv_path('test_sjis.csv'), 'utf-8')
-    end
-    assert_equal I18n.t('helpers.notice.load_csv.encoding_error.sjis_to_utf8'), e.message
-
-    e = assert_raise ArgumentError do
-      RecordCSV.load(csv_path('test_utf8.csv'), 'sjis')
-    end
-    assert_equal I18n.t('helpers.notice.load_csv.encoding_error.utf8_to_sjis'), e.message
   end
 
   def csv_expect_data

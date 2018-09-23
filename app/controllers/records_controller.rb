@@ -75,7 +75,7 @@ class RecordsController < ApplicationController
   end
 
   def load_csv
-    @record_csv = RecordCSV.load(@csv_path, params[:load_csv][:encoding])
+    @record_csv = RecordCSV.load(@csv_path)
     render :import
   rescue ArgumentError => e
     Rails.logger.info("ERROR: #{e}")

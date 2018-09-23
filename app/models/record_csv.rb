@@ -1,4 +1,5 @@
 require 'csv'
+require 'nkf'
 
 class RecordCSV
   include ActiveModel::Model
@@ -24,17 +25,9 @@ class RecordCSV
     csv_string.encode(encoding)
   end
 
-  def self.load(csv_path, encoding = 'utf-8')
-    records = nil
-
-    begin
-      records = CSV.table(csv_path, encoding: encoding)
-    rescue Encoding::UndefinedConversionError, Encoding::InvalidByteSequenceError
-      raise ArgumentError, I18n.t('helpers.notice.load_csv.encoding_error.utf8_to_sjis')
-    rescue ArgumentError
-      raise ArgumentError, I18n.t('helpers.notice.load_csv.encoding_error.sjis_to_utf8')
-    end
-
+  def self.load(csv_path)
+    file = File.read(csv_path)
+    records = CSV.table(csv_path, encoding: NKF.guess(file))
     raise ArgumentError, I18n.t('helpers.notice.load_csv.invalid_headers') unless headers?(records)
 
     records.map {|r| new_from_cvs(r)}
