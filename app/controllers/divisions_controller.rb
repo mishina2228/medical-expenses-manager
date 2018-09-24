@@ -4,7 +4,7 @@ class DivisionsController < ApplicationController
     name = case params[:name]
            when 'search'
              :search_record
-           when 'new', 'edit'
+           when 'new', 'edit', 'create'
              :record
            end
     render partial: 'records/division_name', locals: {objects: objects, name: name}
