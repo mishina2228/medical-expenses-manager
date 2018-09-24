@@ -174,6 +174,8 @@ en:
         one: 1 error prohibited this %{model} from being saved
         other: "%{count} errors prohibited this %{model} from being saved"
   helpers:
+    label:
+      continuously_create: Continuously create
     link:
       back: Back
       delete: Delete
@@ -181,7 +183,7 @@ en:
       new: New
       show: Show
     notice:
-      continuous_create: Continue to create
+      continuously_create: Continue to create
       create: Created successfully
       delete: Deleted successfully
       delete_confirm: Are you sure you want to delete it?
@@ -195,9 +197,16 @@ en:
     select:
       prompt: Please select
     submit:
-      create: Create %{model}
-      submit: Save %{model}
-      update: Update %{model}
+      create: Create
+      export_csv: Export CSV
+      load_csv: Load CSV
+      submit: Save
+      update: Update
+    title:
+      edit: "Editing %{model}"
+      list: "Listing %{models}"
+      new: "New %{model}"
+      show: "Show %{model}"
   number:
     currency:
       format:
@@ -253,6 +262,23 @@ en:
       last_word_connector: ", and "
       two_words_connector: " and "
       words_connector: ", "
+  text:
+    division_types:
+      drug: Purchasing drugs
+      medical_treatment: Medical treatment
+      nursing: Nursing service
+      other: Other
+    records:
+      total: Total
+    statistics:
+      rows:
+        person_name: (1)Person who received medical treatment
+        division_name: (2)Payee to hospital / pharmacy etc
+        division_type: (3)Medical expense division
+        cost: (4)Medical expenses
+      statistics: Medical record statistics
+      statistics_year: "Medical record statistics of %{year}"
+      year: "%{year}"
   time:
     am: am
     formats:

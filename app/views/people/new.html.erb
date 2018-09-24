@@ -1,4 +1,6 @@
-<h1><%= Person.model_name.human %>新規作成</h1>
+<h1>
+  <%= t('helpers.title.new', model: Person.model_name.human) %>
+</h1>
 
 <%= render partial: 'action' %>
 

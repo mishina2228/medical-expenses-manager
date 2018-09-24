@@ -1,6 +1,8 @@
 <%= render_notices %>
 
-<h1><%= Drugstore.model_name.human %>一覧</h1>
+<h1>
+  <%= t('helpers.title.list', models: Drugstore.model_name.human.pluralize(I18n.locale)) %>
+</h1>
 
 <%= paginate @drugstores %>
 <table class='table table-bordered table-hover table-striped'>

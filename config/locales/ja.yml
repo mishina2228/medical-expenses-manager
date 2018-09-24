@@ -168,6 +168,8 @@ ja:
         one: "%{model}にエラーが発生しました"
         other: "%{model}に%{count}個のエラーが発生しました"
   helpers:
+    label:
+      continuously_create: 連続作成
     link:
       back: 戻る
       delete: 削除
@@ -175,7 +177,7 @@ ja:
       new: 新規作成
       show: 閲覧
     notice:
-      continuous_create: 続けて作成します
+      continuously_create: 続けて作成します
       create: 正常に作成されました
       delete: 正常に削除されました
       delete_confirm: 削除してよろしいですか?
@@ -190,8 +192,15 @@ ja:
       prompt: 選択してください
     submit:
       create: 登録する
+      export_csv: CSV出力
+      load_csv: CSV読込
       submit: 保存する
       update: 更新する
+    title:
+      edit: "%{model}編集"
+      list: "%{models}一覧"
+      new: "%{model}新規作成"
+      show: "%{model}閲覧"
   number:
     currency:
       format:
@@ -247,8 +256,8 @@ ja:
       words_connector: 、
   text:
     division_types:
-      care_therapy: 診療・治療
       drug: 医薬品購入
+      medical_treatment: 診療・治療
       nursing: 介護保険サービス
       other: その他の医療費
     records:
@@ -261,6 +270,7 @@ ja:
         cost: (4)支払った医療費の額
       statistics: 医療費記録統計
       statistics_year: "%{year}年の医療費記録統計"
+      year: "%{year}年"
   time:
     am: 午前
     formats:

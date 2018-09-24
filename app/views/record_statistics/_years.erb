@@ -1,4 +1,4 @@
 <% years = Time.current.ago(2.years).year..Time.current.since(2.years).year %>
 <% years.each do |year| %>
-  <%= link_to "#{year}年", record_statistics_path(year: year), class: 'btn btn-info' %>
+  <%= link_to t('text.statistics.year', {year: year}), record_statistics_path(year: year), class: 'btn btn-info' %>
 <% end %>

@@ -35,7 +35,7 @@ class RecordsController < ApplicationController
         notices << t('helpers.notice.create')
         notices << t('helpers.notice.transport_created') if ret.size > 1
         if params[:continuous].present?
-          notices << t('helpers.notice.continuous_create')
+          notices << t('helpers.notice.continuously_create')
           format.html {redirect_to new_record_url, notice: notices}
         end
         format.html {redirect_to records_url, notice: notices}

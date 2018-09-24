@@ -1,6 +1,8 @@
 <%= render_notices %>
 
-<h1><%= Record.model_name.human %>一覧</h1>
+<h1>
+  <%= t('helpers.title.list', models: Record.model_name.human.pluralize(I18n.locale)) %>
+</h1>
 
 <%= link_to t('helpers.link.new'), new_record_path %>
 

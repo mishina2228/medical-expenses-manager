@@ -1,6 +1,6 @@
 <%= render_notices %>
 
-<h1><%= "#{@year}年の#{Record.model_name.human}統計" %></h1>
+<h1><%= t('text.statistics.statistics_year', {year: @year}) %></h1>
 
 <%= render partial: 'years' %>
 
