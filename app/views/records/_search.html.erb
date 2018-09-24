@@ -2,7 +2,7 @@
               local: true, id: :search_record_form) do |form| %>
   <button class="btn btn-primary" type="button" data-toggle="collapse"
           data-target="#collapseSearch" aria-expanded="true" aria-controls="collapseSearch">
-    検索フォーム
+    <%= t('helpers.button.search_form') %>
   </button>
   <div class="container collapse in box_radius" id="collapseSearch">
     <div class="row">
@@ -55,8 +55,8 @@
         </div>
       </div>
     </div>
-    <%= button_tag 'リセット', type: :button, id: 'reset_search',
+    <%= button_tag t('helpers.button.reset'), type: :button, id: 'reset_search',
                    class: 'btn btn-secondary' %>
-    <%= form.submit :検索, class: 'btn btn-success', name: nil %>
+    <%= form.submit t('helpers.submit.search'), class: 'btn btn-success', name: nil %>
   </div>
 <% end %>

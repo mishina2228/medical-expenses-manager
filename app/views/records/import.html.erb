@@ -1,5 +1,7 @@
 <%= render_notices %>
 
-<h1><%= Record.model_name.human %>読込</h1>
+<h1>
+  <%= t('helpers.title.load_csv', models: Record.model_name.human.pluralize(I18n.locale)) %>
+</h1>
 
 <%= render partial: 'load_csv_result', locals: {records: @record_csv} %>

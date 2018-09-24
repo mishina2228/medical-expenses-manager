@@ -168,6 +168,9 @@ ja:
         one: "%{model}にエラーが発生しました"
         other: "%{model}に%{count}個のエラーが発生しました"
   helpers:
+    button:
+      reset: リセット
+      search_form: 検索フォーム
     label:
       continuously_create: 連続作成
     link:
@@ -194,12 +197,15 @@ ja:
       create: 登録する
       export_csv: CSV出力
       load_csv: CSV読込
+      search: 検索
       submit: 保存する
       update: 更新する
     title:
       edit: "%{model}編集"
       list: "%{models}一覧"
+      load_csv: "%{models}読込"
       new: "%{model}新規作成"
+      search: "%{models}検索結果"
       show: "%{model}閲覧"
   number:
     currency:
@@ -271,6 +277,8 @@ ja:
       statistics: 医療費記録統計
       statistics_year: "%{year}年の医療費記録統計"
       year: "%{year}年"
+    top:
+     top_page: TOPページ
   time:
     am: 午前
     formats:
