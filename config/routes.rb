@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   scope '(:locale)', locale: /#{I18n.available_locales.map(&:to_s).join('|')}/ do
+    root 'records#search'
+
     resources :records do
       collection do
         get :export
@@ -22,7 +24,5 @@ Rails.application.routes.draw do
     resources :hospital_transports
     resources :transports
     resources :people
-
-    root 'records#search'
   end
 end
