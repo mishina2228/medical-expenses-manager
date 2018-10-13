@@ -1,18 +1,26 @@
 <div class="row">
   <div class="col-xs-6">
-    <span class="glyphicon <%= check_division(division, Hospital) %>"></span>
-    <%= t('text.division_types.medical_treatment') %>
+    <div class="text-nowrap">
+      <span class="glyphicon <%= check_division(division, Hospital) %>"></span>
+      <%= t('text.division_types.medical_treatment') %>
+    </div>
   </div>
   <div class="col-xs-6">
-    <span class="glyphicon glyphicon-unchecked"></span>
-    <%= t('text.division_types.nursing') %>
+    <div class="text-nowrap">
+      <span class="glyphicon glyphicon-unchecked"></span>
+      <%= t('text.division_types.nursing') %>
+    </div>
   </div>
   <div class="col-xs-6">
-    <span class="glyphicon <%= check_division(division, Drugstore) %>"></span>
-    <%= t('text.division_types.drug') %>
+    <div class="text-nowrap">
+      <span class="glyphicon <%= check_division(division, Drugstore) %>"></span>
+      <%= t('text.division_types.drug') %>
+    </div>
   </div>
   <div class="col-xs-6">
-    <span class="glyphicon <%= check_division(division, Transport) %>"></span>
-    <%= t('text.division_types.other') %>
+    <div class="text-nowrap">
+      <span class="glyphicon <%= check_division(division, Transport) %>"></span>
+      <%= t('text.division_types.other') %>
+    </div>
   </div>
 </div>
