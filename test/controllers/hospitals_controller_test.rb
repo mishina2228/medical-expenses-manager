@@ -30,17 +30,17 @@ class HospitalsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should show hospital' do
-    get hospital_url(@hospital)
+    get hospital_url(id: @hospital)
     assert_response :success
   end
 
   test 'should get edit' do
-    get edit_hospital_url(@hospital)
+    get edit_hospital_url(id: @hospital)
     assert_response :success
   end
 
   test 'should update hospital' do
-    patch hospital_url(@hospital),
+    patch hospital_url(id: @hospital),
           params: {
             hospital: {
               name: @hospital.name
@@ -51,7 +51,7 @@ class HospitalsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should destroy hospital' do
     assert_difference('Hospital.count', -1) do
-      delete hospital_url(@hospital)
+      delete hospital_url(id: @hospital)
     end
 
     assert_redirected_to hospitals_url

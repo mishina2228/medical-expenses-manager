@@ -30,17 +30,17 @@ class DrugstoresControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should show drugstore' do
-    get drugstore_url(@drugstore)
+    get drugstore_url(id: @drugstore)
     assert_response :success
   end
 
   test 'should get edit' do
-    get edit_drugstore_url(@drugstore)
+    get edit_drugstore_url(id: @drugstore)
     assert_response :success
   end
 
   test 'should update drugstore' do
-    patch drugstore_url(@drugstore),
+    patch drugstore_url(id: @drugstore),
           params: {
             drugstore: {
               name: @drugstore.name
@@ -51,7 +51,7 @@ class DrugstoresControllerTest < ActionDispatch::IntegrationTest
 
   test 'should destroy drugstore' do
     assert_difference('Drugstore.count', -1) do
-      delete drugstore_url(@drugstore)
+      delete drugstore_url(id: @drugstore)
     end
 
     assert_redirected_to drugstores_url

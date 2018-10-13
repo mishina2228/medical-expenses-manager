@@ -30,17 +30,17 @@ class TransportsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should show transports' do
-    get transport_url(@transport)
+    get transport_url(id: @transport)
     assert_response :success
   end
 
   test 'should get edit' do
-    get edit_transport_url(@transport)
+    get edit_transport_url(id: @transport)
     assert_response :success
   end
 
   test 'should update transports' do
-    patch transport_url(@transport),
+    patch transport_url(id: @transport),
           params: {
             transport: {
               name: @transport.name
@@ -51,7 +51,7 @@ class TransportsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should destroy transports' do
     assert_difference('Transport.count', -1) do
-      delete transport_url(@transport)
+      delete transport_url(id: @transport)
     end
 
     assert_redirected_to transports_url

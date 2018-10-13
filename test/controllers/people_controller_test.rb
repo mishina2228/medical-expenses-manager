@@ -31,17 +31,17 @@ class PeopleControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should show person' do
-    get person_url(@person)
+    get person_url(id: @person)
     assert_response :success
   end
 
   test 'should get edit' do
-    get edit_person_url(@person)
+    get edit_person_url(id: @person)
     assert_response :success
   end
 
   test 'should update person' do
-    patch person_url(@person),
+    patch person_url(id: @person),
           params: {
             person: {
               name: @person.name,
@@ -53,7 +53,7 @@ class PeopleControllerTest < ActionDispatch::IntegrationTest
 
   test 'should destroy person' do
     assert_difference('Person.count', -1) do
-      delete person_url(@person)
+      delete person_url(id: @person)
     end
 
     assert_redirected_to people_url

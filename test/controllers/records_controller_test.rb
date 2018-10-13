@@ -35,17 +35,17 @@ class RecordsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should show record' do
-    get record_url(@record)
+    get record_url(id: @record)
     assert_response :success
   end
 
   test 'should get edit' do
-    get edit_record_url(@record)
+    get edit_record_url(id: @record)
     assert_response :success
   end
 
   test 'should update record' do
-    patch record_url(@record),
+    patch record_url(id: @record),
           params: {
             record: {
               cost: @record.cost
@@ -56,7 +56,7 @@ class RecordsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should destroy record' do
     assert_difference('Record.count', -1) do
-      delete record_url(@record)
+      delete record_url(id: @record)
     end
 
     assert_redirected_to records_url
