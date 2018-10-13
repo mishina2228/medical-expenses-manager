@@ -1,0 +1,21 @@
+---
+ja:
+  text:
+    division_types:
+      drug: 医薬品購入
+      medical_treatment: 診療・治療
+      nursing: 介護保険サービス
+      other: その他の医療費
+    records:
+      total: 合計
+    statistics:
+      rows:
+        person_name: (1)医療を受けた方の氏名
+        division_name: (2)病院・薬局などの支払先の名称
+        division_type: (3)医療費の区分
+        cost: (4)支払った医療費の額
+      statistics: 医療費記録統計
+      statistics_year: "%{year}年の医療費記録統計"
+      year: "%{year}年"
+    top:
+     top_page: TOPページ

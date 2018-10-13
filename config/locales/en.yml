@@ -268,25 +268,6 @@ en:
       last_word_connector: ", and "
       two_words_connector: " and "
       words_connector: ", "
-  text:
-    division_types:
-      drug: Purchasing drugs
-      medical_treatment: Medical treatment
-      nursing: Nursing service
-      other: Other
-    records:
-      total: Total
-    statistics:
-      rows:
-        person_name: (1)Person who received medical treatment
-        division_name: (2)Payee to hospital / pharmacy etc
-        division_type: (3)Medical expense division
-        cost: (4)Medical expenses
-      statistics: Medical record statistics
-      statistics_year: "Medical record statistics of %{year}"
-      year: "%{year}"
-    top:
-     top_page: TOP Page
   time:
     am: am
     formats:
