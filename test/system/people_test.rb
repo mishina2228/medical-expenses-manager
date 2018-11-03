@@ -7,19 +7,19 @@ class PeopleTest < ApplicationSystemTestCase
 
   test 'visiting the index' do
     visit people_url
-    assert_selector 'h1', text: 'Person'
+    assert_selector 'h1', text: I18n.t('helpers.title.list', models: Person.model_name.human.pluralize(I18n.locale))
   end
 
   test 'creating a Person' do
     visit people_url
-    click_on 'New Person'
+    click_on I18n.t('helpers.link.new')
 
-    fill_in 'Name', with: @person.name
-    fill_in 'Relationship', with: @person.relationship
-    click_on 'Create Person'
+    fill_in Person.human_attribute_name(:name), with: @person.name + Time.current.usec.to_s
+    fill_in Person.human_attribute_name(:relationship), with: @person.relationship
+    click_on I18n.t('helpers.submit.create')
 
-    assert_text 'Person was successfully created'
-    click_on 'Back'
+    assert_text I18n.t('helpers.notice.create')
+    assert_selector 'h1', text: I18n.t('helpers.title.list', models: Person.model_name.human.pluralize(I18n.locale))
   end
 
   test 'updating a Person' do

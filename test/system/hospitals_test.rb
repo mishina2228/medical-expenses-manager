@@ -7,20 +7,18 @@ class HospitalsTest < ApplicationSystemTestCase
 
   test 'visiting the index' do
     visit hospitals_url
-    assert_selector 'h1', text: 'Hospitals'
+    assert_selector 'h1', text: I18n.t('helpers.title.list', models: Hospital.model_name.human.pluralize(I18n.locale))
   end
 
   test 'creating a Hospital' do
     visit hospitals_url
-    click_on 'New Hospital'
+    click_on I18n.t('helpers.link.new')
 
-    fill_in 'Expense', with: @hospital.expense
-    fill_in 'Name', with: @hospital.name
-    fill_in 'Transport', with: @hospital.transport
-    click_on 'Create Hospital'
+    fill_in Hospital.human_attribute_name(:name), with: @hospital.name + Time.current.usec.to_s
+    click_on I18n.t('helpers.submit.create')
 
-    assert_text 'Hospital was successfully created'
-    click_on 'Back'
+    assert_text I18n.t('helpers.notice.create')
+    assert_selector 'h1', text: I18n.t('helpers.title.list', models: Hospital.model_name.human.pluralize(I18n.locale))
   end
 
   test 'updating a Hospital' do
