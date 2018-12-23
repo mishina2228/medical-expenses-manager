@@ -14,6 +14,11 @@ en:
         division_name: (2)Payee to hospital / pharmacy etc
         division_type: (3)Medical expense division
         cost: (4)Medical expenses
+        short:
+          person_name: Name
+          division_name: Payee
+          division_type: Division
+          cost: Expenses
       statistics: Medical record statistics
       statistics_year: "Medical record statistics of %{year}"
       year: "%{year}"
