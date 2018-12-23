@@ -4,9 +4,7 @@ $(document).on('turbolinks:load', (function () {
     load_division_ids($(this).val(), action_name);
   }).change();
 
-  $('#reset_search').click(function () {
-    reset_search_form();
-  });
+  $('#reset_search').click(reset_search_form);
 
   $('#csv_loader').change(function () {
     prop_load_button($(this));
