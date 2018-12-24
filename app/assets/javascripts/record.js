@@ -1,8 +1,7 @@
 $(document).on('turbolinks:load', (function () {
-  const action_name = $('#division_action_name').val();
   $('.division_type').change(function () {
-    load_division_ids($(this).val(), action_name);
-  }).change();
+    load_division_ids($(this).val());
+  });
 
   $('#reset_search').click(reset_search_form);
 
@@ -11,27 +10,38 @@ $(document).on('turbolinks:load', (function () {
   }).change();
 }));
 
-function load_division_ids(klass_name, action_name) {
+function load_division_ids(klass_name) {
   $.ajax({
     url: '/divisions',
     type: 'GET',
-    data: {klass: klass_name, name: action_name}
-  }).done(function (data) {
-    const $division_id_selector = $('#division_id_selector');
-    $division_id_selector.html(data);
+    data: {klass: klass_name}
+  }).done(json => {
+    const $division_id = $('.division_id');
+    replace_select_options($division_id, json);
     const default_id = $('#division_default_id').val();
     if (default_id) {
-      $division_id_selector.children('select').val(default_id);
+      $division_id.val(default_id);
     }
   })
 }
 
+function replace_select_options($select, results) {
+  $select.html($('<option>'));
+  $(results).each((_, elem) => {
+    const option = $('<option>').val(elem.id).text(elem.name);
+    $select.append(option)
+  });
+  if (results.length === 0) {
+    $select.prop('disabled', true);
+  } else {
+    $select.prop('disabled', false);
+  }
+}
+
 function reset_search_form() {
-  const forms = $('#search_record_form')
+  const $forms = $('#search_record_form')
     .find('input[name^="search_record"], select[name^="search_record"]');
-  forms.each(function (_, elem) {
-    $(elem).val('');
-  })
+  $forms.each((_, elem) => $(elem).val(''))
 }
 
 function prop_load_button($csv_loader) {

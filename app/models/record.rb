@@ -43,4 +43,8 @@ class Record < ApplicationRecord
           .includes(:person)
           .includes(:division)
   end
+
+  def division_type
+    division&.type
+  end
 end

@@ -2,7 +2,7 @@
   <%= t('helpers.title.search', models: Record.model_name.human.pluralize(I18n.locale)) %>
 </h1>
 
-<%= render partial: 'search' %>
+<%= render partial: 'search', locals: {record: @record} %>
 <%#= render partial: 'export', locals: {records: @records} %>
 <%#= render partial: 'load_csv' %>
 

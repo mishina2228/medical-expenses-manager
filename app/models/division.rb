@@ -8,4 +8,8 @@ class Division < ApplicationRecord
                          Hospital.model_name.name => Hospital.model_name.human,
                          Transport.model_name.name => Transport.model_name.human}
   end
+
+  def self.all_records(type)
+    where(type: type).select(:id, :name)
+  end
 end

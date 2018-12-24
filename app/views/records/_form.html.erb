@@ -57,8 +57,10 @@
           <%= hidden_field_tag 'division[default_id]', record.division&.id %>
         </div>
         <div class="col-xs-7 col-sm-10">
-          <%= hidden_field_tag 'division[action_name]', controller.action_name %>
-          <div id="division_id_selector"><%= t('helpers.notice.loading') %></div>
+          <% records = Division.all_records(record.division_type) %>
+          <%= form.select :division_id, records.map {|r| [r.name, r.id]},
+                         {include_blank: true},
+                          class: 'form-control division_id', disabled: records.blank? %>
         </div>
       </div>
     </div>
