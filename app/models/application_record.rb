@@ -6,6 +6,7 @@ class ApplicationRecord < ActiveRecord::Base
   end
 
   def self.paginate(params)
-    page(params[:page]).per(params[:per])
+    per = params[:per] || 30
+    page(params[:page]).per(per)
   end
 end
