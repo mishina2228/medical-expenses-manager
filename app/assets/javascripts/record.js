@@ -1,4 +1,6 @@
 $(document).on('turbolinks:load', (function () {
+  emojify();
+
   $('.division_type').change(function () {
     load_division_ids($(this).val());
   });
@@ -56,4 +58,11 @@ function prop_load_button($csv_loader) {
 function extname(path) {
   const array = path.split('.');
   return array[array.length - 1].toLowerCase();
+}
+
+function emojify() {
+  $('.emojify').each(function(){
+    const emojified = emojione.toImage($(this).html());
+    $(this).html(emojified);
+  });
 }

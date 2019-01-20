@@ -3,7 +3,7 @@ module RecordStatisticsHelper
     division.class == klass ? 'glyphicon-check' : 'glyphicon-unchecked'
   end
 
-  def render_division(division)
+  def render_division_for_statistics(division)
     case division.class.to_s
     when Drugstore.to_s
       t('text.division_types.drug')

@@ -15,17 +15,20 @@
     <tr>
       <td><%= link_to l(r.date), record_path(r) %></td>
       <td><%= r.person.name %></td>
-      <td><%= r.division.model_name.human %></td>
+      <td class="emojify"><%= render_division(r.division) %></td>
       <td><%= r.division.name %></td>
       <td><%= r.cost.to_s(:currency) %></td>
     </tr>
   <% end %>
+  </tbody>
+
+  <tfoot>
   <% if controller.action_name == 'search' %>
     <tr>
       <th colspan="4"><%= t('text.records.total') %></th>
       <th><%= records.except(:limit, :offset).pluck(:cost).sum.to_s(:currency) %></th>
     </tr>
   <% end %>
-  </tbody>
+  </tfoot>
 </table>
 <%= paginate records %>
