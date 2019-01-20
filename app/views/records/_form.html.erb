@@ -76,14 +76,16 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="form-group">
-        <div class="col-xs-5">
-          <%= check_box_tag :continuous %>
-          <%= label_tag :continuous, t('helpers.label.continuously_create') %>
+    <% if controller.action_name == 'new' %>
+      <div class="row">
+        <div class="form-group">
+          <div class="col-xs-5">
+            <%= check_box_tag :continuous %>
+            <%= label_tag :continuous, t('helpers.label.continuously_create') %>
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
     <div class="actions">
       <%= form.submit class: 'btn btn-primary' %>
     </div>
