@@ -20,7 +20,7 @@ class RecordsController < ApplicationController
   end
 
   def new
-    @record = Record.new
+    @record = Record.new(record_params_for_continue)
   end
 
   def edit
@@ -36,7 +36,7 @@ class RecordsController < ApplicationController
         notices << t('helpers.notice.transport_created') if ret.size > 1
         if params[:continuous].present?
           notices << t('helpers.notice.continuously_create')
-          format.html {redirect_to new_record_url, notice: notices}
+          format.html {redirect_to new_record_url(record: record_params), notice: notices}
         end
         format.html {redirect_to records_url, notice: notices}
       else
@@ -90,6 +90,10 @@ class RecordsController < ApplicationController
 
   def record_params
     params.require(:record).permit(:cost, :date, :person_id, :division_id)
+  end
+
+  def record_params_for_continue
+    params[:record]&.permit(:cost, :date, :person_id, :division_id)
   end
 
   def search_params
