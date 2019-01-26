@@ -59,6 +59,9 @@ GEM
     bootstrap3-datetimepicker-rails (4.17.47)
       momentjs-rails (>= 2.8.1)
     builder (3.2.3)
+    bullet (5.9.0)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.11)
     byebug (10.0.2)
     capybara (3.13.2)
       addressable
@@ -206,6 +209,7 @@ GEM
     uglifier (4.1.20)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (1.4.1)
+    uniform_notifier (1.12.1)
     web-console (3.7.0)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -224,6 +228,7 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   bootstrap-sass
   bootstrap3-datetimepicker-rails (~> 4.17.47)
+  bullet
   byebug
   capybara (>= 2.15, < 4.0)
   chromedriver-helper (~> 1.2)

@@ -1,8 +1,10 @@
 class HospitalsController < ApplicationController
-  before_action :set_hospital, only: [:show, :edit, :update, :destroy]
+  before_action :set_hospital, only: [:edit, :update, :destroy]
+  before_action :set_hospital_with_transport, only: [:show]
 
   def index
-    @hospitals = Hospital.paginate(params)
+    @hospitals = Hospital.includes(hospital_transports: :transport)
+                         .paginate(params)
   end
 
   def show
@@ -53,6 +55,11 @@ class HospitalsController < ApplicationController
 
   def set_hospital
     @hospital = Hospital.find(params[:id])
+  end
+
+  def set_hospital_with_transport
+    @hospital = Hospital.includes(hospital_transports: :transport)
+                        .find(params[:id])
   end
 
   def hospital_params
