@@ -5,17 +5,27 @@
 <%= paginate @hospitals %>
 <table class='table table-bordered table-hover table-striped'>
   <thead>
-    <tr>
-      <th><%= Hospital.human_attribute_name :name %></th>
-    </tr>
+  <tr>
+    <th><%= Hospital.human_attribute_name :name %></th>
+    <th>
+      <%= t('helpers.title.list',
+            models: HospitalTransport.human_attribute_name(:transport_cost)).pluralize(I18n.locale) %>
+    </th>
+    <th>
+      <%= t('helpers.title.total',
+            models: HospitalTransport.human_attribute_name(:transport_cost)).pluralize(I18n.locale) %>
+    </th>
+  </tr>
   </thead>
 
   <tbody>
-    <% @hospitals.each do |h| %>
-      <tr>
-        <td><%= link_to h.name, hospital_path(h) %></td>
-      </tr>
-    <% end %>
+  <% @hospitals.each do |h| %>
+    <tr>
+      <td><%= link_to h.name, hospital_path(h) %></td>
+      <td><%= h.hospital_transports.map {|ht| ht.transport.name}.join(', ') %></td>
+      <td><%= h.hospital_transports.map(&:transport_cost).sum.to_s(:currency) %></td>
+    </tr>
+  <% end %>
   </tbody>
 </table>
 <%= paginate @hospitals %>

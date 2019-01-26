@@ -6,11 +6,40 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-xs-4 col-sm-2">
+    <div class="col-xs-4">
       <%= Hospital.human_attribute_name :name %>
     </div>
-    <div class="col-xs-8 col-sm-10">
+    <div class="col-xs-8">
       <%= @hospital.name %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-4">
+      <%= HospitalTransport.model_name.human %>
+    </div>
+    <div class="col-xs-8">
+      <% if @hospital.hospital_transports.present? %>
+        <div class="row">
+          <div class="col-xs-6 bg-info">
+            <%= Transport.human_attribute_name :name %>
+          </div>
+          <div class="col-xs-6 bg-info">
+            <%= HospitalTransport.human_attribute_name :transport_cost %>
+          </div>
+        </div>
+        <% @hospital.hospital_transports.each do |ht| %>
+          <div class="row">
+            <div class="col-xs-6">
+              <%= ht.transport.name %>
+            </div>
+            <div class="col-xs-6">
+              <%= ht.transport_cost.to_s(:currency) %>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        なし
+      <% end %>
     </div>
   </div>
 </div>

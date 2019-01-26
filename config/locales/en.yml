@@ -213,6 +213,7 @@ en:
       new: "New %{model}"
       search: "Search Results of %{models}"
       show: "Show %{model}"
+      total: "Total %{models}"
   number:
     currency:
       format:

@@ -5,17 +5,17 @@
 <%= paginate @transports %>
 <table class='table table-bordered table-hover table-striped'>
   <thead>
-    <tr>
-      <th><%= Transport.human_attribute_name :name %></th>
-    </tr>
+  <tr>
+    <th><%= Transport.human_attribute_name :name %></th>
+  </tr>
   </thead>
 
   <tbody>
-    <% @transports.each do |transport| %>
-      <tr>
-        <td><%= link_to transport.name, transport_path(transport) %></td>
-      </tr>
-    <% end %>
+  <% @transports.each do |transport| %>
+    <tr>
+      <td><%= link_to transport.name, transport_path(transport) %></td>
+    </tr>
+  <% end %>
   </tbody>
 </table>
 <%= paginate @transports %>

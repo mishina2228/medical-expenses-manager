@@ -5,17 +5,17 @@
 <%= paginate @drugstores %>
 <table class='table table-bordered table-hover table-striped'>
   <thead>
-    <tr>
-      <th><%= Drugstore.human_attribute_name :name %></th>
-    </tr>
+  <tr>
+    <th><%= Drugstore.human_attribute_name :name %></th>
+  </tr>
   </thead>
 
   <tbody>
-    <% @drugstores.each do |d| %>
-      <tr>
-        <td><%= link_to d.name, drugstore_path(d) %></td>
-      </tr>
-    <% end %>
+  <% @drugstores.each do |d| %>
+    <tr>
+      <td><%= link_to d.name, drugstore_path(d) %></td>
+    </tr>
+  <% end %>
   </tbody>
 </table>
 <%= paginate @drugstores %>

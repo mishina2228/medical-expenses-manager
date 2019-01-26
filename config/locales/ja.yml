@@ -207,6 +207,7 @@ ja:
       new: "%{model}新規作成"
       search: "%{models}検索結果"
       show: "%{model}閲覧"
+      total: "%{models}合計"
   number:
     currency:
       format:
