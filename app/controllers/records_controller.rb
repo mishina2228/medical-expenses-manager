@@ -97,7 +97,10 @@ class RecordsController < ApplicationController
   end
 
   def search_params
-    params[:search_record]&.permit(:name, :division_id, :division_type, :from_date, :to_date)
+    permitted = [
+      :name, :division_id, :division_type, :from_date, :to_date, :month
+    ]
+    params[:search_record]&.permit(permitted)
   end
 
   def export_params
