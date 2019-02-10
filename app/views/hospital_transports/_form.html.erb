@@ -40,7 +40,7 @@
           <%= form.label :transport_cost %>
         </div>
         <div class="col-xs-8 col-sm-10">
-          <%= form.number_field :transport_cost, class: 'form-control' %>
+          <%= form.number_field :transport_cost, class: 'form-control', min: 0 %>
         </div>
       </div>
     </div>
