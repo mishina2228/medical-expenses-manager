@@ -17,6 +17,8 @@ ja:
       hospital:
         name: 病院名
       hospital_transport:
+        hospital: 病院名
+        transport: 交通機関名
         transport_cost: 交通費
       person:
         name: 名前

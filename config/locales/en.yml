@@ -17,6 +17,8 @@ en:
       hospital:
         name: Hospital name
       hospital_transport:
+        hospital: Hospital name
+        transport: Transport name
         transport_cost: Transport cost
       person:
         name: User name

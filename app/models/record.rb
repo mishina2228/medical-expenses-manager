@@ -1,13 +1,14 @@
 class Record < ApplicationRecord
   acts_as_paranoid
 
-  belongs_to :division
+  validates :date, presence: true
+
   belongs_to :person
+  belongs_to :division
   belongs_to :hospital, foreign_key: :division_id, inverse_of: :records, optional: true
   belongs_to :drugstore, foreign_key: :division_id, inverse_of: :records, optional: true
   belongs_to :transport, foreign_key: :division_id, inverse_of: :records, optional: true
 
-  validates :date, presence: true
   validates :cost, presence: true, numericality:
     {only_integer: true, greater_than_or_equal_to: 0}
 

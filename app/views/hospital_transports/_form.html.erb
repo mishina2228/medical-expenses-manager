@@ -13,11 +13,11 @@
     <div class="row">
       <div class="form-group">
         <div class="col-xs-4 col-sm-2">
-          <%= form.label Hospital.human_attribute_name(:name) %>
+          <%= form.label :hospital %>
         </div>
         <div class="col-xs-8 col-sm-10">
           <%= form.select :hospital_id, Hospital.objects_for_select,
-                          {include_blank: true}, class: 'form-control' %>
+                          {include_blank: true}, class: 'form-control', required: true %>
         </div>
       </div>
     </div>
@@ -25,11 +25,11 @@
     <div class="row">
       <div class="form-group">
         <div class="col-xs-4 col-sm-2">
-          <%= form.label Transport.human_attribute_name(:name) %>
+          <%= form.label :transport %>
         </div>
         <div class="col-xs-8 col-sm-10">
           <%= form.select :transport_id, Transport.objects_for_select,
-                          {include_blank: true}, class: 'form-control' %>
+                          {include_blank: true}, class: 'form-control', required: true %>
         </div>
       </div>
     </div>
@@ -40,7 +40,7 @@
           <%= form.label :transport_cost %>
         </div>
         <div class="col-xs-8 col-sm-10">
-          <%= form.number_field :transport_cost, class: 'form-control', min: 0 %>
+          <%= form.number_field :transport_cost, class: 'form-control', min: 0, required: true %>
         </div>
       </div>
     </div>

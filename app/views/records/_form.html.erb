@@ -16,7 +16,7 @@
           <%= form.label :date %>
         </div>
         <div class="col-xs-7 col-sm-10 input-group date date-picker">
-          <%= form.text_field :date, class: 'form-control' %>
+          <%= form.text_field :date, class: 'form-control', required: true %>
           <span class="input-group-addon">
             <span class="glyphicon glyphicon-calendar"></span>
           </span>
@@ -31,7 +31,7 @@
         <div class="col-xs-7 col-sm-10">
           <%= form.select :person_id, Person.objects_for_select,
                           {include_blank: true},
-                          class: 'form-control' %>
+                          class: 'form-control', required: true %>
         </div>
       </div>
     </div>
@@ -59,8 +59,8 @@
         <div class="col-xs-7 col-sm-10">
           <% records = Division.all_records(record.division_type) %>
           <%= form.select :division_id, records.map {|r| [r.name, r.id]},
-                         {include_blank: true},
-                          class: 'form-control division_id', disabled: records.blank? %>
+                         {include_blank: true}, class: 'form-control division_id',
+                          disabled: records.blank?, required: true %>
         </div>
       </div>
     </div>
@@ -71,7 +71,7 @@
           <%= form.label :cost %>
         </div>
         <div class="col-xs-7 col-sm-10">
-          <%= form.number_field :cost, class: 'form-control', min: 0 %>
+          <%= form.number_field :cost, class: 'form-control', min: 0, required: true %>
         </div>
       </div>
     </div>
