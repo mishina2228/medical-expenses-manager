@@ -16,8 +16,8 @@
           <%= form.label :hospital %>
         </div>
         <div class="col-xs-8 col-sm-10">
-          <%= form.select :hospital_id, Hospital.objects_for_select,
-                          {include_blank: true}, class: 'form-control', required: true %>
+          <%= form.collection_select :hospital_id, Hospital.all, :id, :name,
+                                     {include_blank: true}, class: 'form-control', required: true%>
         </div>
       </div>
     </div>
@@ -28,8 +28,8 @@
           <%= form.label :transport %>
         </div>
         <div class="col-xs-8 col-sm-10">
-          <%= form.select :transport_id, Transport.objects_for_select,
-                          {include_blank: true}, class: 'form-control', required: true %>
+          <%= form.collection_select :transport_id, Transport.all, :id, :name,
+                                     {include_blank: true}, class: 'form-control', required: true %>
         </div>
       </div>
     </div>

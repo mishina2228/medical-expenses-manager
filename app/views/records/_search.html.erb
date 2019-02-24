@@ -44,8 +44,8 @@
           <%= form.label :name, Person.human_attribute_name(:name) %>
         </div>
         <div class="col-sm-2 col-xs-8">
-          <%= form.select :name, Person.objects_for_select,
-                          {include_blank: true}, class: 'form-control' %>
+          <%= form.collection_select :name, Person.all, :id, :name,
+                                     {include_blank: true}, class: 'form-control' %>
         </div>
       </div>
       <div class="form-group">
