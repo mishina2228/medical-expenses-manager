@@ -17,7 +17,7 @@ class TransportsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should create transports' do
     Transport.delete_all
-    assert_difference('Transport.count') do
+    assert_difference -> {Transport.count} do
       post transports_url,
            params: {
              transport: {
@@ -50,7 +50,7 @@ class TransportsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should destroy transports' do
-    assert_difference('Transport.count', -1) do
+    assert_difference -> {Transport.count}, -1 do
       delete transport_url(id: @transport)
     end
 

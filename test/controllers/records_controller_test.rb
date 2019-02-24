@@ -19,7 +19,7 @@ class RecordsControllerTest < ActionDispatch::IntegrationTest
     Record.delete_all
     assert_equal 2, @record.hospital.hospital_transports.size
 
-    assert_difference('Record.count', 3) do
+    assert_difference -> {Record.count}, 3 do
       post records_url,
            params: {
              record: {
@@ -55,7 +55,7 @@ class RecordsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should destroy record' do
-    assert_difference('Record.count', -1) do
+    assert_difference -> {Record.count}, -1 do
       delete record_url(id: @record)
     end
 

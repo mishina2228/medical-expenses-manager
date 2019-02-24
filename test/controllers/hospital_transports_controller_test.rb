@@ -16,7 +16,7 @@ class HospitalTransportsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should create hospital_transport' do
-    assert_difference('HospitalTransport.count') do
+    assert_difference -> {HospitalTransport.count} do
       post hospital_transports_url,
            params: {
              hospital_transport: {
@@ -53,7 +53,7 @@ class HospitalTransportsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should destroy hospital_transport' do
-    assert_difference('HospitalTransport.count', -1) do
+    assert_difference -> {HospitalTransport.count}, -1 do
       delete hospital_transport_url(id: @hospital_transport)
     end
 

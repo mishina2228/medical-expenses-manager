@@ -17,7 +17,7 @@ class DrugstoresControllerTest < ActionDispatch::IntegrationTest
 
   test 'should create drugstore' do
     Drugstore.delete_all
-    assert_difference('Drugstore.count') do
+    assert_difference -> {Drugstore.count} do
       post drugstores_url,
            params: {
              drugstore: {
@@ -50,7 +50,7 @@ class DrugstoresControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should destroy drugstore' do
-    assert_difference('Drugstore.count', -1) do
+    assert_difference -> {Drugstore.count}, -1 do
       delete drugstore_url(id: @drugstore)
     end
 

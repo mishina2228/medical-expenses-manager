@@ -17,7 +17,7 @@ class PeopleControllerTest < ActionDispatch::IntegrationTest
 
   test 'should create person' do
     Person.delete_all
-    assert_difference('Person.count') do
+    assert_difference -> {Person.count} do
       post people_url,
            params: {
              person: {
@@ -52,7 +52,7 @@ class PeopleControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should destroy person' do
-    assert_difference('Person.count', -1) do
+    assert_difference -> {Person.count}, -1 do
       delete person_url(id: @person)
     end
 
