@@ -1,0 +1,6 @@
+---
+ja:
+  cocoon:
+    defaults:
+      add: 追加
+      remove: 削除
