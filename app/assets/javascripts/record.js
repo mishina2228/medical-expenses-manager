@@ -10,6 +10,8 @@ $(document).on('turbolinks:load', (function () {
   $('#csv_loader').change(function () {
     prop_load_button($(this));
   }).change();
+
+  add_data_on_add_fields();
 }));
 
 function load_division_ids(klass_name) {
@@ -65,4 +67,10 @@ function emojify() {
     const emojified = emojione.toImage($(this).html());
     $(this).html(emojified);
   });
+}
+
+function add_data_on_add_fields() {
+  $("a.add_fields").
+  data("association-insertion-method", 'append').
+  data("association-insertion-node", '#hospital-transports');
 }

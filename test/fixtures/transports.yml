@@ -5,3 +5,11 @@
 交通機関2:
   name: transport2
   type: Transport
+
+plane:
+  name: 飛行機
+  type: Transport
+
+train:
+  name: 電車
+  type: Transport

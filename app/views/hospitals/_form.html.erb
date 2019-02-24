@@ -20,6 +20,32 @@
         </div>
       </div>
     </div>
+    <div class="row">
+      <div class="col-xs-4 col-sm-2">
+        <%= form.label HospitalTransport.model_name.human %>
+      </div>
+      <div class="col-xs-3 col-sm-4">
+        <%= HospitalTransport.human_attribute_name :transport %>
+      </div>
+      <div class="col-xs-3 col-sm-4">
+        <%= HospitalTransport.human_attribute_name :transport_cost %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-4 col-sm-2"></div>
+      <div class="col-xs-8 col-sm-10" id="hospital-transports">
+        <%= form.fields_for :hospital_transports do |ht| %>
+          <%= render 'hospital_transport_fields', f: ht %>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-10 col-sm-10"></div>
+      <div class="col-xs-2 col-sm-2">
+        <%= link_to_add_association form, :hospital_transports,
+                                    class: 'btn btn-primary' %>
+      </div>
+    </div>
 
     <div class="actions">
       <%= form.submit class: 'btn btn-primary' %>

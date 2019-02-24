@@ -17,13 +17,10 @@ class HospitalsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should create hospital' do
     Hospital.delete_all
-    assert_difference('Hospital.count') do
-      post hospitals_url,
-           params: {
-             hospital: {
-               name: @hospital.name
-             }
-           }
+    assert_difference -> {Hospital.count} do
+      assert_difference -> {HospitalTransport.count}, 2 do
+        post hospitals_url, params: hospitals_params
+      end
     end
 
     assert_redirected_to hospitals_url
@@ -40,20 +37,55 @@ class HospitalsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should update hospital' do
+    name = @hospital.name + 'test1'
     patch hospital_url(id: @hospital),
           params: {
             hospital: {
-              name: @hospital.name
+              name: name
             }
           }
     assert_redirected_to hospitals_url
+    assert_equal name, @hospital.reload.name
+  end
+
+  test 'should update hospital_transports' do
+    assert_equal 2, @hospital.hospital_transports.count
+    ht1 = @hospital.hospital_transports.first
+    ht2 = @hospital.hospital_transports.second
+    assert_equal 200, ht2.transport_cost
+    params = {
+      hospital: {
+        name: @hospital.name,
+        hospital_transports_attributes: {
+          '0' => {id: ht1.id, transport_id: transports(:交通機関1).id, transport_cost: 100, _destroy: true},
+          '1' => {id: ht2.id, transport_id: transports(:train).id, transport_cost: 4000},
+          '2' => {transport_id: transports(:plane).id, transport_cost: 10000},
+        }
+      }
+    }
+
+    patch hospital_url(id: @hospital), params: params
+    assert_equal 2, @hospital.hospital_transports.count
+    assert_equal 4000, ht2.reload.transport_cost
   end
 
   test 'should destroy hospital' do
-    assert_difference('Hospital.count', -1) do
+    assert_difference -> {Hospital.count}, -1 do
       delete hospital_url(id: @hospital)
     end
 
     assert_redirected_to hospitals_url
+  end
+
+  def hospitals_params
+    {
+      hospital: {
+        name: :hospital1,
+        hospital_transports_attributes: {
+          '0' => {transport_id: transports(:交通機関1).id, transport_cost: 100},
+          '1' => {transport_id: transports(:交通機関2).id, transport_cost: 200}
+        }
+      }
+    }
   end
 end
