@@ -4,7 +4,6 @@ class TransportTest < ActiveSupport::TestCase
   def test_validation
     transport = Transport.new(valid_params)
     assert transport.valid?
-    assert transport.save
 
     transport = Transport.new(valid_params.merge(name: nil))
     assert transport.invalid?
@@ -23,6 +22,10 @@ class TransportTest < ActiveSupport::TestCase
 
     transport_unique = Transport.new(name: drugstore.name)
     assert transport_unique.valid?
+
+    assert transport.destroy
+    assert transport.deleted_at.present?
+    assert transport_duplicate.valid?, '論理削除した場合はユニーク制約の対象外'
   end
 
   def valid_params

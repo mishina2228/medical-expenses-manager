@@ -1,7 +1,7 @@
 class Division < ApplicationRecord
   acts_as_paranoid
 
-  validates :name, presence: true, uniqueness: {scope: :type}
+  validates :name, presence: true, uniqueness: {scope: [:type, :deleted_at]}
 
   def self.division_names
     @division_names ||= {Drugstore.model_name.name => Drugstore.model_name.human,

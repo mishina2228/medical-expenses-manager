@@ -4,7 +4,6 @@ class HospitalTest < ActiveSupport::TestCase
   def test_validation
     hospital = Hospital.new(valid_params)
     assert hospital.valid?
-    assert hospital.save
 
     hospital = Hospital.new(valid_params.merge(name: nil))
     assert hospital.invalid?
@@ -23,6 +22,10 @@ class HospitalTest < ActiveSupport::TestCase
 
     hospital_unique = Hospital.new(name: drugstore.name)
     assert hospital_unique.valid?
+
+    assert hospital.destroy
+    assert hospital.deleted_at.present?
+    assert hospital_duplicate.valid?, '論理削除した場合はユニーク制約の対象外'
   end
 
   def valid_params

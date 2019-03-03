@@ -4,7 +4,6 @@ class DrugstoreTest < ActiveSupport::TestCase
   def test_validation
     drugstore = Drugstore.new(valid_params)
     assert drugstore.valid?
-    assert drugstore.save
 
     drugstore = Drugstore.new(valid_params.merge(name: nil))
     assert drugstore.invalid?
@@ -23,6 +22,10 @@ class DrugstoreTest < ActiveSupport::TestCase
 
     drugstore_duplicate = Drugstore.new(name: drugstore.name)
     assert drugstore_duplicate.invalid?
+
+    assert drugstore.destroy
+    assert drugstore.deleted_at.present?
+    assert drugstore_duplicate.valid?, '論理削除した場合はユニーク制約の対象外'
   end
 
   def valid_params
