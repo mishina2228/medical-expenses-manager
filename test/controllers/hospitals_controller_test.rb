@@ -15,7 +15,7 @@ class HospitalsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should create hospital' do
+  test 'should create hospital with hospital_transports' do
     Hospital.delete_all
     assert_difference -> {Hospital.count} do
       assert_difference -> {HospitalTransport.count}, 2 do
@@ -69,9 +69,12 @@ class HospitalsControllerTest < ActionDispatch::IntegrationTest
     assert_equal 4000, ht2.reload.transport_cost
   end
 
-  test 'should destroy hospital' do
+  test 'should destroy hospital with hospital_transports' do
+    assert_equal 2, @hospital.hospital_transports.size
     assert_difference -> {Hospital.count}, -1 do
-      delete hospital_url(id: @hospital)
+      assert_difference -> {HospitalTransport.count}, -2 do
+        delete hospital_url(id: @hospital)
+      end
     end
 
     assert_redirected_to hospitals_url

@@ -2,20 +2,20 @@ require 'test_helper'
 
 class HospitalTransportTest < ActiveSupport::TestCase
   def test_validation
-    hospital_transport = HospitalTransport.new(valid_params)
-    assert hospital_transport.valid?
+    ht = HospitalTransport.new(valid_params)
+    assert ht.valid?
 
-    hospital_transport = HospitalTransport.new(valid_params.merge(transport_cost: nil))
-    assert hospital_transport.invalid?
+    ht = HospitalTransport.new(valid_params.merge(transport_cost: nil))
+    assert ht.invalid?
 
-    hospital_transport = HospitalTransport.new(valid_params.merge(transport_cost: 'abc'))
-    assert hospital_transport.invalid?
-    hospital_transport = HospitalTransport.new(valid_params.merge(transport_cost: 5.2))
-    assert hospital_transport.invalid?
-    hospital_transport = HospitalTransport.new(valid_params.merge(transport_cost: -1))
-    assert hospital_transport.invalid?
-    hospital_transport = HospitalTransport.new(valid_params.merge(transport_cost: 0))
-    assert hospital_transport.valid?
+    ht = HospitalTransport.new(valid_params.merge(transport_cost: 'abc'))
+    assert ht.invalid?
+    ht = HospitalTransport.new(valid_params.merge(transport_cost: 5.2))
+    assert ht.invalid?
+    ht = HospitalTransport.new(valid_params.merge(transport_cost: -1))
+    assert ht.invalid?
+    ht = HospitalTransport.new(valid_params.merge(transport_cost: 0))
+    assert ht.valid?
   end
 
   def valid_params

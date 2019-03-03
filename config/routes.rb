@@ -21,7 +21,6 @@ Rails.application.routes.draw do
 
     resources :drugstores
     resources :hospitals
-    resources :hospital_transports
     resources :transports
     resources :people
   end
