@@ -2,6 +2,7 @@ require 'test_helper'
 
 class HospitalTransportTest < ActiveSupport::TestCase
   def test_validation
+    HospitalTransport.destroy_all
     ht = HospitalTransport.new(valid_params)
     assert ht.valid?
 
