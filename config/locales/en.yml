@@ -16,10 +16,13 @@ en:
         name: Drugstore name
       hospital:
         name: Hospital name
-      hospital_transport:
+      hospital_transport: &hospital_transport
         hospital: Hospital name
         transport: Transport name
         transport_cost: Transport cost
+      hospital_transports:
+        <<: *hospital_transport
+        transport_id: Transport name
       person:
         name: User name
         relationship: Relationship
@@ -144,6 +147,7 @@ en:
       blank: can't be blank
       present: must be blank
       confirmation: doesn't match %{attribute}
+      duplicate: is duplicated
       empty: can't be empty
       equal_to: must be equal to %{count}
       even: must be even

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_05_025735) do
+ActiveRecord::Schema.define(version: 2019_03_03_012908) do
 
   create_table "divisions", force: :cascade do |t|
     t.string "name", null: false
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2018_08_05_025735) do
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_hospital_transports_on_deleted_at"
     t.index ["hospital_id"], name: "index_hospital_transports_on_hospital_id"
+    t.index ["transport_id", "hospital_id", "deleted_at"], name: "index_hospital_transports_on_3columns", unique: true
     t.index ["transport_id"], name: "index_hospital_transports_on_transport_id"
   end
 

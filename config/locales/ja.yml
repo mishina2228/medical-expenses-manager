@@ -16,10 +16,13 @@ ja:
         name: 薬局名
       hospital:
         name: 病院名
-      hospital_transport:
+      hospital_transport: &hospital_transport
         hospital: 病院名
         transport: 交通機関名
         transport_cost: 交通費
+      hospital_transports:
+        <<: *hospital_transport
+        transport_id: 交通機関名
       person:
         name: 名前
         relationship: 続柄
@@ -144,6 +147,7 @@ ja:
       blank: を入力してください
       present: は入力しないでください
       confirmation: と%{attribute}の入力が一致しません
+      duplicate: が重複しています
       empty: を入力してください
       equal_to: は%{count}にしてください
       even: は偶数にしてください
