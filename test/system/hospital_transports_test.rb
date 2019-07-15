@@ -28,7 +28,7 @@ class HospitalTransportsTest < ApplicationSystemTestCase
 
   test 'updating a Hospital transport' do
     visit hospital_transports_url
-    click_on 'Edit', match: :first
+    click_on I18n.t('helpers.link.edit'), match: :first
 
     click_on 'Update Hospital transport'
 
@@ -39,7 +39,7 @@ class HospitalTransportsTest < ApplicationSystemTestCase
   test 'destroying a Hospital transport' do
     visit hospital_transports_url
     page.accept_confirm do
-      click_on 'Destroy', match: :first
+      click_on I18n.t('helpers.link.delete'), match: :first
     end
 
     assert_text 'Hospital transport was successfully destroyed'
