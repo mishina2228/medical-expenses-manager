@@ -24,22 +24,29 @@ class PeopleTest < ApplicationSystemTestCase
 
   test 'updating a Person' do
     visit people_url
-    click_on 'Edit', match: :first
+    click_on @person.name, match: :first
+    click_on I18n.t('helpers.link.edit')
+    page.assert_current_path(edit_person_path(id: @person.id))
 
-    fill_in 'Name', with: @person.name
-    fill_in 'Relationship', with: @person.relationship
-    click_on 'Update Person'
+    after_name = @person.name + Time.current.usec.to_s
+    after_relationship = @person.relationship + Time.current.usec.to_s
+    fill_in Person.human_attribute_name(:name), with: after_name
+    fill_in Person.human_attribute_name(:relationship), with: after_relationship
+    click_on I18n.t('helpers.submit.update')
 
-    assert_text 'Person was successfully updated'
-    click_on 'Back'
+    assert_text I18n.t('helpers.notice.update')
+    page.assert_current_path(people_path)
+    assert_equal after_name, @person.reload.name
+    assert_equal after_relationship, @person.reload.relationship
   end
 
   test 'destroying a Person' do
     visit people_url
+    click_on @person.name, match: :first
     page.accept_confirm do
-      click_on 'Destroy', match: :first
+      click_on I18n.t('helpers.link.delete')
     end
 
-    assert_text 'Person was successfully destroyed'
+    assert_text I18n.t('helpers.notice.delete')
   end
 end

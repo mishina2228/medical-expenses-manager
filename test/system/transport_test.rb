@@ -23,21 +23,26 @@ class TransportTest < ApplicationSystemTestCase
 
   test 'updating a Transport' do
     visit transports_url
-    click_on I18n.t('helpers.link.edit'), match: :first
+    click_on @transport.name, match: :first
+    click_on I18n.t('helpers.link.edit')
+    page.assert_current_path(edit_transport_path(id: @transport.id))
 
-    fill_in 'Name', with: @transport.name
-    click_on 'Update Transport'
+    after_name = @transport.name + Time.current.usec.to_s
+    fill_in Transport.human_attribute_name(:name), with: after_name
+    click_on I18n.t('helpers.submit.update')
 
-    assert_text 'Transport was successfully updated'
-    click_on 'Back'
+    assert_text I18n.t('helpers.notice.update')
+    page.assert_current_path(transports_path)
+    assert_equal after_name, @transport.reload.name
   end
 
   test 'destroying a Transport' do
     visit transports_url
+    click_on @transport.name, match: :first
     page.accept_confirm do
-      click_on 'Destroy', match: :first
+      click_on I18n.t('helpers.link.delete')
     end
 
-    assert_text 'Transport was successfully destroyed'
+    assert_text I18n.t('helpers.notice.delete')
   end
 end
