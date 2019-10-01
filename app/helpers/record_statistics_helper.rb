@@ -1,6 +1,7 @@
 module RecordStatisticsHelper
   def check_division(division, klass)
-    division.class == klass ? 'glyphicon-check' : 'glyphicon-unchecked'
+    icon = division.class == klass ? 'glyphicon-check' : 'glyphicon-unchecked'
+    tag.span class: ['glyphicon', icon]
   end
 
   def render_division_for_statistics(division)

@@ -1,6 +1,6 @@
 <div class="row visible-lg visible-md">
   <div class="col-sm-6 col-xs-12">
-    <span class="glyphicon <%= check_division(division, Hospital) %>"></span>
+    <%= check_division(division, Hospital) %>
     <%= t('text.division_types.medical_treatment') %>
   </div>
   <div class="col-sm-6 col-xs-12">
@@ -8,11 +8,11 @@
     <%= t('text.division_types.nursing') %>
   </div>
   <div class="col-sm-6 col-xs-12">
-    <span class="glyphicon <%= check_division(division, Drugstore) %>"></span>
+    <%= check_division(division, Drugstore) %>
     <%= t('text.division_types.drug') %>
   </div>
   <div class="col-sm-6 col-xs-12">
-    <span class="glyphicon <%= check_division(division, Transport) %>"></span>
+    <%= check_division(division, Transport) %>
     <%= t('text.division_types.other') %>
   </div>
 </div>
