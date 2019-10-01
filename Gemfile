@@ -10,6 +10,7 @@ gem 'sqlite3', '~> 1.3.13'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 gem 'puma_worker_killer'
+gem 'sys-proctable', platforms: [:mingw, :mswin, :x64_mingw]
 # Use SCSS for stylesheets
 gem 'sassc-rails'
 
