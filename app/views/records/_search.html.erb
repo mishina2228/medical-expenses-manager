@@ -10,14 +10,14 @@
         <div class="col-xs-2">
           <%= form.label :from_date, Record.human_attribute_name(:date) %>
         </div>
-        <div class="input-group date col-xs-3 date-picker">
+        <div class="input-group date col-xs-4 date-picker">
           <%= form.text_field :from_date, class: 'form-control' %>
           <span class="input-group-addon">
             <span class="glyphicon glyphicon-calendar"></span>
           </span>
         </div>
         <div class="col-xs-1 text-center">～</div>
-        <div class="input-group date col-xs-3 date-picker">
+        <div class="input-group date col-xs-4 date-picker">
           <%= form.text_field :to_date, class: 'form-control' %>
           <span class="input-group-addon">
             <span class="glyphicon glyphicon-calendar"></span>
@@ -30,7 +30,7 @@
         <div class="col-sm-2 col-xs-2">
           <%= form.label :month, '月' %>
         </div>
-        <div class="col-sm-3 col-xs-3 input-group month-picker">
+        <div class="col-sm-4 col-xs-4 input-group month-picker">
           <%= form.text_field :month, class: 'form-control' %>
           <span class="input-group-addon">
             <span class="glyphicon glyphicon-calendar"></span>
