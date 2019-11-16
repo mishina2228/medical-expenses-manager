@@ -1,14 +1,14 @@
-$(document).on('turbolinks:load', (function () {
+$(document).on('turbolinks:load', (() => {
   emojify();
 
-  $('.division_type').change(function () {
-    load_division_ids($(this).val());
+  $('.division_type').on('change', event => {
+    load_division_ids($(event.currentTarget).val());
   });
 
-  $('#reset_search').click(reset_search_form);
+  $('#reset_search').on('click', reset_search_form);
 
-  $('#csv_loader').change(function () {
-    prop_load_button($(this));
+  $('#csv_loader').on('change', event => {
+    prop_load_button($(event.currentTarget));
   }).change();
 
   add_data_on_add_fields();
@@ -63,14 +63,14 @@ function extname(path) {
 }
 
 function emojify() {
-  $('.emojify').each(function(){
-    const emojified = emojione.toImage($(this).html());
-    $(this).html(emojified);
+  $('.emojify').each((_, elem) => {
+    const emojified = emojione.toImage($(elem).html());
+    $(elem).html(emojified);
   });
 }
 
 function add_data_on_add_fields() {
-  $("a.add_fields").
-  data("association-insertion-method", 'append').
-  data("association-insertion-node", '#hospital-transports');
+  $("a.add_fields")
+    .data("association-insertion-method", 'append')
+    .data("association-insertion-node", '#hospital-transports');
 }
