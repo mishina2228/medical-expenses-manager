@@ -10,6 +10,6 @@
 
 ```
 bundle
-bundle exec rake assets:precompile RAILS_ENV=[RAILS_ENV]
+bundle exec rails assets:precompile RAILS_ENV=[RAILS_ENV]
 bundle exec pumactl start -F config/puma/[RAILS_ENV].rb
 ```
