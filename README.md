@@ -1,12 +1,10 @@
 # medical_expenses_manager
 
-医療費控除管理アプリ
-
-お試しで作成
+Ruby on Rails application for managing medical expenses deductions
 
 # Commands
 
-### ソース更新時の作業
+### After source update
 
 ```
 bundle
