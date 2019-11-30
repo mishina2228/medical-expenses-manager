@@ -5,11 +5,29 @@ class RecordsTest < ApplicationSystemTestCase
     @person = people(:ユーザー1)
     @drugstore = drugstores(:薬局1)
     @record = records(:記録1)
+    100.times do
+      new_record.save!
+    end
   end
 
   test 'visiting the index' do
     visit records_url
     assert_selector 'h1', text: I18n.t('helpers.title.list', models: Record.model_name.human.pluralize(I18n.locale))
+  end
+
+  test 'get max number of records when visit the index with per = MAX_PER + 1' do
+    visit records_url(per: Record::MAX_PER + 1)
+    assert_selector('table tbody tr', count: Record::MAX_PER)
+  end
+
+  test 'get default number of records when visit the index with per = 0' do
+    visit records_url(per: 0)
+    assert_selector('table tbody tr', count: Record::DEFAULT_PER)
+  end
+
+  test 'get default number of records when visit the index with per = -1' do
+    visit records_url(per: -1)
+    assert_selector('table tbody tr', count: Record::DEFAULT_PER)
   end
 
   test 'creating a Record' do
