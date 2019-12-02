@@ -39,6 +39,7 @@ group :development do
   gem 'brakeman'
   gem 'bullet'
   gem 'rubocop', require: false
+  gem 'rubocop-rails', require: false
   gem 'web-console', '>= 3.3.0'
 end
 
