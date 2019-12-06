@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class HospitalTest < ActiveSupport::TestCase
-  def test_validation
+  test 'validation of Hospital' do
     hospital = Hospital.new(valid_params)
     assert hospital.valid?
 
@@ -9,7 +9,7 @@ class HospitalTest < ActiveSupport::TestCase
     assert hospital.invalid?
   end
 
-  def test_unique_validation
+  test 'unique validation of Hospital' do
     hospital = hospitals(:病院1)
     transport = transports(:交通機関1)
     drugstore = drugstores(:薬局1)

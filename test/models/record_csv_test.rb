@@ -1,16 +1,16 @@
 require 'test_helper'
 
-class RecordTest < ActiveSupport::TestCase
+class RecordCsvTest < ActiveSupport::TestCase
   def setup
     @records = [records(:記録1), records(:記録2)]
   end
 
-  def test_validation
+  test 'validation' do
     record = RecordCSV.new(record_csv_params)
     assert record.valid?
   end
 
-  def test_validation_date
+  test 'validation date' do
     record = RecordCSV.new(record_csv_params.merge(date: nil))
     assert record.invalid?
 
@@ -21,12 +21,12 @@ class RecordTest < ActiveSupport::TestCase
     assert record.invalid?
   end
 
-  def test_validation_person_name
+  test 'validation person name' do
     record = RecordCSV.new(record_csv_params.merge(person_name: nil))
     assert record.invalid?
   end
 
-  def test_validation_division
+  test 'validation division' do
     record = RecordCSV.new(record_csv_params.merge(division: nil))
     assert record.invalid?
 
@@ -43,12 +43,12 @@ class RecordTest < ActiveSupport::TestCase
     assert record.valid?
   end
 
-  def test_validation_division_name
+  test 'validation division name' do
     record = RecordCSV.new(record_csv_params.merge(division: nil))
     assert record.invalid?
   end
 
-  def test_validation_cost
+  test 'validation cost' do
     record = RecordCSV.new(record_csv_params.merge(cost: nil))
     assert record.invalid?
 
@@ -62,7 +62,7 @@ class RecordTest < ActiveSupport::TestCase
     assert record.valid?
   end
 
-  def test_export_utf8
+  test 'export as utf8' do
     csv_string = RecordCSV.export(@records, 'utf-8')
     assert_equal 'UTF-8', csv_string.encoding.to_s
     actual = CSV.parse(csv_string, headers: true)
@@ -79,7 +79,7 @@ class RecordTest < ActiveSupport::TestCase
     end
   end
 
-  def test_export_sjis
+  test 'export as sjis' do
     csv_string = RecordCSV.export(@records, 'sjis')
     assert_equal 'Windows-31J', csv_string.encoding.to_s
     actual = CSV.parse(csv_string.encode('utf-8'), headers: true)
@@ -96,7 +96,7 @@ class RecordTest < ActiveSupport::TestCase
     end
   end
 
-  def test_load_csv_utf8
+  test 'load csv as utf8' do
     records = RecordCSV.load(csv_path('test_utf8.csv'))
     records.each_with_index do |record, i|
       assert_equal RecordCSV, record.class
@@ -108,7 +108,7 @@ class RecordTest < ActiveSupport::TestCase
     end
   end
 
-  def test_load_csv_sjis
+  test 'load csv as sjis' do
     records = RecordCSV.load(csv_path('test_sjis.csv'))
     records.each_with_index do |record, i|
       assert_equal RecordCSV, record.class
@@ -120,7 +120,7 @@ class RecordTest < ActiveSupport::TestCase
     end
   end
 
-  def test_load_csv_euc
+  test 'load csv as euc' do
     records = RecordCSV.load(csv_path('test_euc.csv'))
     records.each_with_index do |record, i|
       assert_equal RecordCSV, record.class
@@ -132,7 +132,7 @@ class RecordTest < ActiveSupport::TestCase
     end
   end
 
-  def test_invalid_header
+  test 'csv invalid header' do
     e = assert_raise ArgumentError do
       RecordCSV.load(csv_path('test_utf8_missing_headers.csv'))
     end

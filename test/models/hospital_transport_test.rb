@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class HospitalTransportTest < ActiveSupport::TestCase
-  def test_validation
+  test 'validation of HospitalTransport' do
     HospitalTransport.destroy_all
     ht = HospitalTransport.new(valid_params)
     assert ht.valid?
@@ -19,7 +19,7 @@ class HospitalTransportTest < ActiveSupport::TestCase
     assert ht.valid?
   end
 
-  def test_unique_validation
+  test 'unique validation of HospitalTransport' do
     HospitalTransport.destroy_all
     ht1 = HospitalTransport.new(valid_params)
     assert ht1.valid?

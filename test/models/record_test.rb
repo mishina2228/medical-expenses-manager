@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class RecordTest < ActiveSupport::TestCase
-  def test_validation
+  test 'validation' do
     record = Record.new(valid_params)
     assert record.valid?
 
@@ -16,7 +16,7 @@ class RecordTest < ActiveSupport::TestCase
     assert record.invalid?
   end
 
-  def test_create_self_and_transports_正常系
+  test 'create_self_and_transports' do
     record = Record.new(valid_params)
     assert record.hospital.hospital_transports
 
@@ -27,7 +27,7 @@ class RecordTest < ActiveSupport::TestCase
     assert_equal transports(:交通機関2), ret.third.transport
   end
 
-  def test_create_self_and_transports_正常系_交通費なし
+  test 'create_self_and_transports without hospital_transports' do
     record = Record.new(valid_params.merge(division: hospitals(:病院2)))
     assert record.hospital.hospital_transports.blank?
 
@@ -36,7 +36,7 @@ class RecordTest < ActiveSupport::TestCase
     assert_equal hospitals(:病院2), ret.first.hospital
   end
 
-  def test_create_self_and_transports_異常系_invalid_record
+  test 'create_self_and_transports invalid_record' do
     record = Record.new(valid_params.merge(date: nil))
     assert record.invalid?
 
@@ -45,7 +45,7 @@ class RecordTest < ActiveSupport::TestCase
     end
   end
 
-  def test_annual_statistics_年ごとの合計
+  test 'annual_statistics total cost by year' do
     Record.delete_all
     Record.create(valid_params.merge(date: Date.new(2017, 1, 1), cost: 100))
     Record.create(valid_params.merge(date: Date.new(2017, 12, 31), cost: 100))

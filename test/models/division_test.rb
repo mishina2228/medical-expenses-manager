@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class DivisionTest < ActiveSupport::TestCase
-  def test_division_names
+  test 'division_names' do
     actual = Division.division_names
     expected = {
       'Drugstore' => '薬局',

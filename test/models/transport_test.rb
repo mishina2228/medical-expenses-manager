@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class TransportTest < ActiveSupport::TestCase
-  def test_validation
+  test 'validation of Transport' do
     transport = Transport.new(valid_params)
     assert transport.valid?
 
@@ -9,7 +9,7 @@ class TransportTest < ActiveSupport::TestCase
     assert transport.invalid?
   end
 
-  def test_unique_validation
+  test 'unique validation of Transport' do
     hospital = hospitals(:病院1)
     transport = transports(:交通機関1)
     drugstore = drugstores(:薬局1)

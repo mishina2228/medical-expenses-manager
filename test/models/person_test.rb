@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class PersonTest < ActiveSupport::TestCase
-  def test_validation
+  test 'validation of Person' do
     person = Person.new(valid_params)
     assert person.valid?
 
@@ -12,7 +12,7 @@ class PersonTest < ActiveSupport::TestCase
     assert person.invalid?
   end
 
-  def test_unique_validation
+  test 'unique validation of Person' do
     person = Person.new(valid_params)
     assert person.valid?
     assert person.save
