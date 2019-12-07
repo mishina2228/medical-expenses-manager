@@ -2,7 +2,7 @@ require 'application_system_test_case'
 
 class HospitalsTest < ApplicationSystemTestCase
   setup do
-    @hospital = hospitals(:病院1)
+    @hospital = hospitals(:hospital1)
   end
 
   test 'visiting the index' do

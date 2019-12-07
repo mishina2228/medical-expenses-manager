@@ -22,18 +22,18 @@ class RecordTest < ActiveSupport::TestCase
 
     assert ret = record.create_self_and_transports
     assert_equal 3, ret.size
-    assert_equal hospitals(:病院1), ret.first.hospital
-    assert_equal transports(:交通機関1), ret.second.transport
-    assert_equal transports(:交通機関2), ret.third.transport
+    assert_equal hospitals(:hospital1), ret.first.hospital
+    assert_equal transports(:transport1), ret.second.transport
+    assert_equal transports(:transport2), ret.third.transport
   end
 
   test 'create_self_and_transports without hospital_transports' do
-    record = Record.new(valid_params.merge(division: hospitals(:病院2)))
+    record = Record.new(valid_params.merge(division: hospitals(:hospital2)))
     assert record.hospital.hospital_transports.blank?
 
     assert ret = record.create_self_and_transports
     assert_equal 1, ret.size
-    assert_equal hospitals(:病院2), ret.first.hospital
+    assert_equal hospitals(:hospital2), ret.first.hospital
   end
 
   test 'create_self_and_transports invalid_record' do
@@ -73,8 +73,8 @@ class RecordTest < ActiveSupport::TestCase
   end
 
   def valid_params
-    hospital1 = hospitals(:病院1)
-    person1 = people(:ユーザー1)
+    hospital1 = hospitals(:hospital1)
+    person1 = people(:user1)
     {date: Time.zone.today, cost: 100,
      division_id: hospital1.id, person_id: person1.id}
   end

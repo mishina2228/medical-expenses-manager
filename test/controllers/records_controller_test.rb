@@ -2,7 +2,7 @@ require 'test_helper'
 
 class RecordsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @record = records(:記録1)
+    @record = records(:record1)
   end
 
   test 'should get index' do

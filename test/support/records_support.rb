@@ -1,7 +1,7 @@
 module RecordsSupport
   def new_record
-    hospital1 = hospitals(:病院1)
-    person1 = people(:ユーザー1)
+    hospital1 = hospitals(:hospital1)
+    person1 = people(:user1)
     Record.new(
       date: Time.zone.today,
       cost: rand(100..10_000),

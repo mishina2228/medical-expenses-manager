@@ -1,7 +1,7 @@
-病院1:
+hospital1:
   name: hospital1
   type: Hospital
 
-病院2:
+hospital2:
   name: 病院2
   type: Hospital

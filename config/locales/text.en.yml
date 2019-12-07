@@ -6,6 +6,9 @@ en:
       medical_treatment: Medical treatment
       nursing: Nursing service
       other: Other
+    hospitals:
+      hospital_transports:
+        not_set: Not set
     records:
       total: Total
     statistics:

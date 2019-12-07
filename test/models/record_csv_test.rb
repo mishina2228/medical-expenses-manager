@@ -2,7 +2,7 @@ require 'test_helper'
 
 class RecordCsvTest < ActiveSupport::TestCase
   def setup
-    @records = [records(:記録1), records(:記録2)]
+    @records = [records(:record1), records(:record2)]
   end
 
   test 'validation' do

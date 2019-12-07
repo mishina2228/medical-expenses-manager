@@ -2,7 +2,7 @@ require 'test_helper'
 
 class HospitalsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @hospital = hospitals(:病院1)
+    @hospital = hospitals(:hospital1)
   end
 
   test 'should get index' do
@@ -57,9 +57,9 @@ class HospitalsControllerTest < ActionDispatch::IntegrationTest
       hospital: {
         name: @hospital.name,
         hospital_transports_attributes: {
-          '0' => {id: ht1.id, transport_id: transports(:交通機関1).id, transport_cost: 100, _destroy: true},
+          '0' => {id: ht1.id, transport_id: transports(:transport1).id, transport_cost: 100, _destroy: true},
           '1' => {id: ht2.id, transport_id: transports(:train).id, transport_cost: 4000},
-          '2' => {transport_id: transports(:plane).id, transport_cost: 10000},
+          '2' => {transport_id: transports(:plane).id, transport_cost: 10000}
         }
       }
     }
@@ -85,8 +85,8 @@ class HospitalsControllerTest < ActionDispatch::IntegrationTest
       hospital: {
         name: :hospital1,
         hospital_transports_attributes: {
-          '0' => {transport_id: transports(:交通機関1).id, transport_cost: 100},
-          '1' => {transport_id: transports(:交通機関2).id, transport_cost: 200}
+          '0' => {transport_id: transports(:transport1).id, transport_cost: 100},
+          '1' => {transport_id: transports(:transport2).id, transport_cost: 200}
         }
       }
     }

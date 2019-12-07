@@ -1,9 +1,9 @@
-病院交通費1:
-  hospital: 病院1
-  transport: 交通機関1
+hospital_tranport1:
+  hospital: hospital1
+  transport: transport1
   transport_cost: 100
 
-病院交通費2:
-  hospital: 病院1
-  transport: 交通機関2
+hospital_tranport2:
+  hospital: hospital1
+  transport: transport2
   transport_cost: 200

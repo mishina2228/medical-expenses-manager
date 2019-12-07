@@ -10,9 +10,9 @@ class HospitalTest < ActiveSupport::TestCase
   end
 
   test 'unique validation of Hospital' do
-    hospital = hospitals(:病院1)
-    transport = transports(:交通機関1)
-    drugstore = drugstores(:薬局1)
+    hospital = hospitals(:hospital1)
+    transport = transports(:transport1)
+    drugstore = drugstores(:drugstore1)
 
     hospital_duplicate = Hospital.new(name: hospital.name)
     assert hospital_duplicate.invalid?
@@ -25,7 +25,7 @@ class HospitalTest < ActiveSupport::TestCase
 
     assert hospital.destroy
     assert hospital.deleted_at.present?
-    assert hospital_duplicate.valid?, '論理削除した場合はユニーク制約の対象外'
+    assert hospital_duplicate.valid?, 'should not violate unique constraints when a record logically deleted'
   end
 
   def valid_params

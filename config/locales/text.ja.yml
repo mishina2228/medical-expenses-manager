@@ -6,6 +6,9 @@ ja:
       medical_treatment: 診療・治療
       nursing: 介護保険サービス
       other: その他の医療費
+    hospitals:
+      hospital_transports:
+        not_set: 未設定
     records:
       total: 合計
     statistics:

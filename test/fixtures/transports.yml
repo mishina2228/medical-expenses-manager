@@ -1,8 +1,8 @@
-交通機関1:
+transport1:
   name: transport1
   type: Transport
 
-交通機関2:
+transport2:
   name: transport2
   type: Transport
 

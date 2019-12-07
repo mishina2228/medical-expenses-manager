@@ -1,11 +1,11 @@
-ユーザー1:
+user1:
   name: person1
   relationship: myself
 
-ユーザー2:
+user2:
   name: ユーザー2
   relationship: wife
 
-ユーザー3:
+user3:
   name: person3
   relationship: father

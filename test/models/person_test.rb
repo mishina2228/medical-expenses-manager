@@ -26,7 +26,7 @@ class PersonTest < ActiveSupport::TestCase
 
     assert person.destroy
     assert person.deleted_at.present?
-    assert person_duplicate.valid?, '論理削除した場合はユニーク制約の対象外'
+    assert person_duplicate.valid?, 'should not violate unique constraints when a record logically deleted'
   end
 
   def valid_params

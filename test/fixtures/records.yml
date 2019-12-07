@@ -1,29 +1,29 @@
-記録1:
-  division: 病院1
-  person: ユーザー1
+record1:
+  division: hospital1
+  person: user1
   date: <%= Time.zone.today %>
   cost: 100
 
-記録2:
-  division: 病院2
-  person: ユーザー1
+record2:
+  division: hospital2
+  person: user1
   date: <%= Time.zone.today - 1.day %>
   cost: 200
 
-記録3:
-  division: 薬局1
-  person: ユーザー2
+record3:
+  division: drugstore1
+  person: user2
   date: <%= Time.zone.today - 2.days %>
   cost: 300
 
-記録4:
-  division: 交通機関1
-  person: ユーザー2
+record4:
+  division: transport1
+  person: user2
   date: <%= Time.zone.today - 3.days %>
   cost: 400
 
-記録5:
-  division: 交通機関2
-  person: ユーザー3
+record5:
+  division: transport2
+  person: user3
   date: <%= Time.zone.today - 4.days %>
   cost: 500

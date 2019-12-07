@@ -2,7 +2,7 @@ require 'test_helper'
 
 class TransportsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @transport = transports(:交通機関1)
+    @transport = transports(:transport1)
   end
 
   test 'should get index' do

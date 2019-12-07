@@ -2,7 +2,7 @@ require 'application_system_test_case'
 
 class TransportTest < ApplicationSystemTestCase
   setup do
-    @transport = transports(:交通機関1)
+    @transport = transports(:transport1)
   end
 
   test 'visiting the index' do

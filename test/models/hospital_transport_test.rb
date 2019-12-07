@@ -25,7 +25,7 @@ class HospitalTransportTest < ActiveSupport::TestCase
     assert ht1.valid?
     assert ht1.save
 
-    hospital2 = hospitals(:病院2)
+    hospital2 = hospitals(:hospital2)
     ht2 = HospitalTransport.new(valid_params.merge(hospital_id: hospital2.id))
     assert ht2.valid?
 
@@ -35,12 +35,12 @@ class HospitalTransportTest < ActiveSupport::TestCase
     assert_nil ht1.deleted_at
     assert ht1.destroy
     assert ht1.deleted_at.present?
-    assert ht3.valid?, '論理削除した場合はユニーク制約の対象外'
+    assert ht3.valid?, 'should not violate unique constraints when a record logically deleted'
   end
 
   def valid_params
-    hospital = hospitals(:病院1)
-    transport = transports(:交通機関1)
+    hospital = hospitals(:hospital1)
+    transport = transports(:transport1)
     {hospital_id: hospital.id, transport_id: transport.id, transport_cost: 100}
   end
 end

@@ -4,9 +4,9 @@ class DivisionTest < ActiveSupport::TestCase
   test 'division_names' do
     actual = Division.division_names
     expected = {
-      'Drugstore' => '薬局',
-      'Hospital' => '病院',
-      'Transport' => '交通機関'
+      'Drugstore' => I18n.t('activerecord.models.drugstore'),
+      'Hospital' => I18n.t('activerecord.models.hospital'),
+      'Transport' => I18n.t('activerecord.models.transport')
     }
 
     assert_equal expected, actual

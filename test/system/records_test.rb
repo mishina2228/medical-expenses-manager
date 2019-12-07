@@ -2,9 +2,9 @@ require 'application_system_test_case'
 
 class RecordsTest < ApplicationSystemTestCase
   setup do
-    @person = people(:ユーザー1)
-    @drugstore = drugstores(:薬局1)
-    @record = records(:記録1)
+    @person = people(:user1)
+    @drugstore = drugstores(:drugstore1)
+    @record = records(:record1)
     100.times do
       new_record.save!
     end

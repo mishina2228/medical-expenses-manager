@@ -2,7 +2,7 @@ require 'application_system_test_case'
 
 class DrugstoresTest < ApplicationSystemTestCase
   setup do
-    @drugstore = drugstores(:薬局1)
+    @drugstore = drugstores(:drugstore1)
   end
 
   test 'visiting the index' do
