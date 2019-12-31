@@ -65,5 +65,4 @@ jobs: # a collection of steps
             bundle exec rails test:system
 
       - store_artifacts:
-          path: test/artifacts
-  
+          path: tmp/screenshots
