@@ -120,6 +120,8 @@ GEM
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.13.0)
+    minitest-ci (3.4.0)
+      minitest (>= 5.0.6)
     momentjs-rails (2.20.1)
       railties (>= 3.1)
     msgpack (1.3.1)
@@ -252,6 +254,7 @@ DEPENDENCIES
   jquery-ui-rails
   kaminari (~> 1.1.1)
   kaminari-bootstrap (~> 3.0.1)
+  minitest-ci
   momentjs-rails (>= 2.9.0)
   paranoia (~> 2.2)
   puma (~> 4.3)
