@@ -24,7 +24,7 @@ commands:
     steps:
       - run:
           name: Setup RubyGems and Bundler
-          command: |
+          command: |-
             sudo gem update --system
   which_bundler:
     steps:
@@ -67,6 +67,37 @@ commands:
       - store_test_results: # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
           path: test/reports
 
+minitest_steps: &minitest_steps
+  - checkout
+  - update_rubygems
+  - which_bundler
+  - which_ruby
+  - restore_gems
+  - install_gems
+  - save_gems
+  - setup_database
+  - run:
+      name: Run minitest
+      command: |-
+        bundle exec rails test
+  - store_test_reports
+system_test_steps: &system_test_steps
+  - checkout
+  - update_rubygems
+  - which_bundler
+  - which_ruby
+  - restore_gems
+  - install_gems
+  - save_gems
+  - setup_database
+  - run:
+      name: Run system test
+      command: |-
+        bundle exec rails test:system
+  - store_test_reports
+  - store_artifacts:
+      path: tmp/screenshots
+
 jobs: # a collection of steps
   brakeman:
     executor: default
@@ -80,47 +111,23 @@ jobs: # a collection of steps
       - save_gems
       - run:
           name: Run Brakeman
-          command: |
+          command: |-
             bundle exec brakeman
   minitest:
     executor: default
     steps:
-      - checkout
-      - update_rubygems
-      - which_bundler
-      - which_ruby
-      - restore_gems
-      - install_gems
-      - save_gems
-      - setup_database
-      - run:
-          name: Run minitest
-          command: |
-            bundle exec rails test
-      - store_test_reports
+      *minitest_steps
   system_test:
     executor: browser
     steps:
-      - checkout
-      - update_rubygems
-      - which_bundler
-      - which_ruby
-      - restore_gems
-      - install_gems
-      - save_gems
-      - setup_database
-      - run:
-          name: Run system test
-          command: |
-            bundle exec rails test:system
-      - store_test_reports
-      - store_artifacts:
-          path: tmp/screenshots
+      *system_test_steps
 
 workflows:
   version: 2.1
-  ruby-2.6.5-test:
+  brakeman:
     jobs:
       - brakeman
+  ruby-2.6.5-test:
+    jobs:
       - minitest
       - system_test
