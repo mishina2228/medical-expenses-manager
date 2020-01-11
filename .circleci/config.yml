@@ -1,24 +1,23 @@
 version: 2.1 # use CircleCI 2.1
 
+common_env: &common_env
+  BUNDLE_JOBS: 3
+  BUNDLE_RETRY: 3
+  BUNDLE_PATH: vendor/bundle
+  RAILS_ENV: test
+  TZ: 'Asia/Tokyo'
+
 executors:
   default:
     docker:
       - image: circleci/ruby:2.6.5-node
-        environment:
-          BUNDLE_JOBS: 3
-          BUNDLE_RETRY: 3
-          BUNDLE_PATH: vendor/bundle
-          RAILS_ENV: test
-          TZ: 'Asia/Tokyo'
+    environment:
+      <<: *common_env
   browser:
     docker:
       - image: circleci/ruby:2.6.5-node-browsers
-        environment:
-          BUNDLE_JOBS: 3
-          BUNDLE_RETRY: 3
-          BUNDLE_PATH: vendor/bundle
-          RAILS_ENV: test
-          TZ: 'Asia/Tokyo'
+    environment:
+      <<: *common_env
 commands:
   update_rubygems:
     steps:
