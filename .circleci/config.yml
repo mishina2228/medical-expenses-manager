@@ -13,14 +13,24 @@ executors:
       - image: circleci/ruby:latest
     environment:
       <<: *common_env
-  node-browsers-2_4_7:
+  node-browsers-2-4:
     docker:
-      - image: circleci/ruby:2.4.7-node-browsers
+      - image: circleci/ruby:2.4-node-browsers
     environment:
       <<: *common_env
-  node-browsers-2_6_5:
+  node-browsers-2-5:
     docker:
-      - image: circleci/ruby:2.6.5-node-browsers
+      - image: circleci/ruby:2.5node-browsers
+    environment:
+      <<: *common_env
+  node-browsers-2-6:
+    docker:
+      - image: circleci/ruby:2.6-node-browsers
+    environment:
+      <<: *common_env
+  node-browsers-latest:
+    docker:
+      - image: circleci/ruby:latest-node-browsers
     environment:
       <<: *common_env
 commands:
@@ -117,12 +127,28 @@ jobs: # a collection of steps
           name: Run Brakeman
           command: |-
             bundle exec brakeman
-  minitest-2_6_5:
-    executor: node-browsers-2_6_5
+  minitest-2-4:
+    executor: node-browsers-2-4
     steps:
       *minitest_steps
-  system_test-2_6_5:
-    executor: node-browsers-2_6_5
+  system-test-2-4:
+    executor: node-browsers-2-4
+    steps:
+      *system_test_steps
+  minitest-2-5:
+    executor: node-browsers-2-5
+    steps:
+      *minitest_steps
+  system-test-2-5:
+    executor: node-browsers-2-5
+    steps:
+      *system_test_steps
+  minitest-2-6:
+    executor: node-browsers-2-6
+    steps:
+      *minitest_steps
+  system-test-2-6:
+    executor: node-browsers-2-6
     steps:
       *system_test_steps
 
@@ -131,7 +157,15 @@ workflows:
   brakeman:
     jobs:
       - brakeman
-  ruby-2.6.5-test:
+  ruby-2.4-test:
     jobs:
-      - minitest-2_6_5
-      - system_test-2_6_5
+      - minitest-2-4
+      - system-test-2-4
+  ruby-2.5-test:
+    jobs:
+      - minitest-2-5
+      - system-test-2-5
+  ruby-2.6-test:
+    jobs:
+      - minitest-2-6
+      - system-test-2-6
