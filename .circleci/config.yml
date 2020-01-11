@@ -103,9 +103,9 @@ jobs: # a collection of steps
       - store_artifacts:
           path: tmp/screenshots
 
-  workflows:
-    version: 2.1
-    ruby-2.6.5-test:
-      jobs:
-        - minitest
-        - system_test
+workflows:
+  version: 2.1
+  ruby-2.6.5-test:
+    jobs:
+      - minitest
+      - system_test
