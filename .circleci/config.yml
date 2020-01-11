@@ -48,10 +48,14 @@ commands:
   # Restore bundle cache
   # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
   restore_gems:
+    parameters:
+      ruby-version:
+        type: string
+        default: '2.6'
     steps:
       - restore_cache:
           keys:
-            - bundle-v2-{{ checksum "Gemfile.lock" }}
+            - bundle-v2-{{ << parameters.ruby-version >> }}-{{ checksum "Gemfile.lock" }}
             - bundle-v2-
   # Install Ruby dependencies
   install_gems:
@@ -61,9 +65,13 @@ commands:
           command: bundle check || bundle install
   # Store bundle cache for Ruby dependencies
   save_gems:
+    parameters:
+      ruby-version:
+        type: string
+        default: '2.6'
     steps:
       - save_cache:
-          key: bundle-v2-{{ checksum "Gemfile.lock" }}
+          key: bundle-v2-{{ << parameters.ruby-version >> }}-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
   setup_database:
@@ -115,9 +123,11 @@ jobs: # a collection of steps
       - update_rubygems
       - which_bundler
       - which_ruby
-      - restore_gems
+      - restore_gems:
+          ruby-version: latest
       - install_gems
-      - save_gems
+      - save_gems:
+          ruby-version: latest
       - run:
           name: Run Brakeman
           command: |-
