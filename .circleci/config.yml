@@ -192,6 +192,44 @@ jobs: # a collection of steps
       - store_test_reports
       - store_artifacts:
           path: tmp/screenshots
+  minitest-latest:
+    executor: node-browsers-latest
+    steps:
+      - checkout
+      - update_rubygems
+      - which_bundler
+      - which_ruby
+      - restore_gems:
+          ruby-version: latest
+      - install_gems
+      - save_gems:
+          ruby-version: latest
+      - setup_database
+      - run:
+          name: Run minitest
+          command: |-
+            bundle exec rails test
+      - store_test_reports
+  system-test-latest:
+    executor: node-browsers-latest
+    steps:
+      - checkout
+      - update_rubygems
+      - which_bundler
+      - which_ruby
+      - restore_gems:
+          ruby-version: latest
+      - install_gems
+      - save_gems:
+          ruby-version: latest
+      - setup_database
+      - run:
+          name: Run system test
+          command: |-
+            bundle exec rails test:system
+      - store_test_reports
+      - store_artifacts:
+          path: tmp/screenshots
 
 workflows:
   version: 2.1
@@ -206,3 +244,7 @@ workflows:
     jobs:
       - minitest-2-6
       - system-test-2-6
+  ruby-latest-test:
+    jobs:
+      - minitest-latest
+      - system-test-latest
