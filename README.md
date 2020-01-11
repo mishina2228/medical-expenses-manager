@@ -1,4 +1,5 @@
 [![CircleCI](https://circleci.com/gh/mishina2228/medical-expenses-manager.svg?style=svg)](https://circleci.com/gh/mishina2228/medical-expenses-manager)
+[![Maintainability](https://api.codeclimate.com/v1/badges/58fc7e9f69118ecdb8ff/maintainability)](https://codeclimate.com/github/mishina2228/medical-expenses-manager/maintainability)
 
 # medical_expenses_manager
 
