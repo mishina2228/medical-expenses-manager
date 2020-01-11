@@ -1,67 +1,111 @@
-version: 2 # use CircleCI 2.0
-jobs: # a collection of steps
-  build: # runs not using Workflows must have a `build` job as entry point
-    parallelism: 3 # run three instances of this job in parallel
-    docker: # run the steps with Docker
-      - image: circleci/ruby:2.6.5-node-browsers # ...with this image as the primary container; this is where all `steps` will run
-        environment: # environment variables for primary container
+version: 2.1 # use CircleCI 2.1
+
+executors:
+  default:
+    docker:
+      - image: circleci/ruby:2.6.5
+        environment:
           BUNDLE_JOBS: 3
           BUNDLE_RETRY: 3
           BUNDLE_PATH: vendor/bundle
           RAILS_ENV: test
-    environment:
-      TZ: 'Asia/Tokyo'
-    steps: # a collection of executable commands
-      - checkout # special step to check out source code to working directory
-
+          TZ: 'Asia/Tokyo'
+  browser:
+    docker:
+      - image: circleci/ruby:2.6.5-node-browsers
+        environment:
+          BUNDLE_JOBS: 3
+          BUNDLE_RETRY: 3
+          BUNDLE_PATH: vendor/bundle
+          RAILS_ENV: test
+          TZ: 'Asia/Tokyo'
+commands:
+  update_rubygems:
+    steps:
       - run:
           name: Setup RubyGems and Bundler
           command: |
             sudo gem update --system
-
-      # Which version of bundler?
+  which_bundler:
+    steps:
       - run:
           name: Which bundler?
           command: bundle -v
-
-      # Restore bundle cache
-      # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
+  which_ruby:
+    steps:
+      - run:
+          name: Which Ruby?
+          command: ruby -v
+  # Restore bundle cache
+  # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
+  restore_gems:
+    steps:
       - restore_cache:
           keys:
             - bundle-v2-{{ checksum "Gemfile.lock" }}
             - bundle-v2-
-
-      - run: # Install Ruby dependencies
+  # Install Ruby dependencies
+  install_gems:
+    steps:
+      - run:
           name: Bundle Install
           command: bundle check || bundle install
-
-      # Store bundle cache for Ruby dependencies
+  # Store bundle cache for Ruby dependencies
+  save_gems:
+    steps:
       - save_cache:
           key: bundle-v2-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
-
+  setup_database:
+    steps:
       - run:
           name: Database setup
           command: bin/rails db:schema:load --trace
+  store_test_reports:
+    steps:
+      - store_test_results: # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
+          path: test/reports
 
+jobs: # a collection of steps
+  minitest:
+    executor: default
+    steps:
+      - checkout
+      - update_rubygems
+      - which_bundler
+      - which_ruby
+      - restore_gems
+      - install_gems
+      - save_gems
+      - setup_database
       - run:
           name: Run minitest
           command: |
             bundle exec rails test
-
-      # Save test results for timing analysis
-      - store_test_results: # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
-          path: test/reports
-      # See https://circleci.com/docs/2.0/deployment-integrations/ for example deploy configs
-
+      - store_test_reports
+  system_test:
+    executor: browser
+    steps:
+      - checkout
+      - update_rubygems
+      - which_bundler
+      - which_ruby
+      - restore_gems
+      - install_gems
+      - save_gems
+      - setup_database
       - run:
           name: Run system test
           command: |
             bundle exec rails test:system
-
-      - store_test_results: # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
-          path: test/reports
-
+      - store_test_reports
       - store_artifacts:
           path: tmp/screenshots
+
+  workflows:
+    version: 2.1
+    ruby-2.6.5-test:
+      jobs:
+        - minitest
+        - system_test
