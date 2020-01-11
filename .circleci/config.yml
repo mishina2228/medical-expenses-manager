@@ -55,7 +55,7 @@ commands:
     steps:
       - restore_cache:
           keys:
-            - bundle-v2-{{ << parameters.ruby-version >> }}-{{ checksum "Gemfile.lock" }}
+            - bundle-v2-<< parameters.ruby-version >>-{{ checksum "Gemfile.lock" }}
             - bundle-v2-
   # Install Ruby dependencies
   install_gems:
