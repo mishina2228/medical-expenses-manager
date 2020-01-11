@@ -68,6 +68,20 @@ commands:
           path: test/reports
 
 jobs: # a collection of steps
+  brakeman:
+    executor: default
+    steps:
+      - checkout
+      - update_rubygems
+      - which_bundler
+      - which_ruby
+      - restore_gems
+      - install_gems
+      - save_gems
+      - run:
+          name: Run Brakeman
+          command: |
+            bundle exec brakeman
   minitest:
     executor: default
     steps:
@@ -107,5 +121,6 @@ workflows:
   version: 2.1
   ruby-2.6.5-test:
     jobs:
+      - brakeman
       - minitest
       - system_test
