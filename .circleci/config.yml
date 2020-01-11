@@ -8,12 +8,17 @@ common_env: &common_env
   TZ: 'Asia/Tokyo'
 
 executors:
-  default:
+  latest:
     docker:
-      - image: circleci/ruby:2.6.5-node
+      - image: circleci/ruby:latest
     environment:
       <<: *common_env
-  browser:
+  node-browsers-2_4_7:
+    docker:
+      - image: circleci/ruby:2.4.7-node-browsers
+    environment:
+      <<: *common_env
+  node-browsers-2_6_5:
     docker:
       - image: circleci/ruby:2.6.5-node-browsers
     environment:
@@ -99,7 +104,7 @@ system_test_steps: &system_test_steps
 
 jobs: # a collection of steps
   brakeman:
-    executor: default
+    executor: latest
     steps:
       - checkout
       - update_rubygems
@@ -112,12 +117,12 @@ jobs: # a collection of steps
           name: Run Brakeman
           command: |-
             bundle exec brakeman
-  minitest:
-    executor: default
+  minitest-2_6_5:
+    executor: node-browsers-2_6_5
     steps:
       *minitest_steps
-  system_test:
-    executor: browser
+  system_test-2_6_5:
+    executor: node-browsers-2_6_5
     steps:
       *system_test_steps
 
@@ -128,5 +133,5 @@ workflows:
       - brakeman
   ruby-2.6.5-test:
     jobs:
-      - minitest
-      - system_test
+      - minitest-2_6_5
+      - system_test-2_6_5
