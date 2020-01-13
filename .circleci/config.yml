@@ -84,8 +84,6 @@ commands:
           name: Run minitest
           command: |-
             bundle exec rails test
-      - store_artifacts:
-          path: coverage
   system_test:
     steps:
       - run:
