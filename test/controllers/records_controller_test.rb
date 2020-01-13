@@ -15,7 +15,7 @@ class RecordsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should create record' do
+  test 'should create a record' do
     Record.delete_all
     assert_equal 2, @record.hospital.hospital_transports.size
 
@@ -55,7 +55,7 @@ class RecordsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to new_record_url(record_params)
   end
 
-  test 'should not create record unless record is valid' do
+  test 'should not create a record unless parameters are valid' do
     @record.date = nil
     assert @record.invalid?
 
@@ -74,7 +74,7 @@ class RecordsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should show record' do
+  test 'should show a record' do
     get record_url(id: @record)
     assert_response :success
   end
@@ -84,7 +84,7 @@ class RecordsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should update record' do
+  test 'should update a record' do
     patch record_url(id: @record),
           params: {
             record: {
@@ -96,7 +96,8 @@ class RecordsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to records_url
   end
 
-  test 'should not update record unless record is valid' do
+  test 'should not update a record unless parameters are valid' do
+    before_cost = @record.cost
     @record.cost = nil
     assert @record.invalid?
 
@@ -108,9 +109,10 @@ class RecordsControllerTest < ActionDispatch::IntegrationTest
           }
 
     assert_response :success
+    assert_equal before_cost, @record.reload.cost
   end
 
-  test 'should destroy record' do
+  test 'should destroy a record' do
     assert_difference -> {Record.count}, -1 do
       delete record_url(id: @record)
     end

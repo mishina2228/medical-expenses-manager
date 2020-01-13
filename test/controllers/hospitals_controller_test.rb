@@ -15,7 +15,7 @@ class HospitalsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should create hospital with hospital_transports' do
+  test 'should create a hospital with hospital_transports' do
     Hospital.delete_all
     assert_difference -> {Hospital.count} do
       assert_difference -> {HospitalTransport.count}, 2 do
@@ -23,10 +23,19 @@ class HospitalsControllerTest < ActionDispatch::IntegrationTest
       end
     end
 
+    assert_response :redirect
     assert_redirected_to hospitals_url
   end
 
-  test 'should show hospital' do
+  test 'should not create a hospital unless parameters are valid' do
+    assert_no_difference -> {Hospital.count} do
+      post hospitals_url, params: hospitals_params.merge(name: nil)
+    end
+
+    assert_response :success
+  end
+
+  test 'should show a hospital' do
     get hospital_url(id: @hospital)
     assert_response :success
   end
@@ -36,7 +45,7 @@ class HospitalsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should update hospital' do
+  test 'should update a hospital' do
     name = @hospital.name + 'test1'
     patch hospital_url(id: @hospital),
           params: {
@@ -44,8 +53,26 @@ class HospitalsControllerTest < ActionDispatch::IntegrationTest
               name: name
             }
           }
+
+    assert_response :redirect
     assert_redirected_to hospitals_url
     assert_equal name, @hospital.reload.name
+  end
+
+  test 'should not update a hospital unless parameters are valid' do
+    before_name = @hospital.name
+    @hospital.name = nil
+    assert @hospital.invalid?
+
+    patch hospital_url(id: @hospital),
+          params: {
+            hospital: {
+              name: @hospital.name
+            }
+          }
+
+    assert_response :success
+    assert_equal before_name, @hospital.reload.name
   end
 
   test 'should update hospital_transports' do
@@ -65,11 +92,14 @@ class HospitalsControllerTest < ActionDispatch::IntegrationTest
     }
 
     patch hospital_url(id: @hospital), params: params
+
+    assert_response :redirect
+    assert_redirected_to hospitals_url
     assert_equal 2, @hospital.hospital_transports.count
     assert_equal 4000, ht2.reload.transport_cost
   end
 
-  test 'should destroy hospital with hospital_transports' do
+  test 'should destroy a hospital with hospital_transports' do
     assert_equal 2, @hospital.hospital_transports.size
     assert_difference -> {Hospital.count}, -1 do
       assert_difference -> {HospitalTransport.count}, -2 do
@@ -77,6 +107,7 @@ class HospitalsControllerTest < ActionDispatch::IntegrationTest
       end
     end
 
+    assert_response :redirect
     assert_redirected_to hospitals_url
   end
 

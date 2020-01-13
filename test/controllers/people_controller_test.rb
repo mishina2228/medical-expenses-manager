@@ -15,7 +15,7 @@ class PeopleControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should create person' do
+  test 'should create a person' do
     Person.delete_all
     assert_difference -> {Person.count} do
       post people_url,
@@ -27,10 +27,28 @@ class PeopleControllerTest < ActionDispatch::IntegrationTest
            }
     end
 
+    assert_response :redirect
     assert_redirected_to people_url
   end
 
-  test 'should show person' do
+  test 'should not create a person unless parameters are valid' do
+    @person.name = nil
+    assert @person.invalid?
+
+    assert_no_difference -> {Person.count} do
+      post people_url,
+           params: {
+             person: {
+               name: @person.name,
+               relationship: @person.relationship
+             }
+           }
+    end
+
+    assert_response :success
+  end
+
+  test 'should show a person' do
     get person_url(id: @person)
     assert_response :success
   end
@@ -40,7 +58,7 @@ class PeopleControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should update person' do
+  test 'should update a person' do
     patch person_url(id: @person),
           params: {
             person: {
@@ -48,14 +66,34 @@ class PeopleControllerTest < ActionDispatch::IntegrationTest
               relationship: @person.relationship
             }
           }
+
+    assert_response :redirect
     assert_redirected_to people_url
   end
 
-  test 'should destroy person' do
+  test 'should not update a person unless parameters are valid' do
+    before_name = @person.name
+    @person.name = nil
+    assert @person.invalid?
+
+    patch person_url(id: @person),
+          params: {
+            person: {
+              name: @person.name,
+              relationship: @person.relationship
+            }
+          }
+
+    assert_response :success
+    assert_equal before_name, @person.reload.name
+  end
+
+  test 'should destroy a person' do
     assert_difference -> {Person.count}, -1 do
       delete person_url(id: @person)
     end
 
+    assert_response :redirect
     assert_redirected_to people_url
   end
 end

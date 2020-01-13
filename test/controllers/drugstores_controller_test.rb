@@ -15,7 +15,7 @@ class DrugstoresControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should create drugstore' do
+  test 'should create a drugstore' do
     Drugstore.delete_all
     assert_difference -> {Drugstore.count} do
       post drugstores_url,
@@ -26,10 +26,27 @@ class DrugstoresControllerTest < ActionDispatch::IntegrationTest
            }
     end
 
+    assert_response :redirect
     assert_redirected_to drugstores_url
   end
 
-  test 'should show drugstore' do
+  test 'should not create a drugstore unless parameters are valid' do
+    @drugstore.name = nil
+    assert @drugstore.invalid?
+
+    assert_no_difference -> {Drugstore.count} do
+      post drugstores_url,
+           params: {
+             drugstore: {
+               name: @drugstore.name
+             }
+           }
+    end
+
+    assert_response :success
+  end
+
+  test 'should show a drugstore' do
     get drugstore_url(id: @drugstore)
     assert_response :success
   end
@@ -39,21 +56,40 @@ class DrugstoresControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should update drugstore' do
+  test 'should update a drugstore' do
     patch drugstore_url(id: @drugstore),
           params: {
             drugstore: {
               name: @drugstore.name
             }
           }
+
+    assert_response :redirect
     assert_redirected_to drugstores_url
   end
 
-  test 'should destroy drugstore' do
+  test 'should not update a drugstore unless parameters are valid' do
+    before_name = @drugstore.name
+    @drugstore.name = nil
+    assert @drugstore.invalid?
+    
+    patch drugstore_url(id: @drugstore),
+          params: {
+            drugstore: {
+              name: @drugstore.name
+            }
+          }
+
+    assert_response :success
+    assert_equal before_name, @drugstore.reload.name
+  end
+
+  test 'should destroy a drugstore' do
     assert_difference -> {Drugstore.count}, -1 do
       delete drugstore_url(id: @drugstore)
     end
 
+    assert_response :redirect
     assert_redirected_to drugstores_url
   end
 end

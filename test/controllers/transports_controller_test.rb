@@ -15,7 +15,7 @@ class TransportsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should create transports' do
+  test 'should create a transport' do
     Transport.delete_all
     assert_difference -> {Transport.count} do
       post transports_url,
@@ -26,10 +26,27 @@ class TransportsControllerTest < ActionDispatch::IntegrationTest
            }
     end
 
+    assert_response :redirect
     assert_redirected_to transports_url
   end
 
-  test 'should show transports' do
+  test 'should not create a transport unless parameters are valid' do
+    @transport.name = nil
+    assert @transport.invalid?
+
+    assert_no_difference -> {Transport.count} do
+      post transports_url,
+           params: {
+             transport: {
+               name: @transport.name
+             }
+           }
+    end
+
+    assert_response :success
+  end
+
+  test 'should show a transport' do
     get transport_url(id: @transport)
     assert_response :success
   end
@@ -39,21 +56,40 @@ class TransportsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should update transports' do
+  test 'should update a transport' do
     patch transport_url(id: @transport),
           params: {
             transport: {
               name: @transport.name
             }
           }
+
+    assert_response :redirect
     assert_redirected_to transports_url
   end
 
-  test 'should destroy transports' do
+  test 'should not update a transport unless parameters are valid' do
+    before_name = @transport.name
+    @transport.name = nil
+    assert @transport.invalid?
+
+    patch transport_url(id: @transport),
+          params: {
+            transport: {
+              name: @transport.name
+            }
+          }
+
+    assert_response :success
+    assert_equal before_name, @transport.reload.name
+  end
+
+  test 'should destroy a transport' do
     assert_difference -> {Transport.count}, -1 do
       delete transport_url(id: @transport)
     end
 
+    assert_response :redirect
     assert_redirected_to transports_url
   end
 end
