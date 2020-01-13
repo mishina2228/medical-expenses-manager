@@ -1,6 +1,10 @@
 require 'test_helper'
 
 class Search::RecordTest < ActiveSupport::TestCase
+  test 'search' do
+    # TODO
+  end
+
   test 'days_of_month' do
     record = Search::Record.new(month: '2018-02')
     expected = Time.new(2018, 2, 1)..Time.new(2018, 2, 28).end_of_day

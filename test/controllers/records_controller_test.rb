@@ -120,4 +120,8 @@ class RecordsControllerTest < ActionDispatch::IntegrationTest
     assert_response :redirect
     assert_redirected_to records_url
   end
+
+  test 'should get records that match the search conditions' do
+    # TODO
+  end
 end
