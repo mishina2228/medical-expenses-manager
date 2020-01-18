@@ -36,7 +36,8 @@ class Record < ApplicationRecord
   end
 
   def self.annual_statistics(year = nil)
-    year_date = Date.new(year.to_i || Time.current.year)
+    year ||= Time.current.year
+    year_date = Date.new(year.to_i)
     Record.where(date: year_date.all_year)
           .group(:person_id)
           .group(:division_id)
