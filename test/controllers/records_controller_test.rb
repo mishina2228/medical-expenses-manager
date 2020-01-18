@@ -15,6 +15,14 @@ class RecordsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'should redirect to index when trying to get new without any Person' do
+    Person.delete_all
+    get new_record_url
+
+    assert_response :redirect
+    assert_redirected_to records_url
+  end
+
   test 'should create a record' do
     Record.delete_all
     assert_equal 2, @record.hospital.hospital_transports.size
@@ -74,6 +82,14 @@ class RecordsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'should redirect to index when trying to create a record without any Person' do
+    Person.delete_all
+    post records_url
+
+    assert_response :redirect
+    assert_redirected_to records_url
+  end
+
   test 'should show a record' do
     get record_url(id: @record)
     assert_response :success
@@ -82,6 +98,14 @@ class RecordsControllerTest < ActionDispatch::IntegrationTest
   test 'should get edit' do
     get edit_record_url(id: @record)
     assert_response :success
+  end
+
+  test 'should redirect to index when trying to edit a record without any Person' do
+    Person.delete_all
+    get edit_record_url(id: @record)
+
+    assert_response :redirect
+    assert_redirected_to records_url
   end
 
   test 'should update a record' do
@@ -110,6 +134,14 @@ class RecordsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :success
     assert_equal before_cost, @record.reload.cost
+  end
+
+  test 'should redirect to index when trying to update a record without any Person' do
+    Person.delete_all
+    patch record_url(id: @record)
+
+    assert_response :redirect
+    assert_redirected_to records_url
   end
 
   test 'should destroy a record' do
