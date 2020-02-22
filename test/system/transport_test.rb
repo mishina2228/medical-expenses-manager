@@ -7,7 +7,8 @@ class TransportTest < ApplicationSystemTestCase
 
   test 'visiting the index' do
     visit transports_url
-    assert_selector 'h1', text: I18n.t('helpers.title.list', models: Transport.model_name.human.pluralize(I18n.locale))
+    text = I18n.t('helpers.title.list', models: Transport.model_name.human.pluralize(I18n.locale))
+    assert_selector 'h1', text: text
   end
 
   test 'creating a Transport' do
@@ -18,7 +19,8 @@ class TransportTest < ApplicationSystemTestCase
     click_on I18n.t('helpers.submit.create')
 
     assert_text I18n.t('helpers.notice.create')
-    assert_selector 'h1', text: I18n.t('helpers.title.list', models: Transport.model_name.human.pluralize(I18n.locale))
+    text = I18n.t('helpers.title.list', models: Transport.model_name.human.pluralize(I18n.locale))
+    assert_selector 'h1', text: text
   end
 
   test 'updating a Transport' do

@@ -12,7 +12,8 @@ class RecordsTest < ApplicationSystemTestCase
 
   test 'visiting the index' do
     visit records_url
-    assert_selector 'h1', text: I18n.t('helpers.title.list', models: Record.model_name.human.pluralize(I18n.locale))
+    text = I18n.t('helpers.title.list', models: Record.model_name.human.pluralize(I18n.locale))
+    assert_selector 'h1', text: text
   end
 
   test 'get max number of records when visit the index with per = MAX_PER + 1' do
@@ -34,7 +35,7 @@ class RecordsTest < ApplicationSystemTestCase
     visit records_url
     click_on I18n.t('helpers.link.new'), match: :first
 
-    fill_in Record.human_attribute_name(:date), with: Date.today.strftime('%Y-%m-%d')
+    fill_in Record.human_attribute_name(:date), with: Time.zone.today.strftime('%Y-%m-%d')
     select @person.name, from: 'record_person_id'
     select Drugstore.model_name.human, from: 'record_division_type'
     select @drugstore.name, from: 'record_division_id'
@@ -42,14 +43,15 @@ class RecordsTest < ApplicationSystemTestCase
     click_on I18n.t('helpers.submit.create')
 
     assert_text I18n.t('helpers.notice.create')
-    assert_selector 'h1', text: I18n.t('helpers.title.list', models: Record.model_name.human.pluralize(I18n.locale))
+    text = I18n.t('helpers.title.list', models: Record.model_name.human.pluralize(I18n.locale))
+    assert_selector 'h1', text: text
   end
 
   test 'creating a Record continuously' do
     visit records_url
     click_on I18n.t('helpers.link.new'), match: :first
 
-    fill_in Record.human_attribute_name(:date), with: Date.today.strftime('%Y-%m-%d')
+    fill_in Record.human_attribute_name(:date), with: Time.zone.today.strftime('%Y-%m-%d')
     select @person.name, from: 'record_person_id'
     select Drugstore.model_name.human, from: 'record_division_type'
     select @drugstore.name, from: 'record_division_id'
@@ -59,7 +61,8 @@ class RecordsTest < ApplicationSystemTestCase
 
     assert_text I18n.t('helpers.notice.create')
     assert_text I18n.t('helpers.notice.continuously_create')
-    assert_selector 'h1', text: I18n.t('helpers.title.new', model: Record.model_name.human.pluralize(I18n.locale))
+    text = I18n.t('helpers.title.new', model: Record.model_name.human.pluralize(I18n.locale))
+    assert_selector 'h1', text: text
   end
 
   test 'updating a Record' do

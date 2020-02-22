@@ -164,7 +164,7 @@ class RecordCsvTest < ActiveSupport::TestCase
   end
 
   def csv_path(file)
-    Rails.root.join('test', 'data', file)
+    Rails.root.join('test/data', file)
   end
 
   def record_csv_params

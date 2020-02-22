@@ -25,7 +25,8 @@ class HospitalTest < ActiveSupport::TestCase
 
     assert hospital.destroy
     assert hospital.deleted_at.present?
-    assert hospital_duplicate.valid?, 'should not violate unique constraints when a record logically deleted'
+    assert hospital_duplicate.valid?,
+           'should not violate unique constraints when a record logically deleted'
   end
 
   def valid_params

@@ -84,7 +84,10 @@ class HospitalsControllerTest < ActionDispatch::IntegrationTest
       hospital: {
         name: @hospital.name,
         hospital_transports_attributes: {
-          '0' => {id: ht1.id, transport_id: transports(:transport1).id, transport_cost: 100, _destroy: true},
+          '0' => {
+            id: ht1.id, transport_id: transports(:transport1).id, transport_cost: 100,
+            _destroy: true
+          },
           '1' => {id: ht2.id, transport_id: transports(:train).id, transport_cost: 4000},
           '2' => {transport_id: transports(:plane).id, transport_cost: 10000}
         }

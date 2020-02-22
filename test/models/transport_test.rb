@@ -25,7 +25,8 @@ class TransportTest < ActiveSupport::TestCase
 
     assert transport.destroy
     assert transport.deleted_at.present?
-    assert transport_duplicate.valid?, 'should not violate unique constraints when a record logically deleted'
+    assert transport_duplicate.valid?,
+           'should not violate unique constraints when a record logically deleted'
   end
 
   def valid_params

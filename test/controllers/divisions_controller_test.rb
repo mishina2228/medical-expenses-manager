@@ -13,7 +13,7 @@ class DivisionsControllerTest < ActionDispatch::IntegrationTest
     assert_equal Hospital.count, hospitals.size
     records = Hospital.all.select(:id, :name)
     records.each do |r|
-      assert_includes hospitals, {"id" => r.id, "name" => r.name}
+      assert_includes hospitals, {'id' => r.id, 'name' => r.name}
     end
   end
 
@@ -25,7 +25,7 @@ class DivisionsControllerTest < ActionDispatch::IntegrationTest
     assert_equal Drugstore.count, drugstores.size
     records = Drugstore.all.select(:id, :name)
     records.each do |r|
-      assert_includes drugstores, {"id" => r.id, "name" => r.name}
+      assert_includes drugstores, {'id' => r.id, 'name' => r.name}
     end
   end
 
@@ -37,7 +37,7 @@ class DivisionsControllerTest < ActionDispatch::IntegrationTest
     assert_equal Transport.count, transports.size
     records = Transport.all.select(:id, :name)
     records.each do |r|
-      assert_includes transports, {"id" => r.id, "name" => r.name}
+      assert_includes transports, {'id' => r.id, 'name' => r.name}
     end
   end
 end

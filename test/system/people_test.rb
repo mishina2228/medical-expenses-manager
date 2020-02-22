@@ -7,7 +7,8 @@ class PeopleTest < ApplicationSystemTestCase
 
   test 'visiting the index' do
     visit people_url
-    assert_selector 'h1', text: I18n.t('helpers.title.list', models: Person.model_name.human.pluralize(I18n.locale))
+    text = I18n.t('helpers.title.list', models: Person.model_name.human.pluralize(I18n.locale))
+    assert_selector 'h1', text: text
   end
 
   test 'creating a Person' do
@@ -19,7 +20,8 @@ class PeopleTest < ApplicationSystemTestCase
     click_on I18n.t('helpers.submit.create')
 
     assert_text I18n.t('helpers.notice.create')
-    assert_selector 'h1', text: I18n.t('helpers.title.list', models: Person.model_name.human.pluralize(I18n.locale))
+    text = I18n.t('helpers.title.list', models: Person.model_name.human.pluralize(I18n.locale))
+    assert_selector 'h1', text: text
   end
 
   test 'updating a Person' do

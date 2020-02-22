@@ -25,7 +25,8 @@ class DrugstoreTest < ActiveSupport::TestCase
 
     assert drugstore.destroy
     assert drugstore.deleted_at.present?
-    assert drugstore_duplicate.valid?, 'should not violate unique constraints when a record logically deleted'
+    assert drugstore_duplicate.valid?,
+           'should not violate unique constraints when a record logically deleted'
   end
 
   def valid_params
