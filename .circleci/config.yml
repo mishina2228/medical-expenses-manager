@@ -6,7 +6,6 @@ common_env: &common_env
   BUNDLE_RETRY: 3
   BUNDLE_PATH: vendor/bundle
   RAILS_ENV: test
-  RUBYOPT: '--enable-frozen-string-literal --debug=frozen-string-literal'
   TZ: 'Asia/Tokyo'
 
 executors:
