@@ -19,4 +19,5 @@
 //= require moment/ja.js
 //= require bootstrap-datetimepicker
 //= require cocoon
+//= require js.cookie.min
 //= require_tree .
