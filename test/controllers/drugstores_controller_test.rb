@@ -72,7 +72,7 @@ class DrugstoresControllerTest < ActionDispatch::IntegrationTest
     before_name = @drugstore.name
     @drugstore.name = nil
     assert @drugstore.invalid?
-    
+
     patch drugstore_url(id: @drugstore),
           params: {
             drugstore: {

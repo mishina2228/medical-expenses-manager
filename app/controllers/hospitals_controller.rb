@@ -65,9 +65,9 @@ class HospitalsController < ApplicationController
   def hospital_params
     permitted = [
       :name,
-      hospital_transports_attributes: [
+      {hospital_transports_attributes: [
         :id, :_destroy, :transport_id, :transport_cost
-      ]
+      ]}
     ]
     params.require(:hospital).permit(permitted)
   end

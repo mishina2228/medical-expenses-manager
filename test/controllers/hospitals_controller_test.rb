@@ -46,7 +46,7 @@ class HospitalsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should update a hospital' do
-    name = @hospital.name + 'test1'
+    name = "#{@hospital.name}test1"
     patch hospital_url(id: @hospital),
           params: {
             hospital: {
@@ -89,7 +89,7 @@ class HospitalsControllerTest < ActionDispatch::IntegrationTest
             _destroy: true
           },
           '1' => {id: ht2.id, transport_id: transports(:train).id, transport_cost: 4000},
-          '2' => {transport_id: transports(:plane).id, transport_cost: 10000}
+          '2' => {transport_id: transports(:plane).id, transport_cost: 10_000}
         }
       }
     }
