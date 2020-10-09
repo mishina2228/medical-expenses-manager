@@ -5,12 +5,12 @@ module RecordStatisticsHelper
   end
 
   def render_division_for_statistics(division)
-    case division.class.to_s
-    when Drugstore.to_s
+    case division
+    when Drugstore
       t('text.division_types.drug')
-    when Transport.to_s
+    when Transport
       t('text.division_types.other')
-    when Hospital.to_s
+    when Hospital
       t('text.division_types.medical_treatment')
     end
   end

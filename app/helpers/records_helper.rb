@@ -1,11 +1,11 @@
 module RecordsHelper
   def render_division(division)
-    emoji = case division.class.to_s
-            when Drugstore.to_s
+    emoji = case division
+            when Drugstore
               ':pill:'
-            when Transport.to_s
+            when Transport
               ':train:'
-            when Hospital.to_s
+            when Hospital
               ':hospital:'
             end
     [emoji, division.model_name.human].join
