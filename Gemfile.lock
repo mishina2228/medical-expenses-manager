@@ -288,7 +288,7 @@ DEPENDENCIES
   minitest-ci
   momentjs-rails (>= 2.9.0)
   paranoia (~> 2.2)
-  puma (~> 4.3)
+  puma (~> 4.3, < 5.0)
   puma_worker_killer
   rails (~> 6.0.3)
   rubocop
