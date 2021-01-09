@@ -10,7 +10,6 @@ gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 5.1'
 gem 'puma_worker_killer'
-gem 'sys-proctable', platforms: [:mingw, :mswin, :x64_mingw]
 # Use SCSS for stylesheets
 gem 'sassc-rails'
 
@@ -58,9 +57,6 @@ group :test do
   gem 'simplecov', require: false
   gem 'webdrivers'
 end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'cocoon'
 gem 'kaminari', '~> 1.2.1'
