@@ -18,6 +18,16 @@ Layout/SpaceInsideBlockBraces:
 Layout/SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space
 
+Metrics/BlockLength:
+  Exclude:
+    - 'config/environments/*.rb'
+Metrics/ClassLength:
+  Exclude:
+    - 'test/**/*.rb'
+Metrics/MethodLength:
+  Exclude:
+    - 'test/**/*.rb'
+
 Rails/ActiveRecordCallbacksOrder:
   Enabled: true
 Rails/AfterCommitOverride:
@@ -59,6 +69,8 @@ Style/AsciiComments:
   Enabled: false
 Style/ClassAndModuleChildren:
   EnforcedStyle: compact
+  Exclude:
+    - 'config/application.rb'
 Style/Documentation:
   Enabled: false
 Style/EmptyMethod:

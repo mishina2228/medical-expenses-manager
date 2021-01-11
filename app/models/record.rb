@@ -17,13 +17,10 @@ class Record < ApplicationRecord
     transaction do
       save!
       ret << self
-      hospital_transports = hospital&.hospital_transports
-      next unless hospital_transports
+      next unless (hospital_transports = hospital&.hospital_transports)
 
       hospital_transports.each do |ht|
-        ret << Record.create!(
-          person: person, date: date, cost: ht.transport_cost, division: ht.transport
-        )
+        ret << Record.create!(person: person, date: date, cost: ht.transport_cost, division: ht.transport)
       end
     end
     ret
