@@ -111,7 +111,7 @@ class RecordTest < ActiveSupport::TestCase
     Record.create(valid_params.merge(date: Date.new(2020, 1, 1), cost: 300))
     Record.create(valid_params.merge(date: Date.new(2020, 12, 31), cost: 300))
 
-    Time.stub(:current, Time.new(2020, 4, 1).in_time_zone) do
+    travel_to(Date.new(2020, 4, 1)) do
       statistics = Record.annual_statistics(nil)
       assert_equal 600, statistics[0].sum_cost
     end
