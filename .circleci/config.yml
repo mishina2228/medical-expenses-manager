@@ -32,6 +32,8 @@ executors:
   node-browsers-latest:
     docker:
       - image: circleci/ruby:latest-node-browsers
+    environment:
+      <<: *common_env
 
 commands:
   update_rubygems:
