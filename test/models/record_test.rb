@@ -50,18 +50,18 @@ class RecordTest < ActiveSupport::TestCase
 
     d1 = hospitals(:hospital1)
     p1 = people(:user1)
-    Record.create(division_id: d1.id, person_id: p1.id, date: Date.new(2020, 1, 1), cost: 100)
-    Record.create(division_id: d1.id, person_id: p1.id, date: Date.new(2020, 6, 15), cost: 200)
-    Record.create(division_id: d1.id, person_id: p1.id, date: Date.new(2020, 12, 31), cost: 300)
+    assert Record.create(division_id: d1.id, person_id: p1.id, date: Date.new(2020, 1, 1), cost: 100)
+    assert Record.create(division_id: d1.id, person_id: p1.id, date: Date.new(2020, 6, 15), cost: 200)
+    assert Record.create(division_id: d1.id, person_id: p1.id, date: Date.new(2020, 12, 31), cost: 300)
 
     d2 = drugstores(:drugstore1)
     p2 = people(:user2)
-    Record.create(division_id: d2.id, person_id: p2.id, date: Date.new(2020, 1, 1), cost: 400)
-    Record.create(division_id: d2.id, person_id: p2.id, date: Date.new(2020, 6, 15), cost: 500)
+    assert Record.create(division_id: d2.id, person_id: p2.id, date: Date.new(2020, 1, 1), cost: 400)
+    assert Record.create(division_id: d2.id, person_id: p2.id, date: Date.new(2020, 6, 15), cost: 500)
 
     d3 = transports(:transport1)
     p3 = people(:user3)
-    Record.create(division_id: d3.id, person_id: p3.id, date: Date.new(2020, 1, 1), cost: 700)
+    assert Record.create(division_id: d3.id, person_id: p3.id, date: Date.new(2020, 1, 1), cost: 700)
 
     statistics = Record.annual_statistics(2020)
     assert_equal d1, statistics[0].division
@@ -79,14 +79,14 @@ class RecordTest < ActiveSupport::TestCase
 
   test 'annual_statistics total cost by year' do
     Record.delete_all
-    Record.create(valid_params.merge(date: Date.new(2017, 1, 1), cost: 100))
-    Record.create(valid_params.merge(date: Date.new(2017, 12, 31), cost: 100))
+    assert Record.create(valid_params.merge(date: Date.new(2017, 1, 1), cost: 100))
+    assert Record.create(valid_params.merge(date: Date.new(2017, 12, 31), cost: 100))
 
-    Record.create(valid_params.merge(date: Date.new(2018, 1, 1), cost: 200))
-    Record.create(valid_params.merge(date: Date.new(2018, 12, 31), cost: 200))
+    assert Record.create(valid_params.merge(date: Date.new(2018, 1, 1), cost: 200))
+    assert Record.create(valid_params.merge(date: Date.new(2018, 12, 31), cost: 200))
 
-    Record.create(valid_params.merge(date: Date.new(2019, 1, 1), cost: 300))
-    Record.create(valid_params.merge(date: Date.new(2019, 12, 31), cost: 300))
+    assert Record.create(valid_params.merge(date: Date.new(2019, 1, 1), cost: 300))
+    assert Record.create(valid_params.merge(date: Date.new(2019, 12, 31), cost: 300))
 
     [2017, '2017'].each do |year|
       statistics = Record.annual_statistics(year)
@@ -104,12 +104,12 @@ class RecordTest < ActiveSupport::TestCase
     end
   end
 
-  test "returns the current year's statistics if year is not passed" do
+  test 'returns statistics for the current year if a specific year is not given' do
     Record.delete_all
-    Record.create(valid_params.merge(date: Date.new(2019, 1, 1), cost: 200))
-    Record.create(valid_params.merge(date: Date.new(2019, 12, 31), cost: 200))
-    Record.create(valid_params.merge(date: Date.new(2020, 1, 1), cost: 300))
-    Record.create(valid_params.merge(date: Date.new(2020, 12, 31), cost: 300))
+    assert Record.create(valid_params.merge(date: Date.new(2019, 1, 1), cost: 200))
+    assert Record.create(valid_params.merge(date: Date.new(2019, 12, 31), cost: 200))
+    assert Record.create(valid_params.merge(date: Date.new(2020, 1, 1), cost: 300))
+    assert Record.create(valid_params.merge(date: Date.new(2020, 12, 31), cost: 300))
 
     travel_to(Date.new(2020, 4, 1)) do
       statistics = Record.annual_statistics(nil)
