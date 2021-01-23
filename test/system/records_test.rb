@@ -35,7 +35,7 @@ class RecordsTest < ApplicationSystemTestCase
     visit records_url
     click_on I18n.t('helpers.link.new'), match: :first
 
-    fill_in Record.human_attribute_name(:date), with: Time.zone.today.strftime('%Y-%m-%d')
+    fill_in Record.human_attribute_name(:date), with: Date.current.strftime('%Y-%m-%d')
     select @person.name, from: 'record_person_id'
     select Drugstore.model_name.human, from: 'record_division_type'
     select @drugstore.name, from: 'record_division_id'
@@ -51,7 +51,7 @@ class RecordsTest < ApplicationSystemTestCase
     visit records_url
     click_on I18n.t('helpers.link.new'), match: :first
 
-    fill_in Record.human_attribute_name(:date), with: Time.zone.today.strftime('%Y-%m-%d')
+    fill_in Record.human_attribute_name(:date), with: Date.current.strftime('%Y-%m-%d')
     select @person.name, from: 'record_person_id'
     select Drugstore.model_name.human, from: 'record_division_type'
     select @drugstore.name, from: 'record_division_id'

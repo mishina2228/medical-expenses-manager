@@ -1,6 +1,6 @@
 class RecordStatisticsController < ApplicationController
   def index
-    @year = params[:year] || Time.current.year
+    @year = params[:year] || Date.current.year
     @record_statistics = Record.annual_statistics(@year)
   end
 end

@@ -120,7 +120,7 @@ class RecordTest < ActiveSupport::TestCase
   def valid_params
     hospital1 = hospitals(:hospital1)
     person1 = people(:user1)
-    {date: Time.zone.today, cost: 100,
+    {date: Date.current, cost: 100,
      division_id: hospital1.id, person_id: person1.id}
   end
 end

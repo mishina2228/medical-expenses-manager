@@ -1,29 +1,29 @@
 record1:
   division: hospital1
   person: user1
-  date: <%= Time.zone.today %>
+  date: <%= Date.current %>
   cost: 100
 
 record2:
   division: hospital2
   person: user1
-  date: <%= Time.zone.today - 1.day %>
+  date: <%= Date.yesterday %>
   cost: 200
 
 record3:
   division: drugstore1
   person: user2
-  date: <%= Time.zone.today - 2.days %>
+  date: <%= 2.days.ago(Date.current) %>
   cost: 300
 
 record4:
   division: transport1
   person: user2
-  date: <%= Time.zone.today - 3.days %>
+  date: <%= 3.days.ago(Date.current) %>
   cost: 400
 
 record5:
   division: transport2
   person: user3
-  date: <%= Time.zone.today - 4.days %>
+  date: <%= 4.days.ago(Date.current) %>
   cost: 500

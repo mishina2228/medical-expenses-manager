@@ -15,7 +15,7 @@ class Search::Record < Search::Base
   end
 
   def days_of_month
-    start_day = Time.strptime(month, '%Y-%m')
+    start_day = Date.strptime(month, '%Y-%m')
     end_day = start_day.end_of_month
     start_day..end_day
   end

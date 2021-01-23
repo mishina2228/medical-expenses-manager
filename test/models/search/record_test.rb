@@ -69,7 +69,7 @@ class Search::RecordTest < ActiveSupport::TestCase
   end
 
   test 'search by from date' do
-    date = Time.zone.today - 1.day
+    date = Date.yesterday
     search = Search::Record.new(from_date: date)
     actual = search.search
     assert_includes actual, @r1
@@ -80,7 +80,7 @@ class Search::RecordTest < ActiveSupport::TestCase
   end
 
   test 'search by to date' do
-    date = Time.zone.today - 1.day
+    date = Date.yesterday
     search = Search::Record.new(to_date: date)
     actual = search.search
     assert_not_includes actual, @r1
@@ -91,19 +91,19 @@ class Search::RecordTest < ActiveSupport::TestCase
   end
 
   test 'search by month' do
-    assert @r1.update(date: Time.zone.parse('2020-01-13'))
+    assert @r1.update(date: Date.parse('2020-01-13'))
     search = Search::Record.new(month: '2020-01')
     actual = search.search
     assert_includes actual, @r1
 
-    assert @r1.update(date: Time.zone.parse('2020-02-13'))
+    assert @r1.update(date: Date.parse('2020-02-13'))
     actual = search.search
     assert_not_includes actual, @r1
   end
 
   test 'days_of_month' do
     record = Search::Record.new(month: '2018-02')
-    expected = Date.new(2018, 2, 1).beginning_of_day..Date.new(2018, 2, 28).end_of_day
+    expected = Date.new(2018, 2, 1)..Date.new(2018, 2, 28)
     assert_equal expected, record.days_of_month
   end
 end

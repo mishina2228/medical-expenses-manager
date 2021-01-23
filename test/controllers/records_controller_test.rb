@@ -154,7 +154,7 @@ class RecordsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get records that match the search conditions' do
-    get search_records_url(search_record: {division_type: 'Hospital', to_date: Time.zone.today})
+    get search_records_url(search_record: {division_type: 'Hospital', to_date: Date.current})
     assert_response :success
 
     get search_records_url # no params
