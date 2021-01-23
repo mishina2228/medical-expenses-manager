@@ -7,7 +7,6 @@ Rails.application.routes.draw do
         get :export
         get :search
         put :load_csv
-        put :create_loaded
       end
     end
 
