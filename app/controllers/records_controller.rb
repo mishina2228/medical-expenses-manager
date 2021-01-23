@@ -108,8 +108,11 @@ class RecordsController < ApplicationController
   end
 
   def check_csv
-    @csv_path = params[:load_csv][:file].path
-    return if File.extname(@csv_path) == '.csv'
+    file = params.dig(:load_csv, :file)
+    if file.respond_to?(:path)
+      @csv_path = file.path
+      return if File.extname(@csv_path) == '.csv'
+    end
 
     redirect_to search_records_url, notice: t('helpers.notice.load_csv.invalid_format')
   end

@@ -31,6 +31,7 @@ class HospitalTransportTest < ActiveSupport::TestCase
 
     ht3 = HospitalTransport.new(valid_params.merge(transport_cost: 300))
     assert ht3.invalid?
+    assert_includes ht3.errors[:transport_id], I18n.t('errors.messages.duplicate')
 
     assert_nil ht1.deleted_at
     assert ht1.destroy

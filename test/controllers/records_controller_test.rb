@@ -164,4 +164,50 @@ class RecordsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to records_url
     assert_includes flash[:notice], I18n.t('helpers.notice.delete')
   end
+
+  test 'should export records as a CSV' do
+    get export_records_path, params: {export: {encoding: 'utf-8', ids: [records(:record1).id, records(:record2).id]}}
+
+    assert_response :success
+    assert_equal 3, response.body.lines.size, 'Header and 2 records, the number of lines should be 3.'
+    assert_equal 'text/csv', response.headers['Content-Type']
+    assert_match(/record_\d{4}\d{2}\d{2}\d{2}\d{2}\d{2}\.csv/, response.headers['Content-Disposition'])
+  end
+
+  test 'should load a valid CSV' do
+    file = Rack::Test::UploadedFile.new('test/data/test_utf8.csv', 'text/csv')
+    put load_csv_records_path, params: {load_csv: {file: file}}
+
+    assert_response :success
+  end
+
+  test 'should redirect to the search page when a CSV is not specified' do
+    [nil, {}, {load_csv: {}}, {load_csv: {file: nil}}, {load_csv: {file: ''}}].each do |param|
+      put load_csv_records_path, params: param
+
+      assert_redirected_to search_records_url
+      assert_includes flash[:notice], I18n.t('helpers.notice.load_csv.invalid_format')
+    end
+  end
+
+  test 'should redirect to the search page when a file other than CSV is specified' do
+    file = Rack::Test::UploadedFile.new('test/fixtures/records.yml', 'application/yaml')
+    put load_csv_records_path, params: {load_csv: {file: file}}
+
+    assert_redirected_to search_records_url
+    assert_includes flash[:notice], I18n.t('helpers.notice.load_csv.invalid_format')
+  end
+
+  test 'should redirect to the search page when a invalid CSV is specified' do
+    files = [
+      Rack::Test::UploadedFile.new('test/data/test_utf8_missing_headers.csv', 'text/csv'),
+      Rack::Test::UploadedFile.new('test/data/test_utf8_invalid_values.csv', 'text/csv')
+    ]
+    files.each do |file|
+      put load_csv_records_path, params: {load_csv: {file: file}}
+
+      assert_redirected_to search_records_url
+      assert flash[:alert].present?
+    end
+  end
 end
