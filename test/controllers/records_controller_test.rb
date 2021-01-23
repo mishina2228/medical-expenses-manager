@@ -10,6 +10,19 @@ class RecordsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'should get records that match the search conditions' do
+    get search_records_url(search_record: {division_type: 'Hospital', to_date: Date.current})
+    assert_response :success
+
+    get search_records_url # no params
+    assert_response :success
+  end
+
+  test 'should show a record' do
+    get record_url(id: @record)
+    assert_response :success
+  end
+
   test 'should get new' do
     get new_record_url
     assert_response :success
@@ -41,6 +54,8 @@ class RecordsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :redirect
     assert_redirected_to records_url
+    assert_includes flash[:notice], I18n.t('helpers.notice.create')
+    assert_includes flash[:notice], I18n.t('helpers.notice.transport_created')
   end
 
   test 'should create records continuously when continuous parameter is given' do
@@ -90,11 +105,6 @@ class RecordsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to records_url
   end
 
-  test 'should show a record' do
-    get record_url(id: @record)
-    assert_response :success
-  end
-
   test 'should get edit' do
     get edit_record_url(id: @record)
     assert_response :success
@@ -118,6 +128,7 @@ class RecordsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :redirect
     assert_redirected_to records_url
+    assert_includes flash[:notice], I18n.t('helpers.notice.update')
   end
 
   test 'should not update a record unless parameters are valid' do
@@ -151,13 +162,6 @@ class RecordsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :redirect
     assert_redirected_to records_url
-  end
-
-  test 'should get records that match the search conditions' do
-    get search_records_url(search_record: {division_type: 'Hospital', to_date: Date.current})
-    assert_response :success
-
-    get search_records_url # no params
-    assert_response :success
+    assert_includes flash[:notice], I18n.t('helpers.notice.delete')
   end
 end
