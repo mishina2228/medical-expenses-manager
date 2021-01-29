@@ -160,7 +160,7 @@ GEM
       puma (>= 2.7)
     racc (1.5.2)
     rack (2.2.3)
-    rack-mini-profiler (2.3.0)
+    rack-mini-profiler (2.3.1)
       rack (>= 1.2.0)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -292,7 +292,7 @@ DEPENDENCIES
   paranoia (~> 2.4)
   puma (~> 5.2)
   puma_worker_killer
-  rack-mini-profiler (~> 2.0)
+  rack-mini-profiler (~> 2.3)
   rails (~> 6.1.1)
   rubocop
   rubocop-minitest
