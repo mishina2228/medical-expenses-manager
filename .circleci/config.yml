@@ -65,6 +65,7 @@ commands:
         type: string
     steps:
       - restore_cache:
+          name: Restore Gem Cache
           keys:
             - bundle-v2-<< parameters.ruby-version >>-{{ checksum "Gemfile.lock" }}
             - bundle-v2-
@@ -81,6 +82,7 @@ commands:
         type: string
     steps:
       - save_cache:
+          name: Save Gem Cache
           key: bundle-v2-<< parameters.ruby-version >>-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
@@ -125,12 +127,6 @@ commands:
     steps:
       - store_test_results: # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
           path: test/reports
-  webpack:
-    steps:
-      - run:
-          name: Build assets
-          command: |-
-            bundle exec bin/webpack
 
 jobs: # a collection of steps
   brakeman:
@@ -166,7 +162,6 @@ jobs: # a collection of steps
       - install_packages
       - save_packages
       - setup_database
-      - webpack
       - minitest
       - store_test_reports
   system-test-2-5:
@@ -273,6 +268,9 @@ jobs: # a collection of steps
       - install_gems
       - save_gems:
           ruby-version: 'latest'
+      - restore_packages
+      - install_packages
+      - save_packages
       - setup_database
       - minitest
       - store_test_reports
@@ -288,6 +286,9 @@ jobs: # a collection of steps
       - install_gems
       - save_gems:
           ruby-version: 'latest'
+      - restore_packages
+      - install_packages
+      - save_packages
       - setup_database
       - system_test
       - store_test_reports
