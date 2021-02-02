@@ -74,9 +74,6 @@ Rails.application.configure do
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
 
-  # sassc-rails turn on inline source maps
-  config.sass.inline_source_maps = true
-
   # bullet settings
   config.after_initialize do
     Bullet.enable = true
