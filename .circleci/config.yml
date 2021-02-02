@@ -52,6 +52,11 @@ commands:
       - run:
           name: Which Ruby?
           command: ruby -v
+  which_nodejs:
+    steps:
+      - run:
+          name: Which Node.js?
+          command: node --version
   # Restore bundle cache
   # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
   restore_gems:
