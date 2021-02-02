@@ -181,7 +181,6 @@ jobs: # a collection of steps
       - install_packages
       - save_packages
       - setup_database
-      - webpack
       - system_test
       - store_test_reports
   minitest-2-6:
