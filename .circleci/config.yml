@@ -102,6 +102,12 @@ commands:
     steps:
       - store_test_results: # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
           path: test/reports
+  webpack:
+    steps:
+      - run:
+          name: Build assets
+          command: |-
+            bundle exec bin/webpack
 
 jobs: # a collection of steps
   brakeman:
@@ -133,6 +139,7 @@ jobs: # a collection of steps
       - save_gems:
           ruby-version: '2.5'
       - setup_database
+      - webpack
       - minitest
       - store_test_reports
   system-test-2-5:
@@ -148,6 +155,7 @@ jobs: # a collection of steps
       - save_gems:
           ruby-version: '2.5'
       - setup_database
+      - webpack
       - system_test
       - store_test_reports
   minitest-2-6:
