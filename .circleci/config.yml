@@ -138,6 +138,7 @@ jobs: # a collection of steps
       - update_rubygems
       - which_bundler
       - which_ruby
+      - which_nodejs
       - restore_gems:
           ruby-version: '2.5'
       - install_gems
@@ -154,6 +155,7 @@ jobs: # a collection of steps
       - update_rubygems
       - which_bundler
       - which_ruby
+      - which_nodejs
       - restore_gems:
           ruby-version: '2.5'
       - install_gems
