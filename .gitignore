@@ -24,9 +24,6 @@
 /storage/*
 !/storage/.keep
 
-/node_modules
-/yarn-error.log
-
 /public/assets
 .byebug_history
 
@@ -43,3 +40,11 @@
 
 # Ignore rbenv's .ruby-version file.
 .ruby-version
+
+# Ignore files related webpacker
+/node_modules
+/yarn-error.log
+/public/packs
+/public/packs-test
+yarn-debug.log*
+.yarn-integrity
