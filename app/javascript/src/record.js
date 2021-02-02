@@ -63,6 +63,7 @@ function extname(path) {
 }
 
 function emojify() {
+  const emojione = require('emojione')
   $('.emojify').each((_, elem) => {
     const emojified = emojione.toImage($(elem).html());
     $(elem).html(emojified);

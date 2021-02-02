@@ -13,9 +13,7 @@ environment.plugins.append('Provide',
   new webpack.ProvidePlugin({
     $: 'jquery',
     jQuery: 'jquery',
-    Popper: ['popper.js', 'default'],
-    Cookies: 'js-cookie',
-    emojione: 'emojione'
+    Popper: ['popper.js', 'default']
   })
 )
 
