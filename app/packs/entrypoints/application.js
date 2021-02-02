@@ -29,7 +29,6 @@ import 'moment/locale/ja'
 import 'eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker'
 
 import '../src/datepicker_loader.js'
-import '../src/emojione.js'
 import '../src/record.js'
 import '../src/theme_changer.js'
 
