@@ -22,11 +22,11 @@ require('@nathanvda/cocoon')
 require('js-cookie')
 require('emojione')
 
-import 'bootstrap-sass/assets/javascripts/bootstrap.js'
+import 'bootstrap-sass'
 import '@fortawesome/fontawesome-free/js/all'
-import 'moment/moment'
+import 'moment'
 import 'moment/locale/ja'
-import 'eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker'
+import 'eonasdan-bootstrap-datetimepicker'
 
 import '../src/datepicker_loader.js'
 import '../src/record.js'
