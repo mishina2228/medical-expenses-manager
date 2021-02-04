@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', (() => {
+$(document).on('turbolinks:load', () => {
   $('.date-picker').datetimepicker({
     format: 'YYYY-MM-DD',
     locale: 'ja'
@@ -13,4 +13,4 @@ $(document).on('turbolinks:load', (() => {
     locale: 'ja',
     viewMode: 'years'
   })
-}))
+})

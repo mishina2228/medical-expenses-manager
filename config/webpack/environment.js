@@ -1,11 +1,11 @@
 const { environment } = require('@rails/webpacker')
 const erb = require('./loaders/erb')
 
-const sass_loader = environment.loaders.get('sass')
-sass_loader.use.splice(-1, 0, {
+const sassLoader = environment.loaders.get('sass')
+sassLoader.use.splice(-1, 0, {
   loader: 'resolve-url-loader'
 })
-sass_loader.use.push('import-glob-loader')
+sassLoader.use.push('import-glob-loader')
 environment.loaders.prepend('erb', erb)
 
 const webpack = require('webpack')
