@@ -21,6 +21,8 @@
     "turbolinks": "^5.2.0"
   },
   "standard": {
-    "globals": [ "$" ]
+    "globals": [
+      "$"
+    ]
   }
 }
