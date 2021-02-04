@@ -317,6 +317,9 @@ workflows:
   brakeman:
     jobs:
       - brakeman
+  standard_style:
+    jobs:
+      - standard_style
   ruby-2.5-test:
     jobs:
       - minitest-2-5
