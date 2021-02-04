@@ -190,6 +190,7 @@ jobs: # a collection of steps
       - update_rubygems
       - which_bundler
       - which_ruby
+      - which_nodejs
       - restore_gems:
           ruby-version: '2.6'
       - install_gems
@@ -208,6 +209,7 @@ jobs: # a collection of steps
       - update_rubygems
       - which_bundler
       - which_ruby
+      - which_nodejs
       - restore_gems:
           ruby-version: '2.6'
       - install_gems
@@ -226,6 +228,7 @@ jobs: # a collection of steps
       - update_rubygems
       - which_bundler
       - which_ruby
+      - which_nodejs
       - restore_gems:
           ruby-version: '2.7'
       - install_gems
@@ -244,6 +247,7 @@ jobs: # a collection of steps
       - update_rubygems
       - which_bundler
       - which_ruby
+      - which_nodejs
       - restore_gems:
           ruby-version: '2.7'
       - install_gems
@@ -262,6 +266,7 @@ jobs: # a collection of steps
       - update_rubygems
       - which_bundler
       - which_ruby
+      - which_nodejs
       - restore_gems:
           ruby-version: 'latest'
       - install_gems
@@ -280,6 +285,7 @@ jobs: # a collection of steps
       - update_rubygems
       - which_bundler
       - which_ruby
+      - which_nodejs
       - restore_gems:
           ruby-version: 'latest'
       - install_gems
