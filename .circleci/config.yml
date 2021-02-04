@@ -165,7 +165,7 @@ jobs: # a collection of steps
       - run:
           name: Run Standard
           command: |-
-            standard
+            yarn standard
   minitest-2-5:
     executor: node-browsers-2-5
     steps:
