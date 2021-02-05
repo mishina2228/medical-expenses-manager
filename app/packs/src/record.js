@@ -63,9 +63,9 @@ function extname (path) {
 }
 
 function emojify () {
-  const emojione = require('emojione')
+  const emojiToolkit = require('emoji-toolkit')
   $('.emojify').each((_, elem) => {
-    const emojified = emojione.toImage($(elem).html())
+    const emojified = emojiToolkit.toImage($(elem).html())
     $(elem).html(emojified)
   })
 }
