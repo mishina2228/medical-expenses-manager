@@ -21,6 +21,11 @@ gem 'jbuilder', '~> 2.11'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+gem 'cocoon'
+gem 'kaminari', '~> 1.2.1'
+gem 'kaminari-bootstrap', '~> 3.0.1'
+gem 'paranoia', '~> 2.4'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -51,8 +56,3 @@ group :test do
   gem 'simplecov', require: false
   gem 'webdrivers'
 end
-
-gem 'cocoon'
-gem 'kaminari', '~> 1.2.1'
-gem 'kaminari-bootstrap', '~> 3.0.1'
-gem 'paranoia', '~> 2.4'
