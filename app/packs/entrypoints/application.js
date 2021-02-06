@@ -13,9 +13,9 @@ import 'moment'
 import 'moment/locale/ja'
 import 'eonasdan-bootstrap-datetimepicker'
 
-import '../src/datepicker_loader.js'
-import '../src/record.js'
-import '../src/theme_changer.js'
+import '../src/datepicker_loader'
+import '../src/record'
+import '../src/theme_changer'
 
 import './application.scss'
 

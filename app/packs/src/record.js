@@ -14,7 +14,7 @@ $(document).on('turbolinks:load', () => {
   addDataOnAddFields()
 })
 
-function loadDivisionIds (klassName) {
+const loadDivisionIds = klassName => {
   $.ajax({
     url: '/divisions',
     type: 'GET',
@@ -29,7 +29,7 @@ function loadDivisionIds (klassName) {
   })
 }
 
-function replaceSelectOptions ($select, results) {
+const replaceSelectOptions = ($select, results) => {
   $select.html($('<option>'))
   $(results).each((_, elem) => {
     const option = $('<option>').val(elem.id).text(elem.name)
@@ -42,13 +42,13 @@ function replaceSelectOptions ($select, results) {
   }
 }
 
-function resetSearchForm () {
+const resetSearchForm = () => {
   const $forms = $('#search_record_form')
     .find('input[name^="search_record"], select[name^="search_record"]')
   $forms.each((_, elem) => $(elem).val(''))
 }
 
-function propLoadButton ($csvLoader) {
+const propLoadButton = $csvLoader => {
   const $csvLoadButton = $('#csv_load_button')
   if ($csvLoader[0].files[0] && extname($csvLoader[0].files[0].name) === 'csv') {
     $csvLoadButton.prop('disabled', false)
@@ -57,12 +57,12 @@ function propLoadButton ($csvLoader) {
   }
 }
 
-function extname (path) {
+const extname = path => {
   const array = path.split('.')
   return array[array.length - 1].toLowerCase()
 }
 
-function emojify () {
+const emojify = () => {
   const emojiToolkit = require('emoji-toolkit')
   $('.emojify').each((_, elem) => {
     const emojified = emojiToolkit.toImage($(elem).html())
@@ -70,7 +70,7 @@ function emojify () {
   })
 }
 
-function addDataOnAddFields () {
+const addDataOnAddFields = () => {
   $('a.add_fields')
     .data('association-insertion-method', 'append')
     .data('association-insertion-node', '#hospital-transports')
