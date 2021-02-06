@@ -23,7 +23,6 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'cocoon'
 gem 'kaminari', '~> 1.2.1'
-gem 'kaminari-bootstrap', '~> 3.0.1'
 gem 'paranoia', '~> 2.4'
 
 group :development, :test do

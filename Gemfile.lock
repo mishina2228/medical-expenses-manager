@@ -108,9 +108,6 @@ GEM
     kaminari-activerecord (1.2.1)
       activerecord
       kaminari-core (= 1.2.1)
-    kaminari-bootstrap (3.0.1)
-      kaminari (>= 0.13.0)
-      rails
     kaminari-core (1.2.1)
     loofah (2.9.0)
       crass (~> 1.0.2)
@@ -263,7 +260,6 @@ DEPENDENCIES
   codecov
   jbuilder (~> 2.11)
   kaminari (~> 1.2.1)
-  kaminari-bootstrap (~> 3.0.1)
   minitest-ci
   paranoia (~> 2.4)
   puma (~> 5.2)
