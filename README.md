@@ -17,9 +17,10 @@ Ruby on Rails application for managing medical expenses deductions
 
 ### Set up Rails app
 
-First, install the gems required by the application:
+First, install the gems and javascript packages required by the application:
 ```
 bundle
+yarn
 ```
 Next, execute the database migrations/schema setup:
 ```
