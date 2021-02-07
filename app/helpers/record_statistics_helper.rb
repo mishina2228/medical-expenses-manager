@@ -1,7 +1,7 @@
 module RecordStatisticsHelper
   def check_division(division, klass)
-    icon = division.instance_of?(klass) ? 'glyphicon-check' : 'glyphicon-unchecked'
-    tag.span class: ['glyphicon', icon]
+    icon = division.instance_of?(klass) ? 'fa-check-square' : 'fa-square'
+    tag.span class: ['far', icon]
   end
 
   def render_division_for_statistics(division)
