@@ -100,6 +100,7 @@ commands:
           name: Restore Yarn Package Cache
           keys:
             - yarn-packages-{{ checksum "yarn.lock" }}
+            - yarn-packages-
   install_packages:
     steps:
       - run:
@@ -117,6 +118,12 @@ commands:
       - run:
           name: Database setup
           command: bin/rails db:schema:load --trace
+  webpack:
+    steps:
+      - run:
+          name: Build assets in advance
+          command: |-
+            bin/webpack
   minitest:
     steps:
       - run:
@@ -202,6 +209,7 @@ jobs: # a collection of steps
       - install_packages
       - save_packages
       - setup_database
+      - webpack
       - system_test
       - store_test_reports
   minitest-2-6:
@@ -240,6 +248,7 @@ jobs: # a collection of steps
       - install_packages
       - save_packages
       - setup_database
+      - webpack
       - system_test
       - store_test_reports
   minitest-2-7:
@@ -278,6 +287,7 @@ jobs: # a collection of steps
       - install_packages
       - save_packages
       - setup_database
+      - webpack
       - system_test
       - store_test_reports
   minitest-latest:
@@ -316,6 +326,7 @@ jobs: # a collection of steps
       - install_packages
       - save_packages
       - setup_database
+      - webpack
       - system_test
       - store_test_reports
 
