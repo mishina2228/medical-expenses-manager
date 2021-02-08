@@ -4,70 +4,60 @@
           data-target="#collapseSearch" aria-expanded="true" aria-controls="collapseSearch">
     <%= t('helpers.button.search_form') %>
   </button>
-  <div class="container collapse in box_radius" id="collapseSearch">
-    <div class="form-group">
-      <div class="row">
-        <div class="col-xs-2">
-          <%= form.label :from_date, Record.human_attribute_name(:date) %>
+  <div class="container collapse show box_radius" id="collapseSearch">
+    <div class="form-group row">
+      <div class="col-2">
+        <%= form.label :from_date, Record.human_attribute_name(:date) %>
+      </div>
+      <div class="input-group date col-4 date-picker">
+        <%= form.text_field :from_date, class: 'form-control' %>
+        <div class="input-group-append">
+          <span class="fa fa-calendar"></span>
         </div>
-        <div class="input-group date col-xs-4 date-picker">
-          <%= form.text_field :from_date, class: 'form-control' %>
-          <span class="input-group-addon">
+      </div>
+      <div class="col-1 text-center">～</div>
+      <div class="input-group date col-4 date-picker">
+        <%= form.text_field :to_date, class: 'form-control' %>
+        <span class="input-group-append">
             <span class="fa fa-calendar"></span>
           </span>
-        </div>
-        <div class="col-xs-1 text-center">～</div>
-        <div class="input-group date col-xs-4 date-picker">
-          <%= form.text_field :to_date, class: 'form-control' %>
-          <span class="input-group-addon">
-            <span class="fa fa-calendar"></span>
-          </span>
-        </div>
       </div>
     </div>
-    <div class="form-group">
-      <div class="row">
-        <div class="col-sm-2 col-xs-2">
-          <%= form.label :month, '月' %>
-        </div>
-        <div class="col-sm-4 col-xs-4 input-group month-picker">
-          <%= form.text_field :month, class: 'form-control' %>
-          <span class="input-group-addon">
+    <div class="form-group row">
+      <div class="col-sm-2 col-2">
+        <%= form.label :month, '月' %>
+      </div>
+      <div class="col-sm-4 col-4 input-group month-picker">
+        <%= form.text_field :month, class: 'form-control' %>
+        <span class="input-group-append">
             <span class="fa fa-calendar"></span>
           </span>
-        </div>
       </div>
     </div>
-    <div class="row">
-      <div class="form-group">
-        <div class="col-sm-2 col-xs-4">
-          <%= form.label :name, Person.human_attribute_name(:name) %>
-        </div>
-        <div class="col-sm-2 col-xs-8">
-          <%= form.collection_select :name, Person.all, :id, :name,
-                                     {include_blank: true}, class: 'form-control' %>
-        </div>
+    <div class="form-group row">
+      <div class="col-lg-2 col-4">
+        <%= form.label :name, Person.human_attribute_name(:name) %>
       </div>
-      <div class="form-group">
-        <div class="col-sm-2 col-xs-4">
-          <%= form.label :division_type, Division.model_name.human %>
-        </div>
-        <div class="col-sm-2 col-xs-8">
-          <%= form.select :division_type, Division.division_names.invert,
-                          {include_blank: true}, class: 'form-control division_type' %>
-        </div>
+      <div class="col-lg-2 col-8">
+        <%= form.collection_select :name, Person.all, :id, :name,
+                                   {include_blank: true}, class: 'form-control' %>
       </div>
-      <div class="form-group">
-        <div class="col-sm-2 col-xs-4">
-          <%= form.label :division_name, Division.human_attribute_name(:name) %>
-          <%= hidden_field_tag 'division[default_id]', record.division_id %>
-        </div>
-        <div class="col-sm-2 col-xs-8">
-          <% records = Division.all_records(record.division_type) %>
-          <%= form.select :division_id, records.map {|r| [r.name, r.id]},
-                          {include_blank: true},
-                          class: 'form-control division_id', disabled: records.blank? %>
-        </div>
+      <div class="col-lg-2 col-4">
+        <%= form.label :division_type, Division.model_name.human %>
+      </div>
+      <div class="col-lg-2 col-8">
+        <%= form.select :division_type, Division.division_names.invert,
+                        {include_blank: true}, class: 'form-control division_type' %>
+      </div>
+      <div class="col-lg-2 col-4">
+        <%= form.label :division_name, Division.human_attribute_name(:name) %>
+        <%= hidden_field_tag 'division[default_id]', record.division_id %>
+      </div>
+      <div class="col-lg-2 col-8">
+        <% records = Division.all_records(record.division_type) %>
+        <%= form.select :division_id, records.map { |r| [r.name, r.id] },
+                        {include_blank: true},
+                        class: 'form-control division_id', disabled: records.blank? %>
       </div>
     </div>
     <%= button_tag t('helpers.button.reset'), type: :button, id: 'reset_search',

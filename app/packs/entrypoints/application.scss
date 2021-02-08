@@ -1,5 +1,4 @@
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
-$icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
-@import '~bootstrap-sass/assets/stylesheets/bootstrap';
-@import '~eonasdan-bootstrap-datetimepicker/src/sass/bootstrap-datetimepicker';
+@import '~bootstrap/scss/bootstrap';
+@import '~tempusdominus-bootstrap-4/src/sass/tempusdominus-bootstrap-4';
 @import '../stylesheets/*';

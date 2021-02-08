@@ -1,13 +1,13 @@
-<div class="row nested-fields">
-  <div class="form-group">
-    <div class="col-xs-5 col-sm-5">
+<div class="nested-fields">
+  <div class="form-group row">
+    <div class="col-5">
       <%= f.collection_select :transport_id, Transport.all, :id, :name,
-                                 {include_blank: true}, class: 'form-control', required: true %>
+                              {include_blank: true}, class: 'form-control', required: true %>
     </div>
-    <div class="col-xs-5 col-sm-5">
+    <div class="col-4">
       <%= f.number_field :transport_cost, class: 'form-control', min: 0, required: true %>
     </div>
-    <div class="col-xs-2 col-sm-2">
+    <div class="col-3">
       <%= link_to_remove_association f, class: 'btn btn-danger' %>
     </div>
   </div>
