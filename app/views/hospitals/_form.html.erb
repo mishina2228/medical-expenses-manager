@@ -28,25 +28,17 @@
       <%= HospitalTransport.human_attribute_name :transport_cost %>
     </div>
   </div>
-  <div class="row">
-    <div class="col-4 col-sm-2"></div>
-    <div class="col-8 col-sm-10" id="hospital-transports">
-      <%= form.fields_for :hospital_transports do |ht| %>
-        <%= render 'hospital_transport_fields', f: ht %>
-      <% end %>
-    </div>
+  <div id="hospital-transports">
+    <%= form.fields_for :hospital_transports do |ht| %>
+      <%= render 'hospital_transport_fields', f: ht %>
+    <% end %>
   </div>
   <div class="row">
-    <div class="col-4 col-sm-2"></div>
-    <div class="col-8 col-sm-10">
-      <div class="row">
-        <div class="col-10 col-sm-10"></div>
-        <div class="col-2 col-sm-2">
-          <%= link_to_add_association form, :hospital_transports, class: 'btn btn-primary' do %>
-            <span class="fa fa-plus"></span>
-          <% end %>
-        </div>
-      </div>
+    <div class="col-11"></div>
+    <div class="col-1">
+      <%= link_to_add_association form, :hospital_transports, class: 'btn btn-primary' do %>
+        <span class="fa fa-plus"></span>
+      <% end %>
     </div>
   </div>
 
