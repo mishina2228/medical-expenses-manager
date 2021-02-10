@@ -18,6 +18,13 @@ environment.plugins.append(
     moment: 'moment'
   })
 )
+const MomentLocalesPlugin = require('moment-locales-webpack-plugin')
+environment.plugins.append(
+  'MomentLocalesPlugin',
+  new MomentLocalesPlugin({
+    localesToKeep: ['en', 'ja']
+  })
+)
 
 environment.splitChunks()
 module.exports = environment
