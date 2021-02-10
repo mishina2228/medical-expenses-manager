@@ -9,7 +9,8 @@ sassLoader.use.push('import-glob-loader')
 environment.loaders.prepend('erb', erb)
 
 const webpack = require('webpack')
-environment.plugins.append('Provide',
+environment.plugins.append(
+  'Provide',
   new webpack.ProvidePlugin({
     $: 'jquery',
     jQuery: 'jquery',
