@@ -9,7 +9,7 @@
       <div class="col-2">
         <%= form.label :from_date, Record.human_attribute_name(:date) %>
       </div>
-      <div class="input-group date col-4 date-picker" id="date-picker1" data-target-input="nearest">
+      <div class="input-group date col-8 col-sm-4 date-picker" id="date-picker1" data-target-input="nearest">
         <%= form.text_field :from_date, class: 'form-control datetimepicker-input', data: {target: '#date-picker1'} %>
         <div class="input-group-append" data-target="#date-picker1" data-toggle="datetimepicker">
           <div class="input-group-text">
@@ -18,7 +18,7 @@
         </div>
       </div>
       <div class="col-1 text-center">～</div>
-      <div class="input-group date col-4 date-picker" id="date-picker2" data-target-input="nearest">
+      <div class="input-group date col-8 offset-2 col-sm-4 offset-sm-0 date-picker" id="date-picker2" data-target-input="nearest">
         <%= form.text_field :to_date, class: 'form-control datetimepicker-input', data: {target: '#date-picker2'} %>
         <div class="input-group-append" data-target="#date-picker2" data-toggle="datetimepicker">
           <div class="input-group-text">
@@ -31,7 +31,7 @@
       <div class="col-sm-2 col-2">
         <%= form.label :month, '月' %>
       </div>
-      <div class="col-sm-4 col-4 input-group month-picker" id="month-picker1" data-target-input="nearest">
+      <div class="col-8 col-sm-4 input-group month-picker" id="month-picker1" data-target-input="nearest">
         <%= form.text_field :month, class: 'form-control datetimepicker-input', data: {target: '#month-picker1'} %>
         <div class="input-group-append" data-target="#month-picker1" data-toggle="datetimepicker">
           <div class="input-group-text">
