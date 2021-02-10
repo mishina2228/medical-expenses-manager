@@ -6,7 +6,8 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 environment.plugins.append(
   'BundleAnalyzer',
   new BundleAnalyzerPlugin({
-    openAnalyzer: false
+    openAnalyzer: false,
+    analyzerMode: 'static'
   })
 )
 module.exports = environment.toWebpackConfig()
