@@ -1,22 +1,22 @@
-<div class="row visible-lg visible-md">
-  <div class="col-sm-6 col-12">
+<div class="row d-none d-xl-block">
+  <div class="col-6 float-left">
     <%= check_division(division, Hospital) %>
     <%= t('text.division_types.medical_treatment') %>
   </div>
-  <div class="col-sm-6 col-12">
+  <div class="col-6 float-left">
     <span class="far fa-square"></span>
     <%= t('text.division_types.nursing') %>
   </div>
-  <div class="col-sm-6 col-12">
+  <div class="col-6 float-left">
     <%= check_division(division, Drugstore) %>
     <%= t('text.division_types.drug') %>
   </div>
-  <div class="col-sm-6 col-12">
+  <div class="col-6 float-left">
     <%= check_division(division, Transport) %>
     <%= t('text.division_types.other') %>
   </div>
 </div>
-<div class="row visible visible-sm">
+<div class="row d-xl-none">
   <div class="col-12">
     <%= render_division_for_statistics(division) %>
   </div>
