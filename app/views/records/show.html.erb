@@ -6,42 +6,42 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-xs-4 col-sm-2">
+    <div class="col-4 col-sm-2">
       <%= Record.human_attribute_name :date %>
     </div>
-    <div class="col-xs-8 col-sm-10">
+    <div class="col-8 col-sm-10">
       <%= l(@record.date) %>
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-4 col-sm-2">
+    <div class="col-4 col-sm-2">
       <%= Person.human_attribute_name :name %>
     </div>
-    <div class="col-xs-8 col-sm-10">
+    <div class="col-8 col-sm-10">
       <%= @record.person.name %>
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-4 col-sm-2">
+    <div class="col-4 col-sm-2">
       <%= Division.model_name.human %>
     </div>
-    <div class="col-xs-8 col-sm-10 emojify">
+    <div class="col-8 col-sm-10 emojify">
       <%= render_division(@record.division) %>
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-4 col-sm-2">
+    <div class="col-4 col-sm-2">
       <%= Division.human_attribute_name :name %>
     </div>
-    <div class="col-xs-8 col-sm-10">
+    <div class="col-8 col-sm-10">
       <%= @record.division.name %>
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-4 col-sm-2">
+    <div class="col-4 col-sm-2">
       <%= Record.human_attribute_name :cost %>
     </div>
-    <div class="col-xs-8 col-sm-10">
+    <div class="col-8 col-sm-10">
       <%= @record.cost.to_s(:currency) %>
     </div>
   </div>

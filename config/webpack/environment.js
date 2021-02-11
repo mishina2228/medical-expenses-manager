@@ -9,11 +9,20 @@ sassLoader.use.push('import-glob-loader')
 environment.loaders.prepend('erb', erb)
 
 const webpack = require('webpack')
-environment.plugins.append('Provide',
+environment.plugins.append(
+  'Provide',
   new webpack.ProvidePlugin({
     $: 'jquery',
     jQuery: 'jquery',
-    Popper: ['popper.js', 'default']
+    Popper: ['popper.js', 'default'],
+    moment: 'moment'
+  })
+)
+const MomentLocalesPlugin = require('moment-locales-webpack-plugin')
+environment.plugins.append(
+  'MomentLocalesPlugin',
+  new MomentLocalesPlugin({
+    localesToKeep: ['en', 'ja']
   })
 )
 

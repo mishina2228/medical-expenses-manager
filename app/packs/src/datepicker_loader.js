@@ -1,16 +1,17 @@
 $(document).on('turbolinks:load', () => {
+  const locale = $('body').data('locale')
   $('.date-picker').datetimepicker({
     format: 'YYYY-MM-DD',
-    locale: 'ja'
+    locale: locale
   })
   $('.month-picker').datetimepicker({
     format: 'YYYY-MM',
-    locale: 'ja',
+    locale: locale,
     viewMode: 'months'
   })
   $('.year-picker').datetimepicker({
     format: 'YYYY',
-    locale: 'ja',
+    locale: locale,
     viewMode: 'years'
   })
 })

@@ -6,6 +6,7 @@ common_env: &common_env
   BUNDLE_RETRY: 3
   BUNDLE_PATH: vendor/bundle
   RAILS_ENV: test
+  NODE_ENV: test
   TZ: 'Asia/Tokyo'
 
 executors:

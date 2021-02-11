@@ -22,7 +22,7 @@ en:
           division_name: Payee
           division_type: Division
           cost: Expenses
-      statistics: Medical record statistics
+      statistics: Statistics
       statistics_year: "Medical record statistics of %{year}"
       year: "%{year}"
     top:
