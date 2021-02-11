@@ -29,7 +29,7 @@
     </div>
     <div class="form-group row">
       <div class="col-sm-2 col-2">
-        <%= form.label :month, '月' %>
+        <%= form.label :month, t('datetime.prompts.month') %>
       </div>
       <div class="col-8 col-sm-4 input-group month-picker" id="month-picker1" data-target-input="nearest">
         <%= form.text_field :month, class: 'form-control datetimepicker-input', data: {target: '#month-picker1'} %>
