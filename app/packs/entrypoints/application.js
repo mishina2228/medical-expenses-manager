@@ -8,12 +8,12 @@
 // layout file, like app/views/layouts/application.html.erb
 
 import 'bootstrap'
-import '@fortawesome/fontawesome-free/js/all'
 import 'moment'
 import 'moment/locale/ja'
 import 'tempusdominus-bootstrap-4'
 
 import '../src/datepicker_loader'
+import '../src/fontawesome'
 import '../src/record'
 import '../src/theme_changer'
 
