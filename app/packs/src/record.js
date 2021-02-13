@@ -1,4 +1,6 @@
-$(document).on('turbolinks:load', () => {
+import emojiToolkit from 'emoji-toolkit'
+
+window.addEventListener('turbolinks:load', () => {
   emojify()
 
   $('.division_type').on('change', event => {
@@ -15,18 +17,16 @@ $(document).on('turbolinks:load', () => {
 })
 
 const loadDivisionIds = klassName => {
-  $.ajax({
-    url: '/divisions',
-    type: 'GET',
-    data: { klass: klassName }
-  }).done(json => {
-    const $divisionId = $('.division_id')
-    replaceSelectOptions($divisionId, json)
-    const defaultId = $('#division_default_id').val()
-    if (defaultId) {
-      $divisionId.val(defaultId)
-    }
-  })
+  window.fetch(`/divisions?klass=${klassName}`)
+    .then(response => response.json())
+    .then(json => {
+      const $divisionId = $('.division_id')
+      replaceSelectOptions($divisionId, json)
+      const defaultId = $('#division_default_id').val()
+      if (defaultId) {
+        $divisionId.val(defaultId)
+      }
+    })
 }
 
 const replaceSelectOptions = ($select, results) => {
@@ -63,7 +63,6 @@ const extname = path => {
 }
 
 const emojify = () => {
-  const emojiToolkit = require('emoji-toolkit')
   $('.emojify').each((_, elem) => {
     const emojified = emojiToolkit.toImage($(elem).html())
     $(elem).html(emojified)
