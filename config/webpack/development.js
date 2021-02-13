@@ -1,8 +1,8 @@
 process.env.NODE_ENV = process.env.NODE_ENV || 'development'
 
 const environment = require('./environment')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 environment.plugins.append(
   'BundleAnalyzer',
   new BundleAnalyzerPlugin({
@@ -10,4 +10,5 @@ environment.plugins.append(
     analyzerMode: 'static'
   })
 )
+
 module.exports = environment.toWebpackConfig()

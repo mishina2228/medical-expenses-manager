@@ -1,3 +1,5 @@
 @import '~bootstrap/scss/bootstrap';
-@import '~tempusdominus-bootstrap-4/src/sass/tempusdominus-bootstrap-4';
+@import '~flatpickr/dist/flatpickr';
+@import '~flatpickr/dist/themes/material_blue';
+@import '~flatpickr/dist/plugins/monthSelect/style';
 @import '../stylesheets/*';

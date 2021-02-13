@@ -14,15 +14,7 @@ environment.plugins.append(
   new webpack.ProvidePlugin({
     $: 'jquery',
     jQuery: 'jquery',
-    Popper: ['popper.js', 'default'],
-    moment: 'moment'
-  })
-)
-const MomentLocalesPlugin = require('moment-locales-webpack-plugin')
-environment.plugins.append(
-  'MomentLocalesPlugin',
-  new MomentLocalesPlugin({
-    localesToKeep: ['en', 'ja']
+    Popper: ['popper.js', 'default']
   })
 )
 

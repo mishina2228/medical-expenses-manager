@@ -1,17 +1,25 @@
+import flatpickr from 'flatpickr'
+import monthSelectPlugin from 'flatpickr/dist/plugins/monthSelect'
+import { Japanese } from 'flatpickr/dist/l10n/ja'
+
+const localeDict = {
+  en: null,
+  ja: Japanese
+}
+
 $(document).on('turbolinks:load', () => {
   const locale = $('body').data('locale')
-  $('.date-picker').datetimepicker({
-    format: 'YYYY-MM-DD',
-    locale: locale
+  flatpickr('.date-picker', {
+    allowInput: true,
+    locale: localeDict[locale]
   })
-  $('.month-picker').datetimepicker({
-    format: 'YYYY-MM',
-    locale: locale,
-    viewMode: 'months'
-  })
-  $('.year-picker').datetimepicker({
-    format: 'YYYY',
-    locale: locale,
-    viewMode: 'years'
+  flatpickr('.month-picker', {
+    allowInput: true,
+    locale: localeDict[locale],
+    plugins: [
+      monthSelectPlugin({
+        dateFormat: 'Y-m'
+      })
+    ]
   })
 })

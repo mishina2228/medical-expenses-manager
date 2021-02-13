@@ -14,15 +14,13 @@
     "@rails/webpacker": "5.2.1",
     "bootstrap": "^4.6.0",
     "emoji-toolkit": "^6.0.1",
+    "flatpickr": "^4.6.9",
     "import-glob-loader": "^1.1.0",
     "jquery": "^3.5.1",
     "js-cookie": "^2.2.1",
-    "moment": "^2.29.1",
-    "moment-locales-webpack-plugin": "^1.2.0",
     "popper.js": "^1.16.1",
     "rails-erb-loader": "^5.5.2",
     "resolve-url-loader": "^3.1.2",
-    "tempusdominus-bootstrap-4": "5.0.1",
     "turbolinks": "^5.2.0"
   },
   "standard": {
