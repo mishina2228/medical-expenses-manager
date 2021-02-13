@@ -12,8 +12,6 @@ window.addEventListener('turbolinks:load', () => {
   $('#csv_loader').on('change', event => {
     propLoadButton($(event.currentTarget))
   }).change()
-
-  addDataOnAddFields()
 })
 
 const loadDivisionIds = klassName => {
@@ -67,10 +65,4 @@ const emojify = () => {
     const emojified = emojiToolkit.toImage($(elem).html())
     $(elem).html(emojified)
   })
-}
-
-const addDataOnAddFields = () => {
-  $('a.add_fields')
-    .data('association-insertion-method', 'append')
-    .data('association-insertion-node', '#hospital-transports')
 }
