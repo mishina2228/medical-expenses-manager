@@ -38,7 +38,7 @@ class RecordsTest < ApplicationSystemTestCase
     fill_in Record.human_attribute_name(:date), with: Date.current.strftime('%Y-%m-%d')
     select @person.name, from: 'record_person_id'
     select Drugstore.model_name.human, from: 'record_division_type'
-    select @drugstore.name, from: 'record_division_id'
+    select @drugstore.name, from: 'division-id-select'
     fill_in Record.human_attribute_name(:cost), with: 120
     click_on I18n.t('helpers.submit.create')
 
@@ -54,7 +54,7 @@ class RecordsTest < ApplicationSystemTestCase
     fill_in Record.human_attribute_name(:date), with: Date.current.strftime('%Y-%m-%d')
     select @person.name, from: 'record_person_id'
     select Drugstore.model_name.human, from: 'record_division_type'
-    select @drugstore.name, from: 'record_division_id'
+    select @drugstore.name, from: 'division-id-select'
     fill_in Record.human_attribute_name(:cost), with: 120
     check I18n.t('helpers.label.continuously_create')
     click_on I18n.t('helpers.submit.create')
