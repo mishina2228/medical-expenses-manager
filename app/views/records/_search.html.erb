@@ -72,13 +72,12 @@
       </div>
       <div class="col-lg-2 col-4">
         <%= form.label :division_name, Division.human_attribute_name(:name) %>
-        <%= hidden_field_tag 'division[default_id]', record.division_id %>
       </div>
       <div class="col-lg-2 col-8">
         <% records = Division.all_records(record.division_type) %>
         <%= form.select :division_id, records.map { |r| [r.name, r.id] },
                         {include_blank: true},
-                        class: 'form-control division_id', disabled: records.blank? %>
+                        class: 'form-control', id: 'division-id-select', disabled: records.blank? %>
       </div>
     </div>
     <%= button_tag t('helpers.button.reset'), type: :button, id: 'reset_search',

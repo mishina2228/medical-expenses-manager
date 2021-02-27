@@ -18,32 +18,27 @@ const loadDivisionIds = klassName => {
   window.fetch(`/divisions?klass=${klassName}`)
     .then(response => response.json())
     .then(json => {
-      const $divisionId = $('.division_id')
-      replaceSelectOptions($divisionId, json)
-      const defaultId = $('#division_default_id').val()
-      if (defaultId) {
-        $divisionId.val(defaultId)
-      }
+      const divisionId = document.getElementById('division-id-select')
+      replaceSelectOptions(divisionId, json)
     })
 }
 
-const replaceSelectOptions = ($select, results) => {
-  $select.html($('<option>'))
-  $(results).each((_, elem) => {
-    const option = $('<option>').val(elem.id).text(elem.name)
-    $select.append(option)
+const replaceSelectOptions = (select, results) => {
+  select.textContent = ''
+  select.insertAdjacentElement('beforeend', document.createElement('option')) // empty option
+  results.forEach(elem => {
+    const option = document.createElement('option')
+    option.value = elem.id
+    option.text = elem.name
+    select.insertAdjacentElement('beforeend', option)
   })
-  if (results.length === 0) {
-    $select.prop('disabled', true)
-  } else {
-    $select.prop('disabled', false)
-  }
+  select.disabled = results.length === 0
 }
 
 const resetSearchForm = () => {
-  const $forms = $('#search_record_form')
-    .find('input[name^="search_record"], select[name^="search_record"]')
-  $forms.each((_, elem) => $(elem).val(''))
+  const form = document.getElementById('search_record_form')
+  const fields = form.querySelectorAll('input[name^="search_record"], select[name^="search_record"]')
+  fields.forEach(elem => { elem.value = '' })
 }
 
 const propLoadButton = $csvLoader => {
@@ -61,8 +56,7 @@ const extname = path => {
 }
 
 const emojify = () => {
-  $('.emojify').each((_, elem) => {
-    const emojified = emojiToolkit.toImage($(elem).html())
-    $(elem).html(emojified)
+  document.querySelectorAll('.emojify').forEach(elem => {
+    elem.innerHTML = emojiToolkit.toImage(elem.innerHTML)
   })
 }
