@@ -9,22 +9,22 @@
     </div>
   <% end %>
 
-  <div class="form-group row">
-    <div class="col-4 col-sm-2">
+  <div class="row">
+    <div class="col-4 col-md-2">
       <%= form.label :name %>
     </div>
-    <div class="col-8 col-sm-10">
+    <div class="col-8 col-md-10">
       <%= form.text_field :name, class: 'form-control', required: true %>
     </div>
   </div>
   <div class="row">
-    <div class="col-4 col-sm-2">
+    <div class="col-4 col-md-2">
       <%= form.label HospitalTransport.model_name.human %>
     </div>
-    <div class="col-3 col-sm-4">
+    <div class="col-4 col-md-5">
       <%= HospitalTransport.human_attribute_name :transport %>
     </div>
-    <div class="col-3 col-sm-4">
+    <div class="col-4 col-md-5">
       <%= HospitalTransport.human_attribute_name :transport_cost %>
     </div>
   </div>
@@ -33,7 +33,7 @@
       <%= render 'hospital_transport_fields', f: ht %>
     <% end %>
   </div>
-  <div class="row">
+  <div class="row mb-3">
     <div class="col-11"></div>
     <div class="col-1">
       <%= link_to_add_association form, :hospital_transports, class: 'btn btn-primary',

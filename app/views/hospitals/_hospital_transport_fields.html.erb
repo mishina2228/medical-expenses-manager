@@ -1,10 +1,10 @@
 <div class="nested-fields">
-  <div class="form-group row">
-    <div class="offset-4 col-4 offset-sm-2 col-sm-5">
+  <div class="row mb-3">
+    <div class="offset-4 col-4 offset-md-2 col-md-5">
       <%= f.collection_select :transport_id, Transport.all, :id, :name,
-                              {include_blank: true}, class: 'form-control', required: true %>
+                              {include_blank: true}, class: 'form-control form-select', required: true %>
     </div>
-    <div class="col-3 col-sm-4">
+    <div class="col-3 col-md-4">
       <%= f.number_field :transport_cost, class: 'form-control', min: 0, required: true %>
     </div>
     <div class="col-1">
