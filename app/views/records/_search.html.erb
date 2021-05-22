@@ -9,23 +9,27 @@
       <div class="col-2">
         <%= form.label :from_date, Record.human_attribute_name(:date) %>
       </div>
-      <div class="col-8 col-md-4 input-group date-picker" data-wrap="true">
-        <%= form.text_field :from_date, class: 'form-control', data: {input: true} %>
-        <div class="input-group-text" data-toggle>
-          <span class="fa fa-calendar"></span>
-        </div>
-        <div class="input-group-text" data-clear>
-          <span class="fa fa-times"></span>
+      <div class="col-8 col-md-4">
+        <div class="input-group date-picker" data-wrap="true">
+          <%= form.text_field :from_date, class: 'form-control', data: {input: true} %>
+          <div class="input-group-text" data-toggle>
+            <span class="fa fa-calendar"></span>
+          </div>
+          <div class="input-group-text" data-clear>
+            <span class="fa fa-times"></span>
+          </div>
         </div>
       </div>
       <div class="col-1 text-center">～</div>
-      <div class="col-8 offset-2 col-md-4 offset-md-0 input-group date-picker" data-wrap="true">
-        <%= form.text_field :to_date, class: 'form-control', data: {input: true} %>
-        <div class="input-group-text" data-toggle>
-          <span class="fa fa-calendar"></span>
-        </div>
-        <div class="input-group-text" data-clear>
-          <span class="fa fa-times"></span>
+      <div class="col-8 offset-2 col-md-4 offset-md-0 mb-3">
+        <div class="input-group date-picker" data-wrap="true">
+          <%= form.text_field :to_date, class: 'form-control', data: {input: true} %>
+          <div class="input-group-text" data-toggle>
+            <span class="fa fa-calendar"></span>
+          </div>
+          <div class="input-group-text" data-clear>
+            <span class="fa fa-times"></span>
+          </div>
         </div>
       </div>
     </div>
@@ -33,13 +37,15 @@
       <div class="col-2 col-md-2">
         <%= form.label :month, t('datetime.prompts.month') %>
       </div>
-      <div class="col-8 col-md-4 input-group month-picker" data-wrap="true">
-        <%= form.text_field :month, class: 'form-control', data: {input: true} %>
-        <div class="input-group-text" data-toggle>
-          <span class="fa fa-calendar"></span>
-        </div>
-        <div class="input-group-text" data-clear>
-          <span class="fa fa-times"></span>
+      <div class="col-8 col-md-4 mb-3">
+        <div class="input-group month-picker" data-wrap="true">
+          <%= form.text_field :month, class: 'form-control', data: {input: true} %>
+          <div class="input-group-text" data-toggle>
+            <span class="fa fa-calendar"></span>
+          </div>
+          <div class="input-group-text" data-clear>
+            <span class="fa fa-times"></span>
+          </div>
         </div>
       </div>
     </div>
@@ -47,21 +53,21 @@
       <div class="col-lg-2 col-4">
         <%= form.label :name, Person.human_attribute_name(:name) %>
       </div>
-      <div class="col-lg-2 col-8">
+      <div class="col-lg-2 col-8 mb-3">
         <%= form.collection_select :name, Person.all, :id, :name,
                                    {include_blank: true}, class: 'form-control form-select' %>
       </div>
       <div class="col-lg-2 col-4">
         <%= form.label :division_type, Division.model_name.human %>
       </div>
-      <div class="col-lg-2 col-8">
+      <div class="col-lg-2 col-8 mb-3">
         <%= form.select :division_type, Division.division_names.invert,
                         {include_blank: true}, class: 'form-control form-select division_type' %>
       </div>
       <div class="col-lg-2 col-4">
         <%= form.label :division_name, Division.human_attribute_name(:name) %>
       </div>
-      <div class="col-lg-2 col-8">
+      <div class="col-lg-2 col-8 mb-3">
         <% records = Division.all_records(record.division_type) %>
         <%= form.select :division_id, records.map { |r| [r.name, r.id] },
                         {include_blank: true},
