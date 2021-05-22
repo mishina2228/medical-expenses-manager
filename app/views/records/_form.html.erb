@@ -28,7 +28,7 @@
       <div class="col-7 col-md-10">
         <%= form.collection_select :person_id, Person.all, :id, :name,
                                    {include_blank: true},
-                                   class: 'form-control', required: true %>
+                                   class: 'form-control form-select', required: true %>
       </div>
     </div>
 
@@ -40,7 +40,7 @@
         <%= form.select :division_type, Division.division_names.invert,
                         {include_blank: true,
                          selected: record.division&.model_name},
-                        class: 'form-control division_type', required: true %>
+                        class: 'form-control form-select division_type', required: true %>
       </div>
     </div>
 
@@ -51,7 +51,7 @@
       <div class="col-7 col-md-10">
         <% records = Division.all_records(record.division_type) %>
         <%= form.select :division_id, records.map { |r| [r.name, r.id] },
-                        {include_blank: true}, class: 'form-control', id: 'division-id-select',
+                        {include_blank: true}, class: 'form-control form-select', id: 'division-id-select',
                         disabled: records.blank?, required: true %>
       </div>
     </div>

@@ -49,14 +49,14 @@
       </div>
       <div class="col-lg-2 col-8">
         <%= form.collection_select :name, Person.all, :id, :name,
-                                   {include_blank: true}, class: 'form-control' %>
+                                   {include_blank: true}, class: 'form-control form-select' %>
       </div>
       <div class="col-lg-2 col-4">
         <%= form.label :division_type, Division.model_name.human %>
       </div>
       <div class="col-lg-2 col-8">
         <%= form.select :division_type, Division.division_names.invert,
-                        {include_blank: true}, class: 'form-control division_type' %>
+                        {include_blank: true}, class: 'form-control form-select division_type' %>
       </div>
       <div class="col-lg-2 col-4">
         <%= form.label :division_name, Division.human_attribute_name(:name) %>
@@ -65,7 +65,7 @@
         <% records = Division.all_records(record.division_type) %>
         <%= form.select :division_id, records.map { |r| [r.name, r.id] },
                         {include_blank: true},
-                        class: 'form-control', id: 'division-id-select', disabled: records.blank? %>
+                        class: 'form-control form-select', id: 'division-id-select', disabled: records.blank? %>
       </div>
     </div>
     <%= button_tag t('helpers.button.reset'), type: :button, id: 'reset_search',
