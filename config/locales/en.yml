@@ -13,7 +13,7 @@ en:
       division:
         name: Payee
       drugstore:
-        name: Drugstore name
+        name: Name
       hospital:
         name: Hospital name
       hospital_transport: &hospital_transport
@@ -32,7 +32,7 @@ en:
         division: Division name
         person: User name
       transport:
-        name: Transport name
+        name: Name
     errors:
       messages:
         date_invalid: is not a valid date
