@@ -88,7 +88,7 @@ GEM
     crass (1.0.6)
     docile (1.4.0)
     erubi (1.10.0)
-    ffi (1.15.0)
+    ffi (1.15.1)
     get_process_mem (0.2.7)
       ffi (~> 1.0)
     globalid (0.4.2)
