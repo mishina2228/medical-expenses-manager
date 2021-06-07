@@ -84,7 +84,7 @@ GEM
     cocoon (1.2.15)
     codecov (0.5.2)
       simplecov (>= 0.15, < 0.22)
-    concurrent-ruby (1.1.8)
+    concurrent-ruby (1.1.9)
     crass (1.0.6)
     docile (1.4.0)
     erubi (1.10.0)
