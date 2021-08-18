@@ -82,7 +82,7 @@ GEM
       xpath (~> 3.2)
     childprocess (3.0.0)
     cocoon (1.2.15)
-    codecov (0.5.2)
+    codecov (0.6.0)
       simplecov (>= 0.15, < 0.22)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
