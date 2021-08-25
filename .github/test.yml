@@ -1,0 +1,42 @@
+name: test
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  test:
+    services:
+    strategy:
+      fail-fast: true
+      matrix:
+        ruby_version:
+          - 'ruby-head'
+          - '3.0'
+          - '2.7'
+          - '2.6'
+    runs-on: ubuntu-latest
+    env:
+      BUNDLE_CLEAN: 'true'
+      BUNDLE_JOBS: 3
+      BUNDLE_RETRY: 3
+      BUNDLE_PATH: vendor/bundle
+      RAILS_ENV: test
+      NODE_ENV: test
+      TZ: 'Asia/Tokyo'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby_version }}
+          bundler-cache: true
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          cache: 'yarn'
+      - name: Database setup
+        run: bin/rails db:schema:load --trace
+      - name: Run unit tests
+        run: bin/rails test
