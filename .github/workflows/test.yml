@@ -6,7 +6,6 @@ on:
 
 jobs:
   test:
-    services:
     strategy:
       fail-fast: true
       matrix:
