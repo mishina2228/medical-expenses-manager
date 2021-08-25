@@ -37,5 +37,9 @@ jobs:
       - run: yarn install
       - name: Database setup
         run: bin/rails db:schema:load --trace
+      - name: Build assets in advance
+        run: bin/webpack
       - name: Run unit tests
         run: bin/rails test
+      - name: Run system test
+        run: bin/rails test:system
