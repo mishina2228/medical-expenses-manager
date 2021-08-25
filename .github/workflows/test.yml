@@ -7,10 +7,9 @@ on:
 jobs:
   test:
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
         ruby_version:
-          - 'ruby-head'
           - '3.0'
           - '2.7'
           - '2.6'
