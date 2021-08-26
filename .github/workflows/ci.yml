@@ -1,4 +1,4 @@
-name: test
+name: ci
 
 on:
   - push
@@ -43,3 +43,36 @@ jobs:
         run: bin/rails test
       - name: Run system test
         run: bin/rails test:system
+  brakeman:
+    runs-on: ubuntu-latest
+    env:
+      BUNDLE_CLEAN: 'true'
+      BUNDLE_JOBS: 3
+      BUNDLE_RETRY: 3
+      BUNDLE_PATH: vendor/bundle
+      RAILS_ENV: test
+      TZ: 'Asia/Tokyo'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.0'
+          bundler-cache: true
+      - name: Run Brakeman
+        run: bundle exec brakeman
+  standard:
+    runs-on: ubuntu-latest
+    env:
+      NODE_ENV: test
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          cache: 'yarn'
+      - run: yarn install
+      - name: Run Standard
+        run: yarn standard
