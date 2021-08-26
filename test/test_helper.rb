@@ -10,7 +10,7 @@ require_relative '../config/environment'
 require 'rails/test_help'
 require 'minitest/autorun'
 
-Capybara.register_driver :headless_chrome do |app|
+Capybara.register_driver :selenium_chrome_headless do |app|
   options = Selenium::WebDriver::Chrome::Options.new
   options.add_argument('--disable-dev-shm-usage')
   options.add_argument('--headless')
