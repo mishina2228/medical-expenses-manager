@@ -49,6 +49,12 @@ jobs:
         run: bin/rails test
       - name: Run system test
         run: bin/rails test:system
+      - name: Archive system test result screenshots
+        if: failure()
+        uses: actions/upload-artifact@v1
+        with:
+          name: system test result screenshots
+          path: tmp/screenshots/
   brakeman:
     runs-on: ubuntu-latest
     env:
