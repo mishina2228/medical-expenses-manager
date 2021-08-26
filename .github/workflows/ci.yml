@@ -35,6 +35,12 @@ jobs:
           node-version: '14'
           cache: 'yarn'
       - run: yarn install
+      - name: Install chrome
+        run: |
+          wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
+          echo 'deb https://dl.google.com/linux/chrome/deb/ stable main' | tee /etc/apt/sources.list.d/google-chrome.list
+          apt update -y
+          apt install -y google-chrome-stable
       - name: Database setup
         run: bin/rails db:schema:load --trace
       - name: Build assets in advance
