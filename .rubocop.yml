@@ -21,15 +21,21 @@ Layout/SpaceInsideBlockBraces:
 Layout/SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space
 
+Metrics/AbcSize:
+  Enabled: false
 Metrics/BlockLength:
   Exclude:
     - 'config/environments/*.rb'
 Metrics/ClassLength:
   Exclude:
     - 'test/**/*.rb'
+Metrics/CyclomaticComplexity:
+  Enabled: false
 Metrics/MethodLength:
-  Exclude:
-    - 'test/**/*.rb'
+  Enabled: false
+
+Minitest/MultipleAssertions:
+  Enabled: false
 
 Rails/ActiveRecordCallbacksOrder:
   Enabled: true
