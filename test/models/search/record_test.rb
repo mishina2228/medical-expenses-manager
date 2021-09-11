@@ -68,9 +68,8 @@ class Search::RecordTest < ActiveSupport::TestCase
     assert_not_includes actual, @r5
   end
 
-  test 'search by from date' do
-    date = Date.yesterday
-    search = Search::Record.new(from_date: date)
+  test 'search by from_date passing a String' do
+    search = Search::Record.new(from_date: Date.yesterday.to_s)
     actual = search.search
     assert_includes actual, @r1
     assert_includes actual, @r2
@@ -79,15 +78,58 @@ class Search::RecordTest < ActiveSupport::TestCase
     assert_not_includes actual, @r5
   end
 
-  test 'search by to date' do
-    date = Date.yesterday
-    search = Search::Record.new(to_date: date)
+  test 'search by from_date passing a Date' do
+    search = Search::Record.new(from_date: Date.yesterday)
+    actual = search.search
+    assert_includes actual, @r1
+    assert_includes actual, @r2
+    assert_not_includes actual, @r3
+    assert_not_includes actual, @r4
+    assert_not_includes actual, @r5
+  end
+
+  test 'search by from_date - a wrong argument should be ignored' do
+    [nil, true, false, '', 'test', '2018-13-20'].each do |arg|
+      search = Search::Record.new(from_date: arg)
+      actual = search.search
+      assert_includes actual, @r1
+      assert_includes actual, @r2
+      assert_includes actual, @r3
+      assert_includes actual, @r4
+      assert_includes actual, @r5
+    end
+  end
+
+  test 'search by to_date passing a String' do
+    search = Search::Record.new(to_date: Date.yesterday.to_s)
     actual = search.search
     assert_not_includes actual, @r1
     assert_includes actual, @r2
     assert_includes actual, @r3
     assert_includes actual, @r4
     assert_includes actual, @r5
+  end
+
+  test 'search by to_date passing a Date' do
+    search = Search::Record.new(to_date: Date.yesterday)
+    actual = search.search
+    assert_not_includes actual, @r1
+    assert_includes actual, @r2
+    assert_includes actual, @r3
+    assert_includes actual, @r4
+    assert_includes actual, @r5
+  end
+
+  test 'search by to_date - a wrong argument should be ignored' do
+    [nil, false, true, '', 'test', '2018-13-20'].each do |arg|
+      search = Search::Record.new(to_date: arg)
+      actual = search.search
+      assert_includes actual, @r1
+      assert_includes actual, @r2
+      assert_includes actual, @r3
+      assert_includes actual, @r4
+      assert_includes actual, @r5
+    end
   end
 
   test 'search by month' do
@@ -105,5 +147,35 @@ class Search::RecordTest < ActiveSupport::TestCase
     record = Search::Record.new(month: '2018-02')
     expected = Date.new(2018, 2, 1)..Date.new(2018, 2, 28)
     assert_equal expected, record.days_of_month
+  end
+
+  test 'from_date returns a Date' do
+    expected = Date.new(2018, 10, 20)
+    ['2018-10-20', '2018-10-20 01:23:45', '2018-10-20T01:23:45+0900'].each do |arg|
+      record = Search::Record.new(from_date: arg)
+      assert_equal expected, record.from_date
+    end
+  end
+
+  test 'from_date returns nil when passing a wrong argument' do
+    [nil, false, true, '', 'test', '2018-13-20'].each do |arg|
+      record = Search::Record.new(from_date: arg)
+      assert_nil record.from_date
+    end
+  end
+
+  test 'to_date returns a Date' do
+    expected = Date.new(2018, 12, 20)
+    ['2018-12-20', '2018-12-20 01:23:45', '2018-12-20T01:23:45+0900'].each do |arg|
+      record = Search::Record.new(to_date: arg)
+      assert_equal expected, record.to_date
+    end
+  end
+
+  test 'to_date returns nil when passing a wrong argument' do
+    [nil, false, true, '', 'test', '2018-13-20'].each do |arg|
+      record = Search::Record.new(to_date: arg)
+      assert_nil record.to_date
+    end
   end
 end
