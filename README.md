@@ -10,7 +10,7 @@ Ruby on Rails application for managing medical expenses deductions
 
 ## Prerequisites
 
-- Ruby 2.6+
+- Ruby 2.7+
 - Node.js 10.22.1+ || 12+ || 14+
 - Yarn 1.x+
 
