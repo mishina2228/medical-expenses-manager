@@ -11,7 +11,7 @@ class Search::Record < Search::Base
     ret = ret.where(date: from_date..) if from_date.present?
     ret = ret.where(date: ..to_date) if to_date.present?
     ret = ret.where(date: days_of_month) if month.present?
-    ret.order(:date)
+    ret.order(date: :desc)
   end
 
   def from_date
