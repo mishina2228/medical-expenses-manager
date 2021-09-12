@@ -179,5 +179,19 @@ module Search
         assert_nil record.to_date
       end
     end
+
+    test 'date returns nil or Range' do
+      channel = Search::Record.new
+      assert_nil channel.date
+
+      channel = Search::Record.new(from_date: '2018-10-19')
+      assert_equal channel.from_date.., channel.date
+
+      channel = Search::Record.new(to_date: '2018-12-19')
+      assert_equal (..channel.to_date), channel.date
+
+      channel = Search::Record.new(from_date: '2018-10-19', to_date: '2018-12-19')
+      assert_equal channel.from_date..channel.to_date, channel.date
+    end
   end
 end

@@ -9,8 +9,7 @@ module Search
       ret = ret.where(person_id: name) if name.present?
       ret = ret.where(divisions: {type: division_type}) if division_type.present?
       ret = ret.where(division_id: division_id) if division_id.present?
-      ret = ret.where(date: from_date..) if from_date.present?
-      ret = ret.where(date: ..to_date) if to_date.present?
+      ret = ret.where(date: date) if date.present?
       ret = ret.where(date: days_of_month) if month.present?
       ret.order(date: :desc)
     end
@@ -25,6 +24,12 @@ module Search
       Date.parse(@to_date.to_s)
     rescue TypeError, Date::Error
       nil
+    end
+
+    def date
+      return if from_date.nil? && to_date.nil?
+
+      from_date..to_date
     end
 
     def days_of_month
