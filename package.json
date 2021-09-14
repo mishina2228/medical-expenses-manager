@@ -11,7 +11,7 @@
     "@nathanvda/cocoon": "^1.2.14",
     "@popperjs/core": "^2.10.1",
     "@rails/ujs": "^6.1.4",
-    "@rails/webpacker": "5.4.2",
+    "@rails/webpacker": "5.4.3",
     "bootstrap": "^5.0.2",
     "emoji-toolkit": "^6.6.0",
     "flatpickr": "^4.6.9",
