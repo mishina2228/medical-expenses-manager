@@ -1,5 +1,4 @@
-<%= form_with(model: record, url: search_records_path, method: :get,
-              local: true, id: :search_record_form) do |form| %>
+<%= form_with(model: record, url: search_records_path, method: :get, local: true, id: :search_record_form) do |form| %>
   <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
           data-bs-target="#collapseSearch" aria-expanded="true" aria-controls="collapseSearch">
     <%= t('helpers.button.search_form') %>
