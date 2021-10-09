@@ -3,6 +3,7 @@
 [![codecov](https://codecov.io/gh/mishina2228/medical-expenses-manager/branch/master/graph/badge.svg)](https://codecov.io/gh/mishina2228/medical-expenses-manager)
 [![GitHub license](https://img.shields.io/github/license/mishina2228/medical-expenses-manager)](https://github.com/mishina2228/medical-expenses-manager/blob/master/LICENSE)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fmishina2228%2Fmedical-expenses-manager.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fmishina2228%2Fmedical-expenses-manager?ref=badge_shield)
 
 # medical_expenses_manager
