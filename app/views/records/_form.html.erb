@@ -52,8 +52,8 @@
       </div>
       <div class="col-7 col-md-10">
         <% records = Division.all_records(record.division_type) %>
-        <%= form.select :division_id, records.map { |r| [r.name, r.id] },
-                        {include_blank: true}, class: 'form-control form-select', id: 'division-id-select',
+        <%= form.select :division_id, records.map {|r| [r.name, r.id]}, {include_blank: true},
+                        class: 'form-control form-select', id: 'division-id-select',
                         disabled: records.blank?, required: true %>
       </div>
     </div>

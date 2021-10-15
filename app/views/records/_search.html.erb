@@ -68,13 +68,12 @@
       </div>
       <div class="col-lg-2 col-8 mb-3">
         <% records = Division.all_records(record.division_type) %>
-        <%= form.select :division_id, records.map { |r| [r.name, r.id] },
+        <%= form.select :division_id, records.map {|r| [r.name, r.id]},
                         {include_blank: true},
                         class: 'form-control form-select', id: 'division-id-select', disabled: records.blank? %>
       </div>
     </div>
-    <%= button_tag t('helpers.button.reset'), type: :button, id: 'reset_search',
-                   class: 'btn btn-secondary' %>
+    <%= button_tag t('helpers.button.reset'), type: :button, id: 'reset_search', class: 'btn btn-secondary' %>
     <%= form.submit t('helpers.submit.search'), class: 'btn btn-success', name: nil %>
   </div>
 <% end %>

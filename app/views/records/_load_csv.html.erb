@@ -2,12 +2,11 @@
   <div class="container box_radius">
     <div class="row">
       <div class="col-8 col-md-5">
-        <%= file_field_tag 'load_csv[file]', class: 'form-control-file',
-                           id: 'csv_loader', accept: '.csv' %>
+        <%= file_field_tag 'load_csv[file]', class: 'form-control-file', id: 'csv_loader', accept: '.csv' %>
       </div>
       <div class="col-4 col-md-2">
-        <%= submit_tag t('helpers.submit.load_csv'), class: 'btn btn-success', name: nil,
-                       disabled: true, id: :csv_load_button %>
+        <%= submit_tag t('helpers.submit.load_csv'),
+                       class: 'btn btn-success', name: nil, disabled: true, id: :csv_load_button %>
       </div>
     </div>
   </div>
