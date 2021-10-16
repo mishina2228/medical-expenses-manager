@@ -3,6 +3,8 @@ linters:
     enabled: true
   ErbSafety:
     enabled: true
+    exclude:
+      - '**/app/views/kaminari/*'
   Rubocop:
     enabled: true
     rubocop_config:
