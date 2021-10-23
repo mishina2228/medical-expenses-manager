@@ -27,7 +27,7 @@ body {
       color: whitesmoke;
     }
 
-    div, span, table {
+    div, span:not([class^='flatpickr-']), table {
       color: whitesmoke;
     }
 
