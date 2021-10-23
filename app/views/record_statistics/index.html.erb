@@ -21,17 +21,19 @@
   <tbody>
   <% @record_statistics.each do |r| %>
     <tr>
-      <td><%= r.person.name %></td>
-      <td><%= r.division.name %></td>
+      <td><%= tag.span r.person.name %></td>
+      <td><%= tag.span r.division.name %></td>
       <td>
         <%= render partial: 'division', locals: {division: r.division} %>
       </td>
-      <td><%= r.sum_cost.to_s(:currency) %></td>
+      <td><%= tag.span r.sum_cost.to_s(:currency) %></td>
     </tr>
   <% end %>
+  </tbody>
+  <tfoot>
   <tr>
     <th colspan="3"><%= t('text.records.total') %></th>
     <th><%= @record_statistics.sum(&:sum_cost).to_s(:currency) %></th>
   </tr>
-  </tbody>
+  </tfoot>
 </table>

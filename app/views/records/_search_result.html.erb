@@ -14,10 +14,10 @@
   <% records.each do |r| %>
     <tr>
       <td><%= link_to l(r.date), record_path(r) %></td>
-      <td><%= r.person.name %></td>
-      <td class="emojify"><%= render_division(r.division) %></td>
-      <td><%= r.division.name %></td>
-      <td><%= r.cost.to_s(:currency) %></td>
+      <td><%= tag.span r.person.name %></td>
+      <td><%= tag.span render_division(r.division), class: 'emojify' %></td>
+      <td><%= tag.span r.division.name %></td>
+      <td><%= tag.span r.cost.to_s(:currency) %></td>
     </tr>
   <% end %>
   </tbody>

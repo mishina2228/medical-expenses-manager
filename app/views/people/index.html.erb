@@ -15,7 +15,7 @@
   <% @people.each do |p| %>
     <tr>
       <td><%= link_to p.name, person_path(p) %></td>
-      <td><%= p.relationship %></td>
+      <td><%= tag.span p.relationship %></td>
     </tr>
   <% end %>
   </tbody>
