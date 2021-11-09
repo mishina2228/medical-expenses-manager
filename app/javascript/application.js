@@ -9,10 +9,10 @@
 
 import 'bootstrap'
 
-import '../src/datepicker_loader'
-import '../src/fontawesome'
-import '../src/record'
-import '../src/theme_changer'
+import '../packs/src/datepicker_loader'
+import '../packs/src/fontawesome'
+import '../packs/src/record'
+import '../packs/src/theme_changer'
 
 import './application.scss'
 
@@ -23,4 +23,4 @@ Rails.start()
 Turbolinks.start()
 require('@nathanvda/cocoon')
 
-require.context('../images', true)
+require.context('../packs/images', true)
