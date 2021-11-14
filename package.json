@@ -1,9 +1,6 @@
 {
-  "devDependencies": {
-    "markdownlint-cli": "^0.29.0",
-    "standard": "^16.0.4",
-    "webpack-bundle-analyzer": "^4.5.0",
-    "webpack-dev-server": "^3.11.3"
+  "resolutions": {
+    "is-svg": "^4.2.2"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
@@ -22,7 +19,10 @@
     "resolve-url-loader": "^4.0.0",
     "turbolinks": "^5.2.0"
   },
-  "resolutions": {
-    "is-svg": "^4.2.2"
+  "devDependencies": {
+    "markdownlint-cli": "^0.29.0",
+    "standard": "^16.0.4",
+    "webpack-bundle-analyzer": "^4.5.0",
+    "webpack-dev-server": "^3.11.3"
   }
 }
