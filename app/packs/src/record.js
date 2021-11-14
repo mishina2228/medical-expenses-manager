@@ -3,13 +3,10 @@ import emojiToolkit from 'emoji-toolkit'
 window.addEventListener('turbolinks:load', () => {
   emojify()
 
-  const divisionTypeSelector = document.querySelector('.division_type')
-  divisionTypeSelector?.addEventListener('change', event => {
+  document.querySelector('.division_type')?.addEventListener('change', event => {
     loadDivisionIds(event.currentTarget.value)
   })
-
-  const resetBtn = document.getElementById('reset_search')
-  resetBtn?.addEventListener('click', resetSearchForm)
+  document.getElementById('reset_search')?.addEventListener('click', resetSearchForm)
 
   const csvLoaderBtn = document.getElementById('csv_loader')
   csvLoaderBtn?.addEventListener('change', event => {
