@@ -41,10 +41,5 @@
     "standard": "^16.0.4",
     "webpack-bundle-analyzer": "^4.5.0",
     "webpack-dev-server": "^4.4.0"
-  },
-  "standard": {
-    "globals": [
-      "$"
-    ]
   }
 }
