@@ -4,7 +4,7 @@
       <div class="col-4">
         <%= select_tag 'export[encoding]',
                        options_for_select('UTF-8' => 'utf-8', 'Shift-JIS' => 'sjis'),
-                       class: 'form-control' %>
+                       class: 'form-control form-select' %>
         <% records.each do |record| %>
           <%= hidden_field_tag 'export[ids][]', record.id %>
         <% end %>

@@ -2,9 +2,7 @@ import Cookies from 'js-cookie'
 
 window.addEventListener('turbolinks:load', () => {
   const darkModeBtn = document.querySelector('button.dark-mode-toggle')
-  darkModeBtn.addEventListener('click', () => {
-    changeTheme()
-  })
+  darkModeBtn.addEventListener('click', changeTheme)
 })
 
 const changeTheme = () => {

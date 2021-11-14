@@ -3,15 +3,16 @@ import emojiToolkit from 'emoji-toolkit'
 window.addEventListener('turbolinks:load', () => {
   emojify()
 
-  $('.division_type').on('change', event => {
-    loadDivisionIds($(event.currentTarget).val())
+  document.querySelector('.division_type')?.addEventListener('change', event => {
+    loadDivisionIds(event.currentTarget.value)
   })
+  document.getElementById('reset_search')?.addEventListener('click', resetSearchForm)
 
-  $('#reset_search').on('click', resetSearchForm)
-
-  $('#csv_loader').on('change', event => {
-    propLoadButton($(event.currentTarget))
-  }).change()
+  const csvLoaderBtn = document.getElementById('csv_loader')
+  csvLoaderBtn?.addEventListener('change', event => {
+    propLoadButton(event.currentTarget)
+  })
+  csvLoaderBtn?.dispatchEvent(new window.Event('change'))
 })
 
 const loadDivisionIds = klassName => {
@@ -41,12 +42,13 @@ const resetSearchForm = () => {
   fields.forEach(elem => { elem.value = '' })
 }
 
-const propLoadButton = $csvLoader => {
-  const $csvLoadButton = $('#csv_load_button')
-  if ($csvLoader[0].files[0] && extname($csvLoader[0].files[0].name) === 'csv') {
-    $csvLoadButton.prop('disabled', false)
+const propLoadButton = csvLoader => {
+  const csvLoadButton = document.getElementById('csv_load_button')
+
+  if (csvLoader.files[0] && extname(csvLoader.files[0].name) === 'csv') {
+    csvLoadButton.removeAttribute('disabled')
   } else {
-    $csvLoadButton.prop('disabled', true)
+    csvLoadButton.setAttribute('disabled', 'disabled')
   }
 }
 
