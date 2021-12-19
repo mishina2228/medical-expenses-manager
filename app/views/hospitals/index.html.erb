@@ -23,7 +23,7 @@
     <tr>
       <td><%= link_to h.name, hospital_path(h) %></td>
       <td><%= tag.span h.hospital_transports.map {|ht| ht.transport.name}.join(', ') %></td>
-      <td><%= tag.span h.hospital_transports.sum(&:transport_cost).to_s(:currency) %></td>
+      <td><%= tag.span h.hospital_transports.sum(&:transport_cost).to_formatted_s(:currency) %></td>
     </tr>
   <% end %>
   </tbody>

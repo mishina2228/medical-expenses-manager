@@ -17,7 +17,7 @@
       <td><%= tag.span r.person.name %></td>
       <td><%= tag.span render_division(r.division), class: 'emojify' %></td>
       <td><%= tag.span r.division.name %></td>
-      <td><%= tag.span r.cost.to_s(:currency) %></td>
+      <td><%= tag.span r.cost.to_formatted_s(:currency) %></td>
     </tr>
   <% end %>
   </tbody>
@@ -26,7 +26,7 @@
   <% if controller.action_name == 'search' %>
     <tr>
       <th colspan="4"><%= t('text.records.total') %></th>
-      <th><%= records.except(:limit, :offset).pluck(:cost).sum.to_s(:currency) %></th>
+      <th><%= records.except(:limit, :offset).pluck(:cost).sum.to_formatted_s(:currency) %></th>
     </tr>
   <% end %>
   </tfoot>
