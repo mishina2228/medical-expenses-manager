@@ -231,7 +231,7 @@ GEM
     smart_properties (1.17.0)
     spring (4.0.0)
     sqlite3 (1.4.2)
-    thor (1.1.0)
+    thor (1.2.1)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
