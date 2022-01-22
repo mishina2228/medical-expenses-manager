@@ -1,6 +1,6 @@
 import emojiToolkit from 'emoji-toolkit'
 
-window.addEventListener('turbolinks:load', () => {
+window.addEventListener('turbo:load', () => {
   emojify()
 
   document.querySelector('.division_type')?.addEventListener('change', event => {

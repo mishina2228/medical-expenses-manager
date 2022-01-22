@@ -6,6 +6,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-regular-svg-icons": "^5.15.4",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@hotwired/turbo-rails": "^7.1.1",
     "@nathanvda/cocoon": "^1.2.14",
     "@popperjs/core": "^2.11.2",
     "@rails/ujs": "^7.0.1",
@@ -16,8 +17,7 @@
     "jquery": "^3.6.0",
     "js-cookie": "^3.0.1",
     "rails-erb-loader": "^5.5.2",
-    "resolve-url-loader": "^4.0.0",
-    "turbolinks": "^5.2.0"
+    "resolve-url-loader": "^4.0.0"
   },
   "devDependencies": {
     "markdownlint-cli": "^0.30.0",
