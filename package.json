@@ -15,7 +15,6 @@
     "flatpickr": "^4.6.9",
     "jquery": "^3.6.0",
     "js-cookie": "^3.0.1",
-    "rails-erb-loader": "^5.5.2",
     "resolve-url-loader": "^4.0.0",
     "turbolinks": "^5.2.0"
   },
