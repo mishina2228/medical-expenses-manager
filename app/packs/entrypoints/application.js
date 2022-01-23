@@ -17,7 +17,7 @@ import '../src/theme_changer'
 import './application.scss'
 
 import Rails from '@rails/ujs'
-import "@hotwired/turbo-rails"
+import '@hotwired/turbo-rails'
 
 Rails.start()
 require('@nathanvda/cocoon')
