@@ -21,6 +21,7 @@ class TransportTest < ApplicationSystemTestCase
     assert_text I18n.t('helpers.notice.create')
     text = I18n.t('helpers.title.list', models: Transport.model_name.human.pluralize(I18n.locale))
     assert_selector 'h1', text: text
+    page.assert_current_path(transports_path)
   end
 
   test 'updating a Transport' do
@@ -46,5 +47,6 @@ class TransportTest < ApplicationSystemTestCase
     end
 
     assert_text I18n.t('helpers.notice.delete')
+    page.assert_current_path(transports_path)
   end
 end

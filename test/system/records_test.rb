@@ -45,6 +45,7 @@ class RecordsTest < ApplicationSystemTestCase
     assert_text I18n.t('helpers.notice.create')
     text = I18n.t('helpers.title.list', models: Record.model_name.human.pluralize(I18n.locale))
     assert_selector 'h1', text: text
+    page.assert_current_path(records_path)
   end
 
   test 'creating a Record continuously' do
@@ -63,6 +64,7 @@ class RecordsTest < ApplicationSystemTestCase
     assert_text I18n.t('helpers.notice.continuously_create')
     text = I18n.t('helpers.title.new', model: Record.model_name.human.pluralize(I18n.locale))
     assert_selector 'h1', text: text
+    page.assert_current_path(new_record_path, ignore_query: true)
   end
 
   test 'updating a Record' do
@@ -88,5 +90,6 @@ class RecordsTest < ApplicationSystemTestCase
     end
 
     assert_text I18n.t('helpers.notice.delete')
+    page.assert_current_path(records_path)
   end
 end

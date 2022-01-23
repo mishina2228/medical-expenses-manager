@@ -22,6 +22,7 @@ class PeopleTest < ApplicationSystemTestCase
     assert_text I18n.t('helpers.notice.create')
     text = I18n.t('helpers.title.list', models: Person.model_name.human.pluralize(I18n.locale))
     assert_selector 'h1', text: text
+    page.assert_current_path(people_path)
   end
 
   test 'updating a Person' do
@@ -50,5 +51,6 @@ class PeopleTest < ApplicationSystemTestCase
     end
 
     assert_text I18n.t('helpers.notice.delete')
+    page.assert_current_path(people_path)
   end
 end

@@ -21,6 +21,7 @@ class DrugstoresTest < ApplicationSystemTestCase
     assert_text I18n.t('helpers.notice.create')
     text = I18n.t('helpers.title.list', models: Drugstore.model_name.human.pluralize(I18n.locale))
     assert_selector 'h1', text: text
+    page.assert_current_path(drugstores_path)
   end
 
   test 'updating a Drugstore' do
@@ -46,5 +47,6 @@ class DrugstoresTest < ApplicationSystemTestCase
     end
 
     assert_text I18n.t('helpers.notice.delete')
+    page.assert_current_path(drugstores_path)
   end
 end
