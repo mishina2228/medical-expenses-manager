@@ -10,7 +10,7 @@ class RecordsTest < ApplicationSystemTestCase
     end
   end
 
-  test 'visiting the index' do
+  test 'visit the index' do
     visit records_url
     text = I18n.t('helpers.title.list', models: Record.model_name.human.pluralize(I18n.locale))
     assert_selector 'h1', text: text
@@ -31,7 +31,7 @@ class RecordsTest < ApplicationSystemTestCase
     assert_selector('table tbody tr', count: Record::DEFAULT_PER)
   end
 
-  test 'creating a Record' do
+  test 'create a record' do
     visit records_url
     click_on I18n.t('helpers.link.new'), match: :first
 
@@ -48,7 +48,7 @@ class RecordsTest < ApplicationSystemTestCase
     page.assert_current_path(records_path)
   end
 
-  test 'creating a Record continuously' do
+  test 'create a record continuously' do
     visit records_url
     click_on I18n.t('helpers.link.new'), match: :first
 
@@ -67,7 +67,7 @@ class RecordsTest < ApplicationSystemTestCase
     page.assert_current_path(new_record_path, ignore_query: true)
   end
 
-  test 'updating a Record' do
+  test 'update a record' do
     visit records_url
     click_on @record.date.strftime('%Y/%m/%d'), match: :first
     click_on I18n.t('helpers.link.edit')
@@ -82,7 +82,7 @@ class RecordsTest < ApplicationSystemTestCase
     assert_equal after_cost, @record.reload.cost
   end
 
-  test 'destroying a Record' do
+  test 'destroy a record' do
     visit records_url
     click_on @record.date.strftime('%Y/%m/%d'), match: :first
     page.accept_confirm do

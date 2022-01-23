@@ -5,13 +5,13 @@ class DrugstoresTest < ApplicationSystemTestCase
     @drugstore = drugstores(:drugstore1)
   end
 
-  test 'visiting the index' do
+  test 'visit the index' do
     visit drugstores_url
     text = I18n.t('helpers.title.list', models: Drugstore.model_name.human.pluralize(I18n.locale))
     assert_selector 'h1', text: text
   end
 
-  test 'creating a Drugstore' do
+  test 'create a drugstore' do
     visit drugstores_url
     click_on I18n.t('helpers.link.new')
 
@@ -24,7 +24,7 @@ class DrugstoresTest < ApplicationSystemTestCase
     page.assert_current_path(drugstores_path)
   end
 
-  test 'updating a Drugstore' do
+  test 'update a drugstore' do
     visit drugstores_url
     click_on @drugstore.name, match: :first
     click_on I18n.t('helpers.link.edit')
@@ -39,7 +39,7 @@ class DrugstoresTest < ApplicationSystemTestCase
     assert_equal after_name, @drugstore.reload.name
   end
 
-  test 'destroying a Drugstore' do
+  test 'destroy a drugstore' do
     visit drugstores_url
     click_on @drugstore.name, match: :first
     page.accept_confirm do

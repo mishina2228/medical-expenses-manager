@@ -5,13 +5,13 @@ class PeopleTest < ApplicationSystemTestCase
     @person = people(:user1)
   end
 
-  test 'visiting the index' do
+  test 'visit the index' do
     visit people_url
     text = I18n.t('helpers.title.list', models: Person.model_name.human.pluralize(I18n.locale))
     assert_selector 'h1', text: text
   end
 
-  test 'creating a Person' do
+  test 'create a person' do
     visit people_url
     click_on I18n.t('helpers.link.new')
 
@@ -25,7 +25,7 @@ class PeopleTest < ApplicationSystemTestCase
     page.assert_current_path(people_path)
   end
 
-  test 'updating a Person' do
+  test 'update a person' do
     visit people_url
     click_on @person.name, match: :first
     click_on I18n.t('helpers.link.edit')
@@ -43,7 +43,7 @@ class PeopleTest < ApplicationSystemTestCase
     assert_equal after_relationship, @person.reload.relationship
   end
 
-  test 'destroying a Person' do
+  test 'destroy a person' do
     visit people_url
     click_on @person.name, match: :first
     page.accept_confirm do

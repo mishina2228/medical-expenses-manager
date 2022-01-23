@@ -5,13 +5,13 @@ class TransportTest < ApplicationSystemTestCase
     @transport = transports(:transport1)
   end
 
-  test 'visiting the index' do
+  test 'visit the index' do
     visit transports_url
     text = I18n.t('helpers.title.list', models: Transport.model_name.human.pluralize(I18n.locale))
     assert_selector 'h1', text: text
   end
 
-  test 'creating a Transport' do
+  test 'create a transport' do
     visit transports_url
     click_on I18n.t('helpers.link.new')
 
@@ -24,7 +24,7 @@ class TransportTest < ApplicationSystemTestCase
     page.assert_current_path(transports_path)
   end
 
-  test 'updating a Transport' do
+  test 'update a transport' do
     visit transports_url
     click_on @transport.name, match: :first
     click_on I18n.t('helpers.link.edit')
@@ -39,7 +39,7 @@ class TransportTest < ApplicationSystemTestCase
     assert_equal after_name, @transport.reload.name
   end
 
-  test 'destroying a Transport' do
+  test 'destroy a transport' do
     visit transports_url
     click_on @transport.name, match: :first
     page.accept_confirm do

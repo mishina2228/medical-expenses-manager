@@ -5,13 +5,13 @@ class HospitalsTest < ApplicationSystemTestCase
     @hospital = hospitals(:hospital1)
   end
 
-  test 'visiting the index' do
+  test 'visit the index' do
     visit hospitals_url
     text = I18n.t('helpers.title.list', models: Hospital.model_name.human.pluralize(I18n.locale))
     assert_selector 'h1', text: text
   end
 
-  test 'creating a Hospital' do
+  test 'create a hospital' do
     visit hospitals_url
     click_on I18n.t('helpers.link.new')
 
@@ -24,7 +24,7 @@ class HospitalsTest < ApplicationSystemTestCase
     page.assert_current_path(hospitals_path)
   end
 
-  test 'updating a Hospital' do
+  test 'update a hospital' do
     visit hospitals_url
     click_on @hospital.name, match: :first
     click_on I18n.t('helpers.link.edit')
@@ -39,7 +39,7 @@ class HospitalsTest < ApplicationSystemTestCase
     assert_equal after_name, @hospital.reload.name
   end
 
-  test 'destroying a Hospital' do
+  test 'destroy a hospital' do
     visit hospitals_url
     click_on @hospital.name, match: :first
     page.accept_confirm do
