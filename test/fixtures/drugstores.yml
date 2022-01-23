@@ -1,3 +1,6 @@
 drugstore1:
   name: drugstore1
   type: Drugstore
+drugstore2:
+  name: drugstore2
+  type: Drugstore

@@ -32,7 +32,7 @@ class HospitalsControllerTest < ActionDispatch::IntegrationTest
       post hospitals_url, params: hospitals_params.merge(name: nil)
     end
 
-    assert_response :success
+    assert_response :unprocessable_entity
   end
 
   test 'should show a hospital' do
@@ -71,7 +71,7 @@ class HospitalsControllerTest < ActionDispatch::IntegrationTest
             }
           }
 
-    assert_response :success
+    assert_response :unprocessable_entity
     assert_equal before_name, @hospital.reload.name
   end
 

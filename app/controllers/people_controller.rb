@@ -23,7 +23,7 @@ class PeopleController < ApplicationController
         format.html {redirect_to people_url, notice: t('helpers.notice.create')}
         format.json {render :show, status: :created, location: @person}
       else
-        format.html {render :new}
+        format.html {render :new, status: :unprocessable_entity}
         format.json {render json: @person.errors, status: :unprocessable_entity}
       end
     end
@@ -35,7 +35,7 @@ class PeopleController < ApplicationController
         format.html {redirect_to people_url, notice: t('helpers.notice.update')}
         format.json {render :show, status: :ok, location: @person}
       else
-        format.html {render :edit}
+        format.html {render :edit, status: :unprocessable_entity}
         format.json {render json: @person.errors, status: :unprocessable_entity}
       end
     end

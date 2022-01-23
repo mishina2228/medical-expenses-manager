@@ -94,7 +94,7 @@ class RecordsControllerTest < ActionDispatch::IntegrationTest
            }
     end
 
-    assert_response :success
+    assert_response :unprocessable_entity
   end
 
   test 'should redirect to index when trying to create a record without any Person' do
@@ -143,7 +143,7 @@ class RecordsControllerTest < ActionDispatch::IntegrationTest
             }
           }
 
-    assert_response :success
+    assert_response :unprocessable_entity
     assert_equal before_cost, @record.reload.cost
   end
 

@@ -24,6 +24,17 @@ class TransportTest < ApplicationSystemTestCase
     page.assert_current_path(transports_path)
   end
 
+  test 'create a transport with invalid parameters' do
+    visit transports_url
+    click_on I18n.t('helpers.link.new')
+
+    fill_in Transport.human_attribute_name(:name), with: @transport.name
+    click_on I18n.t('helpers.submit.create')
+
+    assert_text I18n.t('errors.messages.taken')
+    page.assert_current_path(new_transport_path)
+  end
+
   test 'update a transport' do
     visit transports_url
     click_on @transport.name, match: :first
@@ -37,6 +48,19 @@ class TransportTest < ApplicationSystemTestCase
     assert_text I18n.t('helpers.notice.update')
     page.assert_current_path(transports_path)
     assert_equal after_name, @transport.reload.name
+  end
+
+  test 'update a transport with invalid parameters' do
+    visit transports_url
+    click_on @transport.name, match: :first
+    click_on I18n.t('helpers.link.edit')
+    page.assert_current_path(edit_transport_path(id: @transport.id))
+
+    fill_in Transport.human_attribute_name(:name), with: transports(:transport2).name
+    click_on I18n.t('helpers.submit.update')
+
+    assert_text I18n.t('errors.messages.taken')
+    page.assert_current_path(edit_transport_path(id: @transport.id))
   end
 
   test 'destroy a transport' do

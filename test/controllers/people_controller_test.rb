@@ -45,7 +45,7 @@ class PeopleControllerTest < ActionDispatch::IntegrationTest
            }
     end
 
-    assert_response :success
+    assert_response :unprocessable_entity
   end
 
   test 'should show a person' do
@@ -84,7 +84,7 @@ class PeopleControllerTest < ActionDispatch::IntegrationTest
             }
           }
 
-    assert_response :success
+    assert_response :unprocessable_entity
     assert_equal before_name, @person.reload.name
   end
 

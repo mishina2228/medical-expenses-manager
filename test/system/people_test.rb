@@ -25,6 +25,18 @@ class PeopleTest < ApplicationSystemTestCase
     page.assert_current_path(people_path)
   end
 
+  test 'create a person with invalid parameters' do
+    visit people_url
+    click_on I18n.t('helpers.link.new')
+
+    fill_in Person.human_attribute_name(:name), with: @person.name
+    fill_in Person.human_attribute_name(:relationship), with: @person.relationship
+    click_on I18n.t('helpers.submit.create')
+
+    assert_text I18n.t('errors.messages.taken')
+    page.assert_current_path(new_person_path)
+  end
+
   test 'update a person' do
     visit people_url
     click_on @person.name, match: :first
@@ -41,6 +53,20 @@ class PeopleTest < ApplicationSystemTestCase
     page.assert_current_path(people_path)
     assert_equal after_name, @person.reload.name
     assert_equal after_relationship, @person.reload.relationship
+  end
+
+  test 'update a person with invalid parameters' do
+    visit people_url
+    click_on @person.name, match: :first
+    click_on I18n.t('helpers.link.edit')
+    page.assert_current_path(edit_person_path(id: @person.id))
+
+    fill_in Person.human_attribute_name(:name), with: people(:user2).name
+    fill_in Person.human_attribute_name(:relationship), with: people(:user2).relationship
+    click_on I18n.t('helpers.submit.update')
+
+    assert_text I18n.t('errors.messages.taken')
+    page.assert_current_path(edit_person_path(id: @person.id))
   end
 
   test 'destroy a person' do

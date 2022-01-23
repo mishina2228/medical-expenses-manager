@@ -43,7 +43,7 @@ class DrugstoresControllerTest < ActionDispatch::IntegrationTest
            }
     end
 
-    assert_response :success
+    assert_response :unprocessable_entity
   end
 
   test 'should show a drugstore' do
@@ -80,7 +80,7 @@ class DrugstoresControllerTest < ActionDispatch::IntegrationTest
             }
           }
 
-    assert_response :success
+    assert_response :unprocessable_entity
     assert_equal before_name, @drugstore.reload.name
   end
 

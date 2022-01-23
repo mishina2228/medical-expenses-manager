@@ -24,6 +24,17 @@ class HospitalsTest < ApplicationSystemTestCase
     page.assert_current_path(hospitals_path)
   end
 
+  test 'create a hospital with invalid parameters' do
+    visit hospitals_url
+    click_on I18n.t('helpers.link.new')
+
+    fill_in Hospital.human_attribute_name(:name), with: @hospital.name
+    click_on I18n.t('helpers.submit.create')
+
+    assert_text I18n.t('errors.messages.taken')
+    page.assert_current_path(new_hospital_path)
+  end
+
   test 'update a hospital' do
     visit hospitals_url
     click_on @hospital.name, match: :first
@@ -37,6 +48,19 @@ class HospitalsTest < ApplicationSystemTestCase
     assert_text I18n.t('helpers.notice.update')
     page.assert_current_path(hospitals_path)
     assert_equal after_name, @hospital.reload.name
+  end
+
+  test 'update a hospital with invalid parameters' do
+    visit hospitals_url
+    click_on @hospital.name, match: :first
+    click_on I18n.t('helpers.link.edit')
+    page.assert_current_path(edit_hospital_path(id: @hospital.id))
+
+    fill_in Hospital.human_attribute_name(:name), with: hospitals(:hospital2).name
+    click_on I18n.t('helpers.submit.update')
+
+    assert_text I18n.t('errors.messages.taken')
+    page.assert_current_path(edit_hospital_path(id: @hospital.id))
   end
 
   test 'destroy a hospital' do

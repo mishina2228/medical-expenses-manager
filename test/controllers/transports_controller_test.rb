@@ -43,7 +43,7 @@ class TransportsControllerTest < ActionDispatch::IntegrationTest
            }
     end
 
-    assert_response :success
+    assert_response :unprocessable_entity
   end
 
   test 'should show a transport' do
@@ -80,7 +80,7 @@ class TransportsControllerTest < ActionDispatch::IntegrationTest
             }
           }
 
-    assert_response :success
+    assert_response :unprocessable_entity
     assert_equal before_name, @transport.reload.name
   end
 
