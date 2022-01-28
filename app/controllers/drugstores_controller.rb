@@ -44,7 +44,7 @@ class DrugstoresController < ApplicationController
   def destroy
     @drugstore.destroy
     respond_to do |format|
-      format.html {redirect_to drugstores_url, notice: t('helpers.notice.delete')}
+      format.html {redirect_to drugstores_url, notice: t('helpers.notice.delete'), status: :see_other}
       format.json {head :no_content}
     end
   end

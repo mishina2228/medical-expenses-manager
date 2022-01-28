@@ -85,7 +85,7 @@ class RecordsTest < ApplicationSystemTestCase
   test 'destroy a record' do
     visit records_url
     click_on @record.date.strftime('%Y/%m/%d'), match: :first
-    page.accept_confirm do
+    page.accept_confirm(I18n.t('helpers.notice.delete_confirm')) do
       click_on I18n.t('helpers.link.delete')
     end
 

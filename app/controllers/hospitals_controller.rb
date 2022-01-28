@@ -46,7 +46,7 @@ class HospitalsController < ApplicationController
   def destroy
     @hospital.destroy
     respond_to do |format|
-      format.html {redirect_to hospitals_url, notice: t('helpers.notice.delete')}
+      format.html {redirect_to hospitals_url, notice: t('helpers.notice.delete'), status: :see_other}
       format.json {head :no_content}
     end
   end

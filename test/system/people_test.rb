@@ -72,7 +72,7 @@ class PeopleTest < ApplicationSystemTestCase
   test 'destroy a person' do
     visit people_url
     click_on @person.name, match: :first
-    page.accept_confirm do
+    page.accept_confirm(I18n.t('helpers.notice.delete_confirm')) do
       click_on I18n.t('helpers.link.delete')
     end
 

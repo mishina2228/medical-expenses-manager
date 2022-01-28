@@ -97,7 +97,7 @@ class HospitalsTest < ApplicationSystemTestCase
   test 'destroy a hospital' do
     visit hospitals_url
     click_on @hospital.name, match: :first
-    page.accept_confirm do
+    page.accept_confirm(I18n.t('helpers.notice.delete_confirm')) do
       click_on I18n.t('helpers.link.delete')
     end
 

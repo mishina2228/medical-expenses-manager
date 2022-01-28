@@ -6,15 +6,13 @@
     <%= link_to t('helpers.link.show'), {controller: controller.controller_name, action: :show},
                 class: 'btn btn-info', role: :button %>
     <%= link_to t('helpers.link.delete'), {controller: controller.controller_name, action: :destroy},
-                method: :delete,
-                data: {confirm: t('helpers.notice.delete_confirm')},
+                data: {turbo_method: :delete, turbo_confirm: t('helpers.notice.delete_confirm')},
                 class: 'btn btn-danger', role: :button %>
   <% when 'show' %>
     <%= link_to t('helpers.link.edit'), {controller: controller.controller_name, action: :edit},
                 class: 'btn btn-info', role: :button %>
     <%= link_to t('helpers.link.delete'), {controller: controller.controller_name, action: :destroy},
-                method: :delete,
-                data: {confirm: t('helpers.notice.delete_confirm')},
+                data: {turbo_method: :delete, turbo_confirm: t('helpers.notice.delete_confirm')},
                 class: 'btn btn-danger', role: :button %>
   <% end %>
 </div>
