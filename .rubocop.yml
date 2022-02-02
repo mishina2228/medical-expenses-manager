@@ -48,5 +48,8 @@ Style/EmptyMethod:
   EnforcedStyle: expanded
 Style/FrozenStringLiteralComment:
   Enabled: false
+Style/StringLiterals:
+  Exclude:
+    - 'config/importmap.rb'
 Style/SymbolArray:
   EnforcedStyle: brackets
