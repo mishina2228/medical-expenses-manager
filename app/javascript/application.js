@@ -2,14 +2,12 @@
 
 import 'bootstrap'
 
-// import './javascripts/datepicker_loader.js'
-// import './fontawesome'
-// import './record'
-// import './theme_changer'
+import 'controllers/datepicker_loader'
+import 'controllers/fontawesome'
+import 'controllers/record'
+import 'controllers/theme_changer'
 
 import '@hotwired/turbo-rails'
 // import $ from 'jquery'
 // window.$ = window.jQuery = $
-import 'jquery'
-
 import '@nathanvda/cocoon'
