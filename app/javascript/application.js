@@ -8,6 +8,4 @@ import 'controllers/record'
 import 'controllers/theme_changer'
 
 import '@hotwired/turbo-rails'
-// import $ from 'jquery'
-// window.$ = window.jQuery = $
-import '@nathanvda/cocoon'
+import '@oddcamp/cocoon-vanilla-js'
