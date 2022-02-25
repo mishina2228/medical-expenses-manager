@@ -9,7 +9,7 @@
     "emoji-toolkit": "^6.6.0",
     "flatpickr": "^4.6.9",
     "js-cookie": "^3.0.1",
-    "sass": "^1.49.8"
+    "sass": "^1.49.9"
   },
   "devDependencies": {
     "markdownlint-cli": "^0.31.1",
