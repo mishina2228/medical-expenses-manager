@@ -34,6 +34,8 @@ Metrics/CyclomaticComplexity:
 Metrics/MethodLength:
   Enabled: false
 
+Minitest/AssertPredicate:
+  Enabled: false
 Minitest/MultipleAssertions:
   Enabled: false
 
