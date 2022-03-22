@@ -96,7 +96,7 @@ GEM
       xpath (~> 3.2)
     childprocess (4.1.0)
     cocoon (1.2.15)
-    concurrent-ruby (1.1.9)
+    concurrent-ruby (1.1.10)
     crass (1.0.6)
     cssbundling-rails (1.1.0)
       railties (>= 6.0.0)
