@@ -25,7 +25,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'cocoon'
 gem 'kaminari', '~> 1.2.2'
-gem 'paranoia', '~> 2.5'
+gem 'paranoia', '~> 2.6'
 
 group :development do
   gem 'brakeman'
