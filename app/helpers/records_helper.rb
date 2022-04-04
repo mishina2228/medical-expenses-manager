@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RecordsHelper
   def render_division(division)
     emoji = case division

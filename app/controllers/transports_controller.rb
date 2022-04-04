@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TransportsController < ApplicationController
   before_action :set_transport, only: [:show, :edit, :update, :destroy]
 

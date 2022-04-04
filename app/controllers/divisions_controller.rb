@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DivisionsController < ApplicationController
   def load_division_names
     objects = Division.all_records(params[:klass])

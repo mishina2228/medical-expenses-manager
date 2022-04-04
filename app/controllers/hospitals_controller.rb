@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class HospitalsController < ApplicationController
   before_action :set_hospital, only: [:edit, :update, :destroy]
   before_action :set_hospital_with_transport, only: [:show]

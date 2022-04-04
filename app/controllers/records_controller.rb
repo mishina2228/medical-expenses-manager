@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RecordsController < ApplicationController
   before_action :set_record, only: [:show, :edit, :update, :destroy]
   before_action -> {require_data(records_url, Person)},

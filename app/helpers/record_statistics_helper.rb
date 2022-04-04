@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RecordStatisticsHelper
   def check_division(division, klass)
     icon = division.instance_of?(klass) ? 'fa-check-square' : 'fa-square'
