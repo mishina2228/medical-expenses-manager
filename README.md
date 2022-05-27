@@ -8,7 +8,7 @@
 [![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fmishina2228%2Fmedical-expenses-manager.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fmishina2228%2Fmedical-expenses-manager?ref=badge_shield)
 
-Ruby on Rails application for managing medical expenses deductions
+Manager of medical expenses deductions
 
 ## Prerequisites
 
