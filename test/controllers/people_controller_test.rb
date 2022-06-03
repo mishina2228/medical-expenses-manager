@@ -96,6 +96,7 @@ class PeopleControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_response :redirect
+    assert_response :see_other
     assert_redirected_to people_url
   end
 end
