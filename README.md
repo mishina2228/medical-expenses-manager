@@ -1,4 +1,4 @@
-# medical_expenses_manager
+# medical-expenses-manager
 
 [![CI](https://github.com/mishina2228/medical-expenses-manager/workflows/ci/badge.svg)](https://github.com/mishina2228/medical-expenses-manager/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/58fc7e9f69118ecdb8ff/maintainability)](https://codeclimate.com/github/mishina2228/medical-expenses-manager/maintainability)
