@@ -261,7 +261,7 @@ GEM
     simplecov_json_formatter (0.1.4)
     smart_properties (1.17.0)
     sqlite3 (1.4.4)
-    strscan (3.0.3)
+    strscan (3.0.4)
     thor (1.2.1)
     timeout (0.3.0)
     turbo-rails (1.1.1)
