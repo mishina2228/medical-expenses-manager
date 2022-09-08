@@ -2,7 +2,7 @@
   "dependencies": {
     "bootstrap": "^5.2.0",
     "flatpickr": "^4.6.13",
-    "sass": "^1.54.8"
+    "sass": "^1.54.9"
   },
   "devDependencies": {
     "markdownlint-cli": "^0.32.2",
