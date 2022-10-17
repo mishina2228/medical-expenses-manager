@@ -342,10 +342,10 @@ doctrine@^3.0.0:
   dependencies:
     esutils "^2.0.2"
 
-emoji-toolkit@^6.6.0:
-  version "6.6.0"
-  resolved "https://registry.yarnpkg.com/emoji-toolkit/-/emoji-toolkit-6.6.0.tgz#e7287c43a96f940ec4c5428cd7100a40e57518f1"
-  integrity sha512-pEu0kow2p1N8zCKnn/L6H0F3rWUBB3P3hVjr/O5yl1fK7N9jU4vO4G7EFapC5Y3XwZLUCY0FZbOPyTkH+4V2eQ==
+emoji-toolkit@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/emoji-toolkit/-/emoji-toolkit-7.0.0.tgz#63b5e5bdc63acd2e5629a0157969b94d414961fb"
+  integrity sha512-swoVbGlR/cyJ2ysrw1+axjRkEHAlH0myhbK1ybkv8zR6r9KpL4vzb96m3Y2j0hixUKj1Nb8YBQbk3ihB+XkpBw==
 
 entities@~3.0.1:
   version "3.0.1"
