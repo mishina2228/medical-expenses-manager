@@ -4,14 +4,11 @@ require 'test_helper'
 
 class PersonTest < ActiveSupport::TestCase
   test 'validation of Person' do
-    person = Person.new(valid_params)
-    assert person.valid?
+    assert Person.new(valid_params).valid?
 
-    person = Person.new(valid_params.merge(name: nil))
-    assert person.invalid?
+    assert Person.new(valid_params.merge(name: nil)).invalid?
 
-    person = Person.new(valid_params.merge(relationship: nil))
-    assert person.invalid?
+    assert Person.new(valid_params.merge(relationship: nil)).invalid?
   end
 
   test 'unique validation of Person' do

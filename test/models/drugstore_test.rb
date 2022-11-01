@@ -4,11 +4,9 @@ require 'test_helper'
 
 class DrugstoreTest < ActiveSupport::TestCase
   test 'validation of Drugstore' do
-    drugstore = Drugstore.new(valid_params)
-    assert drugstore.valid?
+    assert Drugstore.new(valid_params).valid?
 
-    drugstore = Drugstore.new(valid_params.merge(name: nil))
-    assert drugstore.invalid?
+    assert Drugstore.new(valid_params.merge(name: nil)).invalid?
   end
 
   test 'unique validation of Drugstore' do
@@ -16,11 +14,8 @@ class DrugstoreTest < ActiveSupport::TestCase
     transport = transports(:transport1)
     drugstore = drugstores(:drugstore1)
 
-    drugstore_unique = Drugstore.new(name: hospital.name)
-    assert drugstore_unique.valid?
-
-    drugstore_unique = Drugstore.new(name: transport.name)
-    assert drugstore_unique.valid?
+    assert Drugstore.new(name: hospital.name).valid?
+    assert Drugstore.new(name: transport.name).valid?
 
     drugstore_duplicate = Drugstore.new(name: drugstore.name)
     assert drugstore_duplicate.invalid?

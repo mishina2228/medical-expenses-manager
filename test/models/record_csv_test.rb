@@ -8,59 +8,37 @@ class RecordCsvTest < ActiveSupport::TestCase
   end
 
   test 'validation' do
-    record = RecordCSV.new(record_csv_params)
-    assert record.valid?
+    assert RecordCSV.new(record_csv_params).valid?
   end
 
-  test 'validation date' do
-    record = RecordCSV.new(record_csv_params.merge(date: nil))
-    assert record.invalid?
-
-    record = RecordCSV.new(record_csv_params.merge(date: 'aabbccdd'))
-    assert record.invalid?
-
-    record = RecordCSV.new(record_csv_params.merge(date: '2018-08-32'))
-    assert record.invalid?
+  test 'validation of date' do
+    assert RecordCSV.new(record_csv_params.merge(date: nil)).invalid?
+    assert RecordCSV.new(record_csv_params.merge(date: 'aabbccdd')).invalid?
+    assert RecordCSV.new(record_csv_params.merge(date: '2018-08-32')).invalid?
   end
 
-  test 'validation person name' do
-    record = RecordCSV.new(record_csv_params.merge(person_name: nil))
-    assert record.invalid?
+  test 'validation of person_name' do
+    assert RecordCSV.new(record_csv_params.merge(person_name: nil)).invalid?
   end
 
-  test 'validation division' do
-    record = RecordCSV.new(record_csv_params.merge(division: nil))
-    assert record.invalid?
+  test 'validation of division' do
+    assert RecordCSV.new(record_csv_params.merge(division: nil)).invalid?
+    assert RecordCSV.new(record_csv_params.merge(division: 'NotExist')).invalid?
 
-    record = RecordCSV.new(record_csv_params.merge(division: 'NotExist'))
-    assert record.invalid?
-
-    record = RecordCSV.new(record_csv_params.merge(division: 'Hospital'))
-    assert record.valid?
-
-    record = RecordCSV.new(record_csv_params.merge(division: 'Drugstore'))
-    assert record.valid?
-
-    record = RecordCSV.new(record_csv_params.merge(division: 'Transport'))
-    assert record.valid?
+    assert RecordCSV.new(record_csv_params.merge(division: 'Hospital')).valid?
+    assert RecordCSV.new(record_csv_params.merge(division: 'Drugstore')).valid?
+    assert RecordCSV.new(record_csv_params.merge(division: 'Transport')).valid?
   end
 
   test 'validation of division_name' do
     assert RecordCSV.new(record_csv_params.merge(division_name: nil)).invalid?
   end
 
-  test 'validation cost' do
-    record = RecordCSV.new(record_csv_params.merge(cost: nil))
-    assert record.invalid?
-
-    record = RecordCSV.new(record_csv_params.merge(cost: 1.5))
-    assert record.invalid?
-
-    record = RecordCSV.new(record_csv_params.merge(cost: -1))
-    assert record.invalid?
-
-    record = RecordCSV.new(record_csv_params.merge(cost: 0))
-    assert record.valid?
+  test 'validation of cost' do
+    assert RecordCSV.new(record_csv_params.merge(cost: nil)).invalid?
+    assert RecordCSV.new(record_csv_params.merge(cost: 1.5)).invalid?
+    assert RecordCSV.new(record_csv_params.merge(cost: -1)).invalid?
+    assert RecordCSV.new(record_csv_params.merge(cost: 0)).valid?
   end
 
   test 'export as utf8' do

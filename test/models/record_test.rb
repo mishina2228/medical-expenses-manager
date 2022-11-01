@@ -4,18 +4,13 @@ require 'test_helper'
 
 class RecordTest < ActiveSupport::TestCase
   test 'validation' do
-    record = Record.new(valid_params)
-    assert record.valid?
+    assert Record.new(valid_params).valid?
 
-    record = Record.new(valid_params.merge(date: nil))
-    assert record.invalid?
+    assert Record.new(valid_params.merge(date: nil)).invalid?
 
-    record = Record.new(valid_params.merge(cost: nil))
-    assert record.invalid?
-    record = Record.new(valid_params.merge(cost: -1))
-    assert record.invalid?
-    record = Record.new(valid_params.merge(cost: 3.14))
-    assert record.invalid?
+    assert Record.new(valid_params.merge(cost: nil)).invalid?
+    assert Record.new(valid_params.merge(cost: -1)).invalid?
+    assert Record.new(valid_params.merge(cost: 3.14)).invalid?
   end
 
   test 'create_self_and_transports' do
@@ -108,6 +103,7 @@ class RecordTest < ActiveSupport::TestCase
 
   test 'returns statistics for the current year if a specific year is not given' do
     Record.delete_all
+
     assert Record.create(valid_params.merge(date: Date.new(2019, 1, 1), cost: 200))
     assert Record.create(valid_params.merge(date: Date.new(2019, 12, 31), cost: 200))
     assert Record.create(valid_params.merge(date: Date.new(2020, 1, 1), cost: 300))

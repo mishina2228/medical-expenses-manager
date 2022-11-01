@@ -4,26 +4,21 @@ require 'test_helper'
 
 class TransportTest < ActiveSupport::TestCase
   test 'validation of Transport' do
-    transport = Transport.new(valid_params)
-    assert transport.valid?
+    assert Transport.new(valid_params).valid?
 
-    transport = Transport.new(valid_params.merge(name: nil))
-    assert transport.invalid?
+    assert Transport.new(valid_params.merge(name: nil)).invalid?
   end
 
   test 'unique validation of Transport' do
     hospital = hospitals(:hospital1)
-    transport = transports(:transport1)
     drugstore = drugstores(:drugstore1)
+    transport = transports(:transport1)
 
-    transport_unique = Transport.new(name: hospital.name)
-    assert transport_unique.valid?
+    assert Transport.new(name: hospital.name).valid?
+    assert Transport.new(name: drugstore.name).valid?
 
     transport_duplicate = Transport.new(name: transport.name)
     assert transport_duplicate.invalid?
-
-    transport_unique = Transport.new(name: drugstore.name)
-    assert transport_unique.valid?
 
     assert transport.destroy
     assert transport.deleted_at.present?
