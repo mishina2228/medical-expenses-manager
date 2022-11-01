@@ -45,9 +45,8 @@ class RecordCsvTest < ActiveSupport::TestCase
     assert record.valid?
   end
 
-  test 'validation division name' do
-    record = RecordCSV.new(record_csv_params.merge(division: nil))
-    assert record.invalid?
+  test 'validation of division_name' do
+    assert RecordCSV.new(record_csv_params.merge(division_name: nil)).invalid?
   end
 
   test 'validation cost' do
