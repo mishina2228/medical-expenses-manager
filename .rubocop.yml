@@ -36,6 +36,8 @@ Metrics/MethodLength:
 
 Minitest/AssertPredicate:
   Enabled: false
+Minitest/EmptyLineBeforeAssertionMethods:
+  Enabled: false
 Minitest/MultipleAssertions:
   Enabled: false
 
