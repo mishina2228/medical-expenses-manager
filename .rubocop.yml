@@ -50,6 +50,8 @@ Style/Documentation:
   Enabled: false
 Style/EmptyMethod:
   EnforcedStyle: expanded
+Style/RedundantConstantBase:
+  Enabled: false
 Style/StringLiterals:
   Exclude:
     - 'config/importmap.rb'
