@@ -29,6 +29,8 @@ gem 'cocoon'
 gem 'kaminari', '~> 1.2.2'
 gem 'paranoia', '~> 2.6'
 
+gem 'mail', '~> 2.7.1' # staying at 2.7.x until 2.8.1 is released
+
 group :development do
   gem 'brakeman'
   gem 'bullet'

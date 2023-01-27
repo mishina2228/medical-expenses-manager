@@ -293,6 +293,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder (~> 2.11)
   kaminari (~> 1.2.2)
+  mail (~> 2.7.1)
   minitest-ci
   paranoia (~> 2.6)
   propshaft
