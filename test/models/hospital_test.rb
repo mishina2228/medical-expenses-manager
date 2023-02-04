@@ -1,27 +1,24 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class HospitalTest < ActiveSupport::TestCase
   test 'validation of Hospital' do
-    hospital = Hospital.new(valid_params)
-    assert hospital.valid?
+    assert Hospital.new(valid_params).valid?
 
-    hospital = Hospital.new(valid_params.merge(name: nil))
-    assert hospital.invalid?
+    assert Hospital.new(valid_params.merge(name: nil)).invalid?
   end
 
   test 'unique validation of Hospital' do
-    hospital = hospitals(:hospital1)
     transport = transports(:transport1)
     drugstore = drugstores(:drugstore1)
+    hospital = hospitals(:hospital1)
+
+    assert Hospital.new(name: transport.name).valid?
+    assert Hospital.new(name: drugstore.name).valid?
 
     hospital_duplicate = Hospital.new(name: hospital.name)
     assert hospital_duplicate.invalid?
-
-    hospital_unique = Hospital.new(name: transport.name)
-    assert hospital_unique.valid?
-
-    hospital_unique = Hospital.new(name: drugstore.name)
-    assert hospital_unique.valid?
 
     assert hospital.destroy
     assert hospital.deleted_at.present?

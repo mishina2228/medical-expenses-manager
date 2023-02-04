@@ -1,22 +1,18 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class HospitalTransportTest < ActiveSupport::TestCase
   test 'validation of HospitalTransport' do
     HospitalTransport.destroy_all
-    ht = HospitalTransport.new(valid_params)
-    assert ht.valid?
 
-    ht = HospitalTransport.new(valid_params.merge(transport_cost: nil))
-    assert ht.invalid?
+    assert HospitalTransport.new(valid_params).valid?
 
-    ht = HospitalTransport.new(valid_params.merge(transport_cost: 'abc'))
-    assert ht.invalid?
-    ht = HospitalTransport.new(valid_params.merge(transport_cost: 5.2))
-    assert ht.invalid?
-    ht = HospitalTransport.new(valid_params.merge(transport_cost: -1))
-    assert ht.invalid?
-    ht = HospitalTransport.new(valid_params.merge(transport_cost: 0))
-    assert ht.valid?
+    assert HospitalTransport.new(valid_params.merge(transport_cost: nil)).invalid?
+    assert HospitalTransport.new(valid_params.merge(transport_cost: 'abc')).invalid?
+    assert HospitalTransport.new(valid_params.merge(transport_cost: 5.2)).invalid?
+    assert HospitalTransport.new(valid_params.merge(transport_cost: -1)).invalid?
+    assert HospitalTransport.new(valid_params.merge(transport_cost: 0)).valid?
   end
 
   test 'unique validation of HospitalTransport' do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Hospital < Division
   has_many :hospital_transports, dependent: :destroy
   accepts_nested_attributes_for :hospital_transports, allow_destroy: true

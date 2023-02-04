@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RecordsSupport
   def new_record
     hospital1 = hospitals(:hospital1)

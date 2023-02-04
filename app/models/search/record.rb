@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Search
   class Record < Search::Base
     attr_accessor :ids, :division_id, :division_type, :name, :month

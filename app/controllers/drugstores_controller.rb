@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DrugstoresController < ApplicationController
   before_action :set_drugstore, only: [:show, :edit, :update, :destroy]
 

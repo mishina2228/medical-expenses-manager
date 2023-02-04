@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class RecordsControllerTest < ActionDispatch::IntegrationTest
@@ -161,6 +163,7 @@ class RecordsControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_response :redirect
+    assert_response :see_other
     assert_redirected_to records_url
     assert_includes flash[:notice], I18n.t('helpers.notice.delete')
   end
