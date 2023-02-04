@@ -37,6 +37,8 @@ jobs:
       - run: yarn install
       - name: Database setup
         run: bin/rails db:schema:load --trace
+      - name: Build assets in advance
+        run: rails assets:precompile
       - name: Run unit tests
         run: bin/rails test
       - name: Upload unit test coverage report
