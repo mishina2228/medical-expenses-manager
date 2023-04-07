@@ -78,7 +78,7 @@ class RecordCsvTest < ActiveSupport::TestCase
   test 'load csv as utf8' do
     records = RecordCSV.load(csv_path('test_utf8.csv'))
     records.each_with_index do |record, i|
-      assert_equal RecordCSV, record.class
+      assert_instance_of RecordCSV, record
       assert_equal csv_expect_data[i][:date], record.date
       assert_equal csv_expect_data[i][:person_name], record.person_name
       assert_equal csv_expect_data[i][:division], record.division
@@ -90,7 +90,7 @@ class RecordCsvTest < ActiveSupport::TestCase
   test 'load csv as sjis' do
     records = RecordCSV.load(csv_path('test_sjis.csv'))
     records.each_with_index do |record, i|
-      assert_equal RecordCSV, record.class
+      assert_instance_of RecordCSV, record
       assert_equal csv_expect_data[i][:date], record.date
       assert_equal csv_expect_data[i][:person_name], record.person_name
       assert_equal csv_expect_data[i][:division], record.division
@@ -102,7 +102,7 @@ class RecordCsvTest < ActiveSupport::TestCase
   test 'load csv as euc' do
     records = RecordCSV.load(csv_path('test_euc.csv'))
     records.each_with_index do |record, i|
-      assert_equal RecordCSV, record.class
+      assert_instance_of RecordCSV, record
       assert_equal csv_expect_data[i][:date], record.date
       assert_equal csv_expect_data[i][:person_name], record.person_name
       assert_equal csv_expect_data[i][:division], record.division
