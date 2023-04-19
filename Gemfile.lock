@@ -164,7 +164,7 @@ GEM
     nokogiri (1.14.3)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
-    parallel (1.22.1)
+    parallel (1.23.0)
     paranoia (2.6.1)
       activerecord (>= 5.1, < 7.1)
     parser (3.2.2.0)
