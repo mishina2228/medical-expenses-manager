@@ -255,7 +255,7 @@ GEM
     smart_properties (1.17.0)
     sqlite3 (1.6.2)
       mini_portile2 (~> 2.8.0)
-    thor (1.2.1)
+    thor (1.2.2)
     timeout (0.3.2)
     turbo-rails (1.4.0)
       actionpack (>= 6.0.0)
