@@ -14,5 +14,5 @@ pin "@fortawesome/fontawesome-svg-core", to: "https://ga.jspm.io/npm:@fortawesom
 pin "@fortawesome/free-regular-svg-icons", to: "https://ga.jspm.io/npm:@fortawesome/free-regular-svg-icons@6.4.0/index.mjs"
 pin "@fortawesome/free-solid-svg-icons", to: "https://ga.jspm.io/npm:@fortawesome/free-solid-svg-icons@6.4.0/index.mjs"
 pin "emoji-toolkit", to: "https://ga.jspm.io/npm:emoji-toolkit@7.0.1/lib/js/joypixels.js"
-pin "js-cookie", to: "https://ga.jspm.io/npm:js-cookie@3.0.1/dist/js.cookie.mjs"
+pin "js-cookie", to: "https://ga.jspm.io/npm:js-cookie@3.0.5/dist/js.cookie.mjs"
 pin_all_from "app/javascript/controllers", under: "controllers"
