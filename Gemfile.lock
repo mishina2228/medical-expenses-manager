@@ -165,7 +165,7 @@ GEM
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     parallel (1.23.0)
-    paranoia (2.6.1)
+    paranoia (2.6.2)
       activerecord (>= 5.1, < 7.1)
     parser (3.2.2.3)
       ast (~> 2.4.1)
