@@ -246,7 +246,7 @@ GEM
       rubocop (>= 1.33.0, < 2.0)
     ruby-progressbar (1.13.0)
     rubyzip (2.3.2)
-    sass-embedded (1.69.4)
+    sass-embedded (1.69.5)
       google-protobuf (~> 3.23)
       rake (>= 13.0.0)
     selenium-webdriver (4.14.0)
