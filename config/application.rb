@@ -31,5 +31,8 @@ module MedicalManager
 
     config.time_zone = 'Tokyo'
     config.active_record.default_timezone = :local
+
+    # Change the format of the cache entry.
+    # config.active_support.cache_format_version = 7.1
   end
 end
