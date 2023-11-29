@@ -6,11 +6,11 @@ git_source(:github) {|repo| "https://github.com/#{repo}.git"}
 ruby '>= 3.0', '< 4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 7.0.6'
+gem 'rails', '~> 7.1.2'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
-gem 'puma', '~> 6.3'
+gem 'puma', '~> 6.4'
 gem 'puma_worker_killer'
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem 'importmap-rails'
