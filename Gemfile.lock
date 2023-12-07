@@ -207,7 +207,7 @@ GEM
       puma (>= 2.7)
     racc (1.7.3)
     rack (3.0.8)
-    rack-mini-profiler (3.1.1)
+    rack-mini-profiler (3.3.0)
       rack (>= 1.2.0)
     rack-session (2.0.0)
       rack (>= 3.0.0)
@@ -342,7 +342,7 @@ DEPENDENCIES
   propshaft
   puma (~> 6.4)
   puma_worker_killer
-  rack-mini-profiler (~> 3.1)
+  rack-mini-profiler (~> 3.3)
   rails (~> 7.1.2)
   rubocop
   rubocop-minitest
