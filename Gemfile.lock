@@ -129,7 +129,7 @@ GEM
     globalid (1.2.1)
       activesupport (>= 6.1)
     google-protobuf (3.25.3)
-    i18n (1.14.1)
+    i18n (1.14.4)
       concurrent-ruby (~> 1.0)
     importmap-rails (2.0.1)
       actionpack (>= 6.0.0)
