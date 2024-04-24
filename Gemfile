@@ -29,6 +29,8 @@ gem 'cocoon'
 gem 'kaminari', '~> 1.2.2'
 gem 'paranoia', '~> 2.6'
 
+gem 'csv'
+
 group :development do
   gem 'brakeman'
   gem 'bullet'
