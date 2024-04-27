@@ -30,6 +30,7 @@ gem 'kaminari', '~> 1.2.2'
 gem 'paranoia', '~> 2.6'
 
 gem 'csv'
+gem 'nkf'
 
 group :development do
   gem 'brakeman'
