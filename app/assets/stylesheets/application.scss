@@ -1,8 +1,4 @@
 // Entry point for your Sass build
-@use 'bootstrap/scss/bootstrap';
-@use 'flatpickr/dist/flatpickr';
-@use 'flatpickr/dist/themes/material_blue';
-@use 'flatpickr/dist/plugins/monthSelect/style';
 @use './emojione';
 @use './records';
 @use './scaffolds';
