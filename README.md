@@ -38,7 +38,7 @@ bin/rails db:setup
 #### development
 
 ```sh
-bin/rails start
+bin/dev
 ```
 
 #### production
