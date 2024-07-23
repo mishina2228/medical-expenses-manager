@@ -13,6 +13,6 @@ pin "flatpickr/dist/l10n/ja", to: "https://ga.jspm.io/npm:flatpickr@4.6.13/dist/
 pin "@fortawesome/fontawesome-svg-core", to: "https://ga.jspm.io/npm:@fortawesome/fontawesome-svg-core@6.6.0/index.mjs"
 pin "@fortawesome/free-regular-svg-icons", to: "https://ga.jspm.io/npm:@fortawesome/free-regular-svg-icons@6.6.0/index.mjs"
 pin "@fortawesome/free-solid-svg-icons", to: "https://ga.jspm.io/npm:@fortawesome/free-solid-svg-icons@6.6.0/index.mjs"
-pin "emoji-toolkit", to: "https://ga.jspm.io/npm:emoji-toolkit@8.0.0/lib/js/joypixels.js"
+pin "emoji-toolkit", to: "https://ga.jspm.io/npm:emoji-toolkit@9.0.1/lib/js/joypixels.js"
 pin "js-cookie", to: "https://ga.jspm.io/npm:js-cookie@3.0.5/dist/js.cookie.mjs"
 pin_all_from "app/javascript/controllers", under: "controllers"
