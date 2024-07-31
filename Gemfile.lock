@@ -212,7 +212,7 @@ GEM
       bigdecimal (>= 2.0)
       get_process_mem (>= 0.2)
       puma (>= 2.7)
-    racc (1.8.0)
+    racc (1.8.1)
     rack (3.1.7)
     rack-mini-profiler (3.3.1)
       rack (>= 1.2.0)
