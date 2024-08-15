@@ -17,6 +17,7 @@ jobs:
           - '3.2'
           - '3.1'
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     env:
       RAILS_ENV: test
       NODE_ENV: test
@@ -54,6 +55,7 @@ jobs:
           path: tmp/screenshots/
   brakeman:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -66,6 +68,7 @@ jobs:
         run: bundle exec brakeman
   standard:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     env:
       NODE_ENV: test
     steps:
@@ -80,6 +83,7 @@ jobs:
         run: yarn standard
   rubocop:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -92,6 +96,7 @@ jobs:
         run: bundle exec rubocop
   erb-lint:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -104,6 +109,7 @@ jobs:
         run: bundle exec erblint --lint-all
   markdownlint:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     env:
       NODE_ENV: test
     steps:
