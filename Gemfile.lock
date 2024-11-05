@@ -282,7 +282,7 @@ GEM
       rubocop-ast (>= 1.31.1, < 2.0)
     ruby-progressbar (1.13.0)
     rubyzip (2.3.2)
-    sass-embedded (1.80.5)
+    sass-embedded (1.80.6)
       google-protobuf (~> 4.28)
       rake (>= 13)
     securerandom (0.3.1)
