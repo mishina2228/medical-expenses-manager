@@ -114,7 +114,7 @@ GEM
     date (3.4.1)
     docile (1.4.1)
     drb (2.2.1)
-    erb_lint (0.8.0)
+    erb_lint (0.9.0)
       activesupport
       better_html (>= 2.0.1)
       parser (>= 2.7.1.4)
@@ -131,7 +131,7 @@ GEM
     google-protobuf (4.29.3)
       bigdecimal
       rake (>= 13)
-    i18n (1.14.6)
+    i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     importmap-rails (2.1.0)
       actionpack (>= 6.0.0)
@@ -186,7 +186,7 @@ GEM
       net-protocol
     nio4r (2.7.4)
     nkf (0.2.0)
-    nokogiri (1.18.1)
+    nokogiri (1.18.2)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     parallel (1.26.3)
