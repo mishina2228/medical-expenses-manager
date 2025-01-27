@@ -89,7 +89,7 @@ class RecordsController < ApplicationController
   end
 
   def record_params
-    params.require(:record).permit(:cost, :date, :person_id, :division_id)
+    params.expect(record: [:cost, :date, :person_id, :division_id])
   end
 
   def record_params_for_continue
@@ -104,7 +104,7 @@ class RecordsController < ApplicationController
   end
 
   def export_params
-    params.require(:export).permit(ids: [])
+    params.expect(export: [ids: []])
   end
 
   def check_csv

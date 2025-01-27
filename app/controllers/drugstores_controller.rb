@@ -58,6 +58,6 @@ class DrugstoresController < ApplicationController
   end
 
   def drugstore_params
-    params.require(:drugstore).permit(:name)
+    params.expect(drugstore: [:name])
   end
 end

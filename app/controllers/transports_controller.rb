@@ -58,6 +58,6 @@ class TransportsController < ApplicationController
   end
 
   def transport_params
-    params.require(:transport).permit(:name)
+    params.expect(transport: [:name])
   end
 end
