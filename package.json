@@ -4,7 +4,7 @@
     "@fortawesome/free-regular-svg-icons": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@popperjs/core": "^2.11.8",
-    "bootstrap": "^5.3.3",
+    "bootstrap": "^5.3.5",
     "emoji-toolkit": "^9.0.1",
     "flatpickr": "^4.6.13",
     "js-cookie": "^3.0.5"
