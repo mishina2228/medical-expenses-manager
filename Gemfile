@@ -27,7 +27,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'cocoon'
 gem 'kaminari', '~> 1.2.2'
-gem 'paranoia', '~> 3.0'
+gem 'paranoia', '~> 3.1'
 
 gem 'csv'
 gem 'nkf'
