@@ -549,10 +549,10 @@ doctrine@^3.0.0:
   dependencies:
     esutils "^2.0.2"
 
-emoji-toolkit@^9.0.1:
-  version "9.0.1"
-  resolved "https://registry.yarnpkg.com/emoji-toolkit/-/emoji-toolkit-9.0.1.tgz#b3da51a4d9b1e89608b6a8506a5df6dbc3125495"
-  integrity sha512-sMMNqKNLVHXJfIKoPbrRJwtYuysVNC9GlKetr72zE3SSVbHqoeDLWVrxP0uM0AE0qvdl3hbUk+tJhhwXZrDHaw==
+emoji-toolkit@^10.0.0:
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/emoji-toolkit/-/emoji-toolkit-10.0.0.tgz#4a4dc29c86c30cea9bb1e5ef1d45bb36f6858397"
+  integrity sha512-GkIAvgutEVbkqcT2HjBzV002SWvpdNaT3aP9q/YjQ6hlgDq8HhE9GcqxWkyYkRRQnLADGpwDoj1heTw9KzO9wQ==
 
 entities@^4.4.0:
   version "4.5.0"
