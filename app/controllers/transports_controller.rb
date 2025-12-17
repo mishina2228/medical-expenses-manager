@@ -25,8 +25,8 @@ class TransportsController < ApplicationController
         format.html {redirect_to transports_url, notice: t('helpers.notice.create')}
         format.json {render :show, status: :created, location: @transport}
       else
-        format.html {render :new, status: :unprocessable_entity}
-        format.json {render json: @transport.errors, status: :unprocessable_entity}
+        format.html {render :new, status: :unprocessable_content}
+        format.json {render json: @transport.errors, status: :unprocessable_content}
       end
     end
   end
@@ -37,8 +37,8 @@ class TransportsController < ApplicationController
         format.html {redirect_to transports_url, notice: t('helpers.notice.update')}
         format.json {render :show, status: :ok, location: @transport}
       else
-        format.html {render :edit, status: :unprocessable_entity}
-        format.json {render json: @transport.errors, status: :unprocessable_entity}
+        format.html {render :edit, status: :unprocessable_content}
+        format.json {render json: @transport.errors, status: :unprocessable_content}
       end
     end
   end

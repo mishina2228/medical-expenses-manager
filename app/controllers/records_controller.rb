@@ -40,8 +40,8 @@ class RecordsController < ApplicationController
         end
         format.html {redirect_to records_url, notice: notices}
       else
-        format.html {render :new, status: :unprocessable_entity}
-        format.json {render json: @record.errors, status: :unprocessable_entity}
+        format.html {render :new, status: :unprocessable_content}
+        format.json {render json: @record.errors, status: :unprocessable_content}
       end
     end
   end
@@ -51,8 +51,8 @@ class RecordsController < ApplicationController
       if @record.update(record_params)
         format.html {redirect_to records_url, notice: t('helpers.notice.update')}
       else
-        format.html {render :edit, status: :unprocessable_entity}
-        format.json {render json: @record.errors, status: :unprocessable_entity}
+        format.html {render :edit, status: :unprocessable_content}
+        format.json {render json: @record.errors, status: :unprocessable_content}
       end
     end
   end
