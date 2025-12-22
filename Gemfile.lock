@@ -132,7 +132,7 @@ GEM
     google-protobuf (4.33.2)
       bigdecimal
       rake (>= 13)
-    i18n (1.14.7)
+    i18n (1.14.8)
       concurrent-ruby (~> 1.0)
     importmap-rails (2.2.2)
       actionpack (>= 6.0.0)
