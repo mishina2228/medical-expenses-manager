@@ -1,7 +1,7 @@
 # medical-expenses-manager
 
 [![CI](https://github.com/mishina2228/medical-expenses-manager/workflows/ci/badge.svg)](https://github.com/mishina2228/medical-expenses-manager/actions)
-[![Maintainability](https://api.codeclimate.com/v1/badges/58fc7e9f69118ecdb8ff/maintainability)](https://codeclimate.com/github/mishina2228/medical-expenses-manager/maintainability)
+[![Maintainability](https://qlty.sh/gh/mishina2228/projects/medical-expenses-manager/maintainability.svg)](https://qlty.sh/gh/mishina2228/projects/medical-expenses-manager)
 [![codecov](https://codecov.io/gh/mishina2228/medical-expenses-manager/branch/master/graph/badge.svg)](https://codecov.io/gh/mishina2228/medical-expenses-manager)
 [![GitHub license](https://img.shields.io/github/license/mishina2228/medical-expenses-manager)](https://github.com/mishina2228/medical-expenses-manager/blob/master/LICENSE)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
