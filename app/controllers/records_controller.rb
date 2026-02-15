@@ -104,7 +104,7 @@ class RecordsController < ApplicationController
   end
 
   def export_params
-    params.expect(export: [ids: []])
+    params.expect(export: [{ids: []}])
   end
 
   def check_csv
